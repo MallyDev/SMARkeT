@@ -19,6 +19,7 @@
 		2963D7851E8FE5490043D171 /* Product+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */; };
 		2963D7861E8FE5490043D171 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */; };
 		2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7871E8FE55D0043D171 /* PersistenceManager.swift */; };
+		2963D78C1E8FE85E0043D171 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2963D78B1E8FE85E0043D171 /* EstimoteSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2963D7871E8FE55D0043D171 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		2963D78B1E8FE85E0043D171 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
+		2963D78F1E8FE8E80043D171 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObjCBridge.h; path = ../ObjCBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2963D78C1E8FE85E0043D171 /* EstimoteSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,7 @@
 				2963D7661E8FE2C00043D171 /* AppTests */,
 				2963D7711E8FE2C00043D171 /* AppUITests */,
 				2963D74E1E8FE2C00043D171 /* Products */,
+				2963D78B1E8FE85E0043D171 /* EstimoteSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +115,7 @@
 		2963D74F1E8FE2C00043D171 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2963D78F1E8FE8E80043D171 /* ObjCBridge.h */,
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
 				2963D7521E8FE2C00043D171 /* FirstViewController.swift */,
 				2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */,
@@ -436,11 +442,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 57SS2T3E32;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = App/ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
+				n = "";
 			};
 			name = Debug;
 		};
@@ -449,11 +461,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 57SS2T3E32;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = App/ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
+				n = "";
 			};
 			name = Release;
 		};
