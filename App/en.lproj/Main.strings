@@ -1,0 +1,78 @@
+
+/* Class = "UITabBarItem"; title = "Offers"; ObjectID = "3sX-HH-TSz"; */
+"3sX-HH-TSz.title" = "Offers";
+
+/* Class = "UILabel"; text = "0 €"; ObjectID = "6dp-9w-3fs"; */
+"6dp-9w-3fs.text" = "0 €";
+
+/* Class = "UITabBarItem"; title = "Shopping List"; ObjectID = "9Ex-0M-hdf"; */
+"9Ex-0M-hdf.title" = "Shopping List";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "B35-oU-XPo"; */
+"B35-oU-XPo.text" = "Label";
+
+/* Class = "UILabel"; text = "0 €"; ObjectID = "Cj7-hV-DIU"; */
+"Cj7-hV-DIU.text" = "0 €";
+
+/* Class = "UISegmentedControl"; ISE-Pt-ogk.segmentTitles[0] = "My List"; ObjectID = "ISE-Pt-ogk"; */
+"ISE-Pt-ogk.segmentTitles[0]" = "My List";
+
+/* Class = "UISegmentedControl"; ISE-Pt-ogk.segmentTitles[1] = "Favourites"; ObjectID = "ISE-Pt-ogk"; */
+"ISE-Pt-ogk.segmentTitles[1]" = "Favourites";
+
+/* Class = "UISegmentedControl"; ISE-Pt-ogk.segmentTitles[2] = "Expiring"; ObjectID = "ISE-Pt-ogk"; */
+"ISE-Pt-ogk.segmentTitles[2]" = "Expiring";
+
+/* Class = "UISegmentedControl"; ISE-Pt-ogk.segmentTitles[3] = "All"; ObjectID = "ISE-Pt-ogk"; */
+"ISE-Pt-ogk.segmentTitles[3]" = "All";
+
+/* Class = "UINavigationItem"; title = "Scan"; ObjectID = "IvE-7Q-vLt"; */
+"IvE-7Q-vLt.title" = "Scan";
+
+/* Class = "UINavigationItem"; title = "Favourites"; ObjectID = "K4a-0r-TjK"; */
+"K4a-0r-TjK.title" = "Favourites";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "PDk-c3-J1E"; */
+"PDk-c3-J1E.text" = "Name";
+
+/* Class = "UILabel"; text = "0 Kg"; ObjectID = "Qmm-6c-XnZ"; */
+"Qmm-6c-XnZ.text" = "0 Kg";
+
+/* Class = "UILabel"; text = "0 Kg"; ObjectID = "YSe-my-e1g"; */
+"YSe-my-e1g.text" = "0 Kg";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "ZVU-4K-5hh"; */
+"ZVU-4K-5hh.text" = "Name";
+
+/* Class = "UINavigationItem"; title = "Shopping List"; ObjectID = "ar1-l1-oKq"; */
+"ar1-l1-oKq.title" = "Shopping List";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "cmH-jd-0Dh"; */
+"cmH-jd-0Dh.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "d8q-DK-ANk"; */
+"d8q-DK-ANk.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Offers"; ObjectID = "e0R-Wp-SpN"; */
+"e0R-Wp-SpN.title" = "Offers";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "e13-eL-eEs"; */
+"e13-eL-eEs.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Favourites"; ObjectID = "h2i-cL-uyr"; */
+"h2i-cL-uyr.title" = "Favourites";
+
+/* Class = "UILabel"; text = "0 €"; ObjectID = "iBa-4q-bvM"; */
+"iBa-4q-bvM.text" = "0 €";
+
+/* Class = "UILabel"; text = "0 Kg"; ObjectID = "oPV-Hc-nDR"; */
+"oPV-Hc-nDR.text" = "0 Kg";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ofL-bq-N7U"; */
+"ofL-bq-N7U.text" = "0";
+
+/* Class = "UITabBarItem"; title = "Offers"; ObjectID = "uUH-Zu-Rh2"; */
+"uUH-Zu-Rh2.title" = "Offers";
+
+/* Class = "UITabBarItem"; title = "Scan"; ObjectID = "zk6-z2-igX"; */
+"zk6-z2-igX.title" = "Scan";

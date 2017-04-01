@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2963D7511E8FE2C00043D171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7501E8FE2C00043D171 /* AppDelegate.swift */; };
-		2963D7531E8FE2C00043D171 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7521E8FE2C00043D171 /* FirstViewController.swift */; };
-		2963D7551E8FE2C00043D171 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7541E8FE2C00043D171 /* SecondViewController.swift */; };
 		2963D7581E8FE2C00043D171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7561E8FE2C00043D171 /* Main.storyboard */; };
 		2963D75A1E8FE2C00043D171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7591E8FE2C00043D171 /* Assets.xcassets */; };
 		2963D75D1E8FE2C00043D171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */; };
@@ -20,6 +18,17 @@
 		2963D7861E8FE5490043D171 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */; };
 		2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7871E8FE55D0043D171 /* PersistenceManager.swift */; };
 		2963D78C1E8FE85E0043D171 /* EstimoteSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2963D78B1E8FE85E0043D171 /* EstimoteSDK.framework */; };
+		2963D7941E8FEE050043D171 /* check-mark-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7901E8FEE050043D171 /* check-mark-button.png */; };
+		2963D7951E8FEE050043D171 /* plus-button-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7911E8FEE050043D171 /* plus-button-2.png */; };
+		2963D7961E8FEE050043D171 /* plus-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7921E8FEE050043D171 /* plus-button.png */; };
+		2963D7971E8FEE050043D171 /* rounded-delete-button-with-minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7931E8FEE050043D171 /* rounded-delete-button-with-minus.png */; };
+		2963D79C1E8FF0590043D171 /* ScanTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */; };
+		2963D79E1E8FF1A80043D171 /* FavouritesTabTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */; };
+		2963D7A01E8FF2370043D171 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */; };
+		2963D7A21E8FF2A90043D171 /* OfferCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */; };
+		2963D7A41E8FF2F50043D171 /* OffersTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */; };
+		2963D7A61E8FF35D0043D171 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */; };
+		2963D7A81E8FF3C50043D171 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +51,6 @@
 /* Begin PBXFileReference section */
 		2963D74D1E8FE2C00043D171 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2963D7501E8FE2C00043D171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2963D7521E8FE2C00043D171 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2963D7541E8FE2C00043D171 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2963D7571E8FE2C00043D171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2963D7591E8FE2C00043D171 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2963D75C1E8FE2C00043D171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +67,18 @@
 		2963D7871E8FE55D0043D171 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		2963D78B1E8FE85E0043D171 /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EstimoteSDK.framework; sourceTree = "<group>"; };
 		2963D78F1E8FE8E80043D171 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObjCBridge.h; path = ../ObjCBridge.h; sourceTree = "<group>"; };
+		2963D7901E8FEE050043D171 /* check-mark-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark-button.png"; sourceTree = "<group>"; };
+		2963D7911E8FEE050043D171 /* plus-button-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-button-2.png"; sourceTree = "<group>"; };
+		2963D7921E8FEE050043D171 /* plus-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-button.png"; sourceTree = "<group>"; };
+		2963D7931E8FEE050043D171 /* rounded-delete-button-with-minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rounded-delete-button-with-minus.png"; sourceTree = "<group>"; };
+		2963D79A1E8FEE760043D171 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanTabViewController.swift; sourceTree = "<group>"; };
+		2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavouritesTabTableViewController.swift; path = ../FavouritesTabTableViewController.swift; sourceTree = "<group>"; };
+		2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
+		2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferCellTableViewCell.swift; sourceTree = "<group>"; };
+		2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersTabViewController.swift; sourceTree = "<group>"; };
+		2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
+		2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,14 +134,20 @@
 		2963D74F1E8FE2C00043D171 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */,
 				2963D78F1E8FE8E80043D171 /* ObjCBridge.h */,
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
-				2963D7521E8FE2C00043D171 /* FirstViewController.swift */,
 				2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */,
-				2963D7541E8FE2C00043D171 /* SecondViewController.swift */,
 				2963D7561E8FE2C00043D171 /* Main.storyboard */,
 				2963D7591E8FE2C00043D171 /* Assets.xcassets */,
+				2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */,
+				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
+				2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */,
+				2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */,
+				2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */,
+				2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */,
 				2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */,
+				2963D7981E8FEE270043D171 /* Icon */,
 				2963D75E1E8FE2C00043D171 /* Info.plist */,
 			);
 			path = App;
@@ -144,6 +169,17 @@
 				2963D7741E8FE2C00043D171 /* Info.plist */,
 			);
 			path = AppUITests;
+			sourceTree = "<group>";
+		};
+		2963D7981E8FEE270043D171 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				2963D7901E8FEE050043D171 /* check-mark-button.png */,
+				2963D7911E8FEE050043D171 /* plus-button-2.png */,
+				2963D7921E8FEE050043D171 /* plus-button.png */,
+				2963D7931E8FEE050043D171 /* rounded-delete-button-with-minus.png */,
+			);
+			name = Icon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,9 +292,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2963D7971E8FEE050043D171 /* rounded-delete-button-with-minus.png in Resources */,
 				2963D75D1E8FE2C00043D171 /* LaunchScreen.storyboard in Resources */,
 				2963D75A1E8FE2C00043D171 /* Assets.xcassets in Resources */,
+				2963D7951E8FEE050043D171 /* plus-button-2.png in Resources */,
+				2963D7961E8FEE050043D171 /* plus-button.png in Resources */,
 				2963D7581E8FE2C00043D171 /* Main.storyboard in Resources */,
+				2963D7941E8FEE050043D171 /* check-mark-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,13 +323,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2963D7551E8FE2C00043D171 /* SecondViewController.swift in Sources */,
+				2963D7A21E8FF2A90043D171 /* OfferCellTableViewCell.swift in Sources */,
+				2963D79C1E8FF0590043D171 /* ScanTabViewController.swift in Sources */,
+				2963D7A81E8FF3C50043D171 /* ItemDetailViewController.swift in Sources */,
 				2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */,
+				2963D79E1E8FF1A80043D171 /* FavouritesTabTableViewController.swift in Sources */,
 				2963D7821E8FE4CF0043D171 /* product.xcdatamodeld in Sources */,
+				2963D7A41E8FF2F50043D171 /* OffersTabViewController.swift in Sources */,
+				2963D7A61E8FF35D0043D171 /* ShoppingListTableViewController.swift in Sources */,
+				2963D7A01E8FF2370043D171 /* AddItemTableViewController.swift in Sources */,
 				2963D7861E8FE5490043D171 /* Product+CoreDataProperties.swift in Sources */,
 				2963D7511E8FE2C00043D171 /* AppDelegate.swift in Sources */,
 				2963D7851E8FE5490043D171 /* Product+CoreDataClass.swift in Sources */,
-				2963D7531E8FE2C00043D171 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +374,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2963D7571E8FE2C00043D171 /* Base */,
+				2963D79A1E8FEE760043D171 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -450,7 +496,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = App/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
 				n = "";
 			};
@@ -469,7 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = App/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
 				n = "";
 			};

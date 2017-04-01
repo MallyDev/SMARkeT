@@ -10,9 +10,44 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
+    
+    var beaconManager = ESTBeaconManager()
+    
+    var orientationLock = UIInterfaceOrientationMask.all
+    
+    //Icy Marshmallow,that define the Food's zone
+    let regFood = CLBeaconRegion(
+        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major:27161,identifier : "ranged zone")
+    
+    //Blueberry Pie,that define the item's zone
+    let regItem = CLBeaconRegion(
+        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major:35887,identifier : "ranged zone")
+    
+    
+    //Mint,that define the Fruit's zone
+    let regFruit = CLBeaconRegion(
+        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major: 21413,identifier : "ranged zone")
+    
+    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+        switch region.major! {
+        // I break sono temporanei
+        case regFood.major!:
+            //Crea notifica che ti trovi nella zona del cibo
+            break
+        case regItem.major!:
+            //crea notifica che ti trovi nella zona degli oggetti
+            break
+        case regFruit.major!:
+            //crea notifica che ti trovi nella zone della frutta
+            break
+        default:
+            break
+        }
+    }
+
     
     lazy var persistentContainer : NSPersistentContainer = {
         let container = NSPersistentContainer(name: "products")
@@ -49,6 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
     }
     
     func savingContext(){
