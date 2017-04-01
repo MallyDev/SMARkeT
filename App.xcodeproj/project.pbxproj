@@ -250,7 +250,7 @@
 				TargetAttributes = {
 					2963D74C1E8FE2C00043D171 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 57SS2T3E32;
+						DevelopmentTeam = RFX667DMC5;
 						ProvisioningStyle = Automatic;
 					};
 					2963D7621E8FE2C00043D171 = {
@@ -487,14 +487,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57SS2T3E32;
+				DEVELOPMENT_TEAM = RFX667DMC5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
+				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
@@ -506,14 +506,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 57SS2T3E32;
+				DEVELOPMENT_TEAM = RFX667DMC5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
+				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
@@ -598,6 +598,7 @@
 				2963D7791E8FE2C00043D171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2963D77A1E8FE2C00043D171 /* Build configuration list for PBXNativeTarget "AppTests" */ = {
 			isa = XCConfigurationList;
@@ -606,6 +607,7 @@
 				2963D77C1E8FE2C00043D171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2963D77D1E8FE2C00043D171 /* Build configuration list for PBXNativeTarget "AppUITests" */ = {
 			isa = XCConfigurationList;
@@ -614,6 +616,7 @@
 				2963D77F1E8FE2C00043D171 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
