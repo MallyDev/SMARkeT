@@ -15,6 +15,10 @@
 		2963D75D1E8FE2C00043D171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */; };
 		2963D7681E8FE2C00043D171 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7671E8FE2C00043D171 /* AppTests.swift */; };
 		2963D7731E8FE2C00043D171 /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7721E8FE2C00043D171 /* AppUITests.swift */; };
+		2963D7821E8FE4CF0043D171 /* product.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */; };
+		2963D7851E8FE5490043D171 /* Product+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */; };
+		2963D7861E8FE5490043D171 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */; };
+		2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7871E8FE55D0043D171 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		2963D76E1E8FE2C00043D171 /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2963D7721E8FE2C00043D171 /* AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITests.swift; sourceTree = "<group>"; };
 		2963D7741E8FE2C00043D171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2963D7811E8FE4CF0043D171 /* product.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = product.xcdatamodel; sourceTree = "<group>"; };
+		2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2963D7871E8FE55D0043D171 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,9 @@
 		2963D7441E8FE2C00043D171 = {
 			isa = PBXGroup;
 			children = (
+				2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */,
+				2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */,
+				2963D7871E8FE55D0043D171 /* PersistenceManager.swift */,
 				2963D74F1E8FE2C00043D171 /* App */,
 				2963D7661E8FE2C00043D171 /* AppTests */,
 				2963D7711E8FE2C00043D171 /* AppUITests */,
@@ -101,6 +112,7 @@
 			children = (
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
 				2963D7521E8FE2C00043D171 /* FirstViewController.swift */,
+				2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */,
 				2963D7541E8FE2C00043D171 /* SecondViewController.swift */,
 				2963D7561E8FE2C00043D171 /* Main.storyboard */,
 				2963D7591E8FE2C00043D171 /* Assets.xcassets */,
@@ -266,7 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2963D7551E8FE2C00043D171 /* SecondViewController.swift in Sources */,
+				2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */,
+				2963D7821E8FE4CF0043D171 /* product.xcdatamodeld in Sources */,
+				2963D7861E8FE5490043D171 /* Product+CoreDataProperties.swift in Sources */,
 				2963D7511E8FE2C00043D171 /* AppDelegate.swift in Sources */,
+				2963D7851E8FE5490043D171 /* Product+CoreDataClass.swift in Sources */,
 				2963D7531E8FE2C00043D171 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +552,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2963D7811E8FE4CF0043D171 /* product.xcdatamodel */,
+			);
+			currentVersion = 2963D7811E8FE4CF0043D171 /* product.xcdatamodel */;
+			path = product.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2963D7451E8FE2C00043D171 /* Project object */;
 }
