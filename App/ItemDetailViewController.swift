@@ -11,8 +11,16 @@ import UIKit
 
 class ItemDetailViewController: UIViewController {
     
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: NSLayoutConstraint!
+    @IBOutlet weak var descript: UITextView!
+    @IBOutlet weak var imgView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addButton.layer.cornerRadius = 10
         //self.navigation.title = #nomeItem
         // Do any additional setup after loading the view.
     }
@@ -22,6 +30,17 @@ class ItemDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addButton(_ sender: Any) {
+        var value = Int.init(quantityLabel.text!)!
+        value += 1
+        quantityLabel.text = "\(value)"
+    }
+    
+    @IBAction func removeButton(_ sender: Any) {
+        var value = Int.init(quantityLabel.text!)!
+        value -= 1
+        quantityLabel.text = "\(value)"
+    }
     
     /*
      // MARK: - Navigation
