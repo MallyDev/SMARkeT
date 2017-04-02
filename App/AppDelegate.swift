@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     
     
+    
+    
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
@@ -74,6 +76,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         center.add(request, withCompletionHandler: nil)
     }
     
+    func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        
+        let nearestRegion = beacons[0]
+        
+        switch nearestRegion.major{
+        case 21413 : //Food
+            break
+            
+        case 35887:
+            break
+        case 27161:
+            break
+        default:
+            break
+        
+        
+        
+        
+        }
+        
+        
+    }
     
     
     
