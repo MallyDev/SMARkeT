@@ -11,9 +11,11 @@ import Foundation
 class Offers {
     
     var percentage: Int
+    var barCode: String
     
-    init(percentage: Int){
+    init(percentage: Int,barCode: String){
         self.percentage=percentage
+        self.barCode=barCode
     }
     
     func calculateNewPrice(oldPrice: Float) -> Float{
