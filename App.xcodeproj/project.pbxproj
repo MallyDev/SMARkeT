@@ -30,6 +30,7 @@
 		2963D7A41E8FF2F50043D171 /* OffersTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */; };
 		2963D7A61E8FF35D0043D171 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */; };
 		2963D7A81E8FF3C50043D171 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */; };
+		29F0DEE81E913DD000205C9E /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F0DEE71E913DD000205C9E /* Offers.swift */; };
 		33C9E4B7A68A01D9306D00C6 /* Pods_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3D8FD7E26348CA4394F807 /* Pods_AppTests.framework */; };
 		966AB9F182FEBC2AF91FDCEB /* Pods_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E297AACA5ABAD7A4F24A7DE5 /* Pods_AppUITests.framework */; };
 		F5276C83C591E770637703CF /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */; };
@@ -86,6 +87,7 @@
 		2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersTabViewController.swift; sourceTree = "<group>"; };
 		2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 		2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		29F0DEE71E913DD000205C9E /* Offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
 		7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA89C04F5393CBE7D18547D7 /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB3D8FD7E26348CA4394F807 /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
 				2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */,
 				2963D7561E8FE2C00043D171 /* Main.storyboard */,
+				29F0DEE71E913DD000205C9E /* Offers.swift */,
 				2963D7591E8FE2C00043D171 /* Assets.xcassets */,
 				2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */,
 				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
@@ -302,7 +305,7 @@
 				TargetAttributes = {
 					2963D74C1E8FE2C00043D171 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7W46TPZT4W;
+						DevelopmentTeam = 57SS2T3E32;
 						ProvisioningStyle = Automatic;
 					};
 					2963D7621E8FE2C00043D171 = {
@@ -516,6 +519,7 @@
 			files = (
 				2963D7A21E8FF2A90043D171 /* OfferCellTableViewCell.swift in Sources */,
 				2963D79C1E8FF0590043D171 /* ScanTabViewController.swift in Sources */,
+				29F0DEE81E913DD000205C9E /* Offers.swift in Sources */,
 				2963D7A81E8FF3C50043D171 /* ItemDetailViewController.swift in Sources */,
 				2963D7881E8FE55D0043D171 /* PersistenceManager.swift in Sources */,
 				2963D79E1E8FF1A80043D171 /* FavouritesTabTableViewController.swift in Sources */,
@@ -679,7 +683,7 @@
 			baseConfigurationReference = E1D0F96E764FBD50329B60C4 /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7W46TPZT4W;
+				DEVELOPMENT_TEAM = 57SS2T3E32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -699,7 +703,7 @@
 			baseConfigurationReference = E3C4B10669B9B1B8B4D17C9C /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7W46TPZT4W;
+				DEVELOPMENT_TEAM = 57SS2T3E32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
