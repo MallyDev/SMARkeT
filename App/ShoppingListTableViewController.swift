@@ -102,6 +102,9 @@ class ShoppingListTableViewController: UITableViewController {
         backItem.title = ""
         backItem.tintColor = UIColor.white
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        if segue.identifier == "addItem" {
+            
+        }
     }
 }
 
