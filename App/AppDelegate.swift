@@ -9,45 +9,101 @@
 import UIKit
 import CoreData
 import Firebase
+import UserNotifications
+
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
     
-    var beaconManager = ESTBeaconManager()
+    var beaconManager: ESTBeaconManager!
     
     var orientationLock = UIInterfaceOrientationMask.all
     
-    //Icy Marshmallow,that define the Food's zone
-    let regFood = CLBeaconRegion(
-        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major:27161,identifier : "ranged zone")
-    
-    //Blueberry Pie,that define the item's zone
-    let regItem = CLBeaconRegion(
-        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major:35887,identifier : "ranged zone")
+    var regSupermarket: CLBeaconRegion!
     
     
-    //Mint,that define the Fruit's zone
-    let regFruit = CLBeaconRegion(
-        proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,major: 21413,identifier : "ranged zone")
+    
+    
     
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
-        switch region.major! {
-        // I break sono temporanei
-        case regFood.major!:
-            //Crea notifica che ti trovi nella zona del cibo
+         //Now the User is with is Device in the Supermarket
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Welcome"
+        content.body = "Dear custumer,all the staff is happy for your visit."
+        content.sound = UNNotificationSound.default()
+        
+        //Set the trigger of the notification -- here a timer.
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 1.0,
+            repeats: false)
+        
+        //Set the request for the notification from the above
+        let request = UNNotificationRequest(
+            identifier: "SupermarketEnter",
+            content: content,
+            trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request, withCompletionHandler: nil)
+        
+    }
+    
+    
+    func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
+        //Now the User is with is Device out of the Supermarket
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Goodbye"
+        content.body = "Hope to see you soon."
+        content.sound = UNNotificationSound.default()
+        
+        //Set the trigger of the notification -- here a timer.
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 1.0,
+            repeats: false)
+        
+        //Set the request for the notification from the above
+        let request = UNNotificationRequest(
+            identifier: "SupermarketExit",
+            content: content,
+            trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request, withCompletionHandler: nil)
+    }
+    
+    func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        
+        let nearestRegion = beacons[0]
+        
+        switch nearestRegion.major{
+        case 21413 : //Food
             break
-        case regItem.major!:
-            //crea notifica che ti trovi nella zona degli oggetti
+            
+        case 35887:
             break
-        case regFruit.major!:
-            //crea notifica che ti trovi nella zone della frutta
+        case 27161:
             break
         default:
             break
+        
+        
+        
+        
         }
+        
+        
     }
+    
+    
+    
+    
+    
+    
 
     
     lazy var persistentContainer : NSPersistentContainer = {
@@ -62,7 +118,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
+        
+        //Init the value of the beaconManager
+        beaconManager = ESTBeaconManager()
+        
+        //Definition of the object that implement the beacon manager's protocol
+        self.beaconManager.delegate = self
+        
+        //Definition of the region
+        
+        self.regSupermarket = CLBeaconRegion(
+            proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,identifier : "SUPERMARKET")
+        
+        beaconManager.startMonitoring(for: regSupermarket)
+        beaconManager.startRangingBeacons(in: regSupermarket)
+        
         return true
     }
 
