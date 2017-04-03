@@ -83,7 +83,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         // Configure the cell...
         let product = self.favourites[indexPath.row]
         
-        cell.name.text = product.name
+        cell.nameLabel.text = product.name
         
         //TODO: SETTARE I CAMPI
         return cell
