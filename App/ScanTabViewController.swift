@@ -30,7 +30,7 @@ struct AppUtility {
     
 }
 
-class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -133,7 +133,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler: nil))
         popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         
-        popUp.present(popUp, animated: true, completion: nil)
+        self.present(popUp, animated: true, completion: nil)
     }
     
 }
