@@ -14,9 +14,32 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     var resultSearchController: UISearchController?
     var list : Array<Product> = []
     var products : Array<Product> = []
+    var filtered : Array<Product> = []
     
     public func updateSearchResults(for searchController: UISearchController) {
-        print("Sto per iniziare una ricerca")
+        self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
+    }
+    
+    func filtraContenuti(testoCercato: String, scope: String) {
+        filtered.removeAll(keepingCapacity: true)
+        for x in products {
+            /*var justOne = false
+            for (_, categoria) in x.department.enumerate() {
+                if (scope == "Tutti" || categoria == scope) {
+                    if((x.nome.rangeOfString(testoCercato.localizedLowercaseString) != nil) && justOne == false) {
+                        print("aggiungo \(x.nome) alla listaFiltrata")
+                        listaFiltrata.append(x)
+                        justOne = true
+                    }
+                }
+            }*/
+            if (scope == "Tutti") {
+                if (x.name?.range(of: testoCercato.localizedLowercase) != nil) {
+                    filtered.append(x)
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func addItem(_ sender: UIButton) {
@@ -27,9 +50,6 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         super.viewDidLoad()
         
         self.resultSearchController = ({
-            //inizializza la lista di prodotti
-            products = PersistenceManager.fetchAll()
-            
             // creo un oggetto di tipo UISearchController
             let controller = UISearchController(searchResultsController: nil)
             // rimuove la tableView di sottofondo in modo da poter successivamente visualizzare gli elementi cercati
@@ -41,7 +61,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             // impongo alla searchBar, contenuta all'interno del controller, di adattarsi alle dimensioni dell'applicazioni
             controller.searchBar.sizeToFit()
             
-            // atacco alla parte superiore della TableView la searchBar
+            // attacco alla parte superiore della TableView la searchBar
             self.navigationItem.titleView = controller.searchBar
             
             controller.hidesNavigationBarDuringPresentation = false
@@ -52,6 +72,8 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             return controller
         })()
         
+        //inizializza la lista di prodotti
+        products = PersistenceManager.fetchAll()
         UIBarButtonItem.appearance().tintColor = .white
         
         // Uncomment the following line to preserve selection between presentations
@@ -75,7 +97,15 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return products.count
+        guard let controller = self.resultSearchController else {
+            return 0
+        }
+        
+        if controller.isActive {
+            return self.filtered.count
+        } else {
+            return self.products.count
+        }
     }
     
     
@@ -83,7 +113,12 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         let cell = tableView.dequeueReusableCell(withIdentifier: "addItemTableCell", for: indexPath) as! AddItemTableViewCell
         
         // Configure the cell...
-        let item = products[indexPath.row]
+        let item : Product
+        if self.resultSearchController!.isActive {
+            item = products[indexPath.row]
+        } else {
+            item = filtered[indexPath.row]
+        }
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
