@@ -30,6 +30,8 @@ class PersistenceManager{
         product.inTheList=false
         product.quantity=0
         product.weight=0.0
+        product.newPrice=0.0
+        product.department=""
         
         return product
     }
@@ -38,7 +40,7 @@ class PersistenceManager{
         let context = getContext()
         var products=[Product]()
         let fetchRequest = NSFetchRequest<Product>(entityName: name)
-        fetchRequest.predicate = NSPredicate(format: "favourites===true")
+        fetchRequest.predicate = NSPredicate(format: "favourites==true")
         
         do{
             try products=context.fetch(fetchRequest)
@@ -62,4 +64,26 @@ class PersistenceManager{
         }
         return products
     }
+    
+    static func fetchOffers () -> [Product]{
+        
+        let context = getContext()
+        var products = [Product]()
+        let fetchRequest=NSFetchRequest<Product>(entityName: name)
+        fetchRequest.predicate = NSPredicate(format: "newPrice != 0")
+        
+        do {
+            try products=context.fetch(fetchRequest)
+        } catch let error as NSError {
+            fatalError("Error in fetching products if offer. \(error)")
+        }
+        return products
+    }
+    
+    static func deleteProduct (product: Product){
+        let context = getContext()
+        context.delete(product)
+    }
+    
+    
 }

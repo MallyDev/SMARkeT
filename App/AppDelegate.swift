@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     
     
+    
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
@@ -101,12 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     }
     
     
-    
-    
-    
-    
-
-    
     lazy var persistentContainer : NSPersistentContainer = {
         let container = NSPersistentContainer(name: "products")
         container.loadPersistentStores(completionHandler: { (storeDescription,error) in
@@ -119,6 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Creation of the lists
+        
+        var productsInList = PersistenceManager.fetchList()
+        
+        var favourites = PersistenceManager.fetchFavourites()
+        
         
         //Init the value of the beaconManager
         beaconManager = ESTBeaconManager()
