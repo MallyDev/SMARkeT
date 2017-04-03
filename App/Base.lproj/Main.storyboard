@@ -269,12 +269,12 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="departmentLabel" destination="Qmm-6c-XnZ" id="iYi-Vk-gX9"/>
-                                    <outlet property="minusButton" destination="YRp-Kg-lK8" id="vsK-Km-fzb"/>
+                                    <outlet property="imgView" destination="5xt-94-RYT" id="qeN-L7-AEw"/>
+                                    <outlet property="minusButton" destination="mCg-Cd-ES4" id="6U2-dG-kxb"/>
                                     <outlet property="nameLabel" destination="cmH-jd-0Dh" id="X4c-KY-2YL"/>
                                     <outlet property="newPriceLabel" destination="JbW-aj-ZbK" id="dGZ-Wz-LQK"/>
                                     <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
-                                    <outlet property="quantity" destination="ofL-bq-N7U" id="6EZ-z8-qcw"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="DYP-6Z-ZU9"/>
                                     <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
                                 </connections>
@@ -686,7 +686,7 @@
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8UM-Zf-0IR"/>
+        <segue reference="6Dk-r5-M42"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
