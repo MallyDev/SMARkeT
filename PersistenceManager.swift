@@ -79,4 +79,11 @@ class PersistenceManager{
         }
         return products
     }
+    
+    static func deleteProduct (product: Product){
+        let context = getContext()
+        context.delete(product)
+    }
+    
+    
 }
