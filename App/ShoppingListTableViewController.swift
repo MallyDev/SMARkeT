@@ -14,6 +14,11 @@ class ShoppingListTableViewController: UITableViewController {
     var list : Array<Product> = []
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        list = PersistenceManager.fetchList()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +27,7 @@ class ShoppingListTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        list = PersistenceManager.fetchList()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +50,7 @@ class ShoppingListTableViewController: UITableViewController {
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as!ShoppingListTableViewCell
-     
+        
         // Configure the cell...
         cell.nameLabel.text = list[indexPath.row].name!
         cell.departmentLabel.text = list[indexPath.row].department
