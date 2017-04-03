@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     }
     
     
-   /* func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+   func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
        
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         banner.show(duration: 3.0)
         
       
-    } */
+    }
     
     
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
@@ -101,20 +101,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
-        if(once != 1){
-        let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-            banner.dismissesOnTap = true
-            banner.show(duration: 3.0)
-            once = 1
-        }
-        
-      
-        
         if let nearestRegion = beacons.first{
         
         var listaFiltrata = [Product]()
-        
-        
+            
+         /*   if(once != 1){
+                let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                banner.dismissesOnTap = true
+                banner.dismissesOnSwipe = true
+                banner.show()
+                once = 1
+            }
+        */
         switch nearestRegion.major{
         case 21413 : //Food
             listaFiltrata = filterList(search: "Food")
