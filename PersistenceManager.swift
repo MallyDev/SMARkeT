@@ -22,7 +22,7 @@ class PersistenceManager{
         let context=getContext()
         
         let product = NSEntityDescription.insertNewObject(forEntityName: name, into: context) as! Product
-        product.name=""
+        product.name="Pippo"
         product.barCode=""
         product.descr=""
         product.price=0.0
@@ -34,6 +34,20 @@ class PersistenceManager{
         product.department=""
         
         return product
+    }
+    
+    static func fetchAll()->[Product]{
+        let context = getContext()
+        var products=[Product]()
+        let fetchRequest = NSFetchRequest<Product>(entityName: name)
+        //fetchRequest.predicate = NSPredicate(format: "favourite==true")
+        
+        do{
+            try products=context.fetch(fetchRequest)
+        } catch let error as NSError{
+            fatalError("Error in fetching the favourites. \(error)")
+        }
+        return products
     }
     
     static func fetchFavourites() -> [Product]{

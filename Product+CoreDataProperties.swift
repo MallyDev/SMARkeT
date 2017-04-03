@@ -22,7 +22,7 @@ extension Product {
     @NSManaged public var inTheList: Bool
     @NSManaged public var name: String?
     @NSManaged public var price: Float
-    @NSManaged public var quantity: Int16
+    @NSManaged public var quantity: Int32
     @NSManaged public var weight: Float
     @NSManaged public var newPrice: Float
     @NSManaged public var department: String?
