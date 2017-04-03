@@ -152,8 +152,26 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func showPopup(product: Product){
         
         let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
-        popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler: nil))
-        popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler: nil))
+        popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+            //aggiungere il prodotto nell'array di shopping list
+            self.prod.inTheList = true
+            PersistenceManager.saveContext()
+            //far comparire la view di shopping list
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! ShoppingListTableViewController
+            self.present(vc, animated: true, completion: nil)
+            //far scomparire la ScannerView
+            self.dismiss(animated: true, completion: nil)
+        }))
+        popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                self.prod.favourite = true
+                PersistenceManager.saveContext()
+                //far comparire la view dei Favourites
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! FavouritesTabTableViewController
+                self.present(vc, animated: true, completion: nil)
+                //far scomparire la ScannerView
+                self.dismiss(animated: true, completion: nil)
+        }))
         popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         
         self.present(popUp, animated: true, completion: nil)
