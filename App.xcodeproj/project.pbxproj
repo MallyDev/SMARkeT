@@ -170,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */,
+				2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */,
 				194B5BCE1E923ED5000DBDE6 /* ShoppingListTableViewCell.swift */,
 				2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */,
 				2963D78F1E8FE8E80043D171 /* ObjCBridge.h */,
@@ -182,7 +183,6 @@
 				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
 				2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */,
 				2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */,
-				2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */,
 				2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */,
 				2963D7981E8FEE270043D171 /* Icon */,
 				2963D75E1E8FE2C00043D171 /* Info.plist */,

@@ -65,7 +65,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REq-P9-7X6" id="2mP-XL-KqL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-eN-eRQ">
@@ -136,7 +136,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="oRO-oY-ZYW" id="HZj-72-N94"/>
+                            <outlet property="dataSource" destination="oRO-oY-ZYW" id="KVf-Pg-11u"/>
                             <outlet property="delegate" destination="oRO-oY-ZYW" id="gCP-a1-WgH"/>
                         </connections>
                     </tableView>
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nOF-gR-ebX" id="xFB-mz-1P7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xt-94-RYT">
@@ -276,11 +276,12 @@
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
                                     <outlet property="quantity" destination="ofL-bq-N7U" id="6EZ-z8-qcw"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="DYP-6Z-ZU9"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="ggc-tG-BEM" id="fkG-ge-a9N"/>
+                            <outlet property="dataSource" destination="ggc-tG-BEM" id="X6O-7x-1oG"/>
                             <outlet property="delegate" destination="ggc-tG-BEM" id="ndA-yd-oQo"/>
                         </connections>
                     </tableView>
@@ -288,14 +289,14 @@
                         <barButtonItem key="rightBarButtonItem" image="plus-button.png" id="fx8-6O-AYm">
                             <color key="tintColor" red="0.96862745100000003" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="xZm-iB-d7H" kind="show" id="Nem-RR-v5G"/>
+                                <segue destination="xZm-iB-d7H" kind="show" identifier="addItem" id="Nem-RR-v5G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqg-u0-jhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030.4347826086957" y="-1057.3369565217392"/>
+            <point key="canvasLocation" x="1021" y="-1136"/>
         </scene>
         <!--Add Item Table View Controller-->
         <scene sceneID="cao-AG-ckz">
@@ -306,11 +307,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="vDT-GN-aNv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addItemTableCell" rowHeight="100" id="vDT-GN-aNv">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-ZB-3Yc">
@@ -367,14 +368,14 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="xZm-iB-d7H" id="v4r-Ns-hK9"/>
+                            <outlet property="dataSource" destination="xZm-iB-d7H" id="eNh-s7-PCa"/>
                             <outlet property="delegate" destination="xZm-iB-d7H" id="hiB-cM-fNu"/>
                         </connections>
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-f2-21r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989.5999999999999" y="-1057.4212893553224"/>
+            <point key="canvasLocation" x="1978" y="-1491"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="qQB-9f-qFY">
@@ -430,7 +431,7 @@
                                 <rect key="frame" x="0.0" y="325" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fP-vv-Ao5">
-                                        <rect key="frame" x="56" y="15.333333333333314" width="29" height="20.333333333333371"/>
+                                        <rect key="frame" x="56" y="15" width="29" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="29" id="t7Z-i3-rEa"/>
                                         </constraints>
@@ -562,7 +563,7 @@
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7J-kd-ooz" id="2FB-4v-74w">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B35-oU-XPo">
@@ -576,6 +577,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="B35-oU-XPo" id="KgS-DZ-jy0"/>
+                                            <segue destination="XqV-6f-Q2C" kind="show" id="JK4-F8-G8d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -794,4 +796,8 @@ Gg4aEBoVGh0aIBolGi0aMBpCGkUaSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABpMA
         <image name="sales" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8UM-Zf-0IR"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
