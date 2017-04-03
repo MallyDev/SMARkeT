@@ -13,6 +13,7 @@ import UserNotifications
 
 
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,UNUserNotificationCenterDelegate{
 
@@ -182,7 +183,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
 
     }
     
-        func filterList(search: String) -> [Product]{
+    
+    func filterList(search: String) -> [Product]{
             var filterList = [Product]()
             
             for x in productsInList {
