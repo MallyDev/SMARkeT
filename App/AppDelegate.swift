@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var regSupermarket: CLBeaconRegion!
     
+    var productsInList: [Product]!
+    
+    var favourites: [Product]!
+    
     
     
     
@@ -86,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         switch nearestRegion.major{
         case 21413 : //Food
+            
             break
             
         case 35887: //Fruit
