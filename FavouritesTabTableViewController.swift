@@ -77,10 +77,12 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Product", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell", for: indexPath) as! FavouritesTableViewCell
         
         // Configure the cell...
         let product = self.favourites[indexPath.row]
+        
+        cell.name.text = product.name
         
         //TODO: SETTARE I CAMPI
         return cell
