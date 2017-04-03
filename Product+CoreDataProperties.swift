@@ -25,5 +25,6 @@ extension Product {
     @NSManaged public var quantity: Int16
     @NSManaged public var weight: Float
     @NSManaged public var newPrice: Float
+    @NSManaged public var department: String?
 
 }
