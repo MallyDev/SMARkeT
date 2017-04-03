@@ -12,7 +12,6 @@ import UIKit
 class AddItemTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate{
     
     var resultSearchController: UISearchController?
-    var list : Array<Product> = []
     var products : Array<Product> = []
     var filtered : Array<Product> = []
     
@@ -43,7 +42,26 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     }
     
     @IBAction func addItem(_ sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentRow = tableView.indexPathForRow(at: buttonPosition)
+        let item : Product
         
+        //aggiungiElemento
+        if self.resultSearchController!.isActive {
+            item = filtered[currentRow!.row]
+            item.inTheList = !item.inTheList
+        } else {
+            item = products[currentRow!.row]
+            item.inTheList = !item.inTheList
+        }
+        PersistenceManager.saveContext()
+        
+        //cambia icona
+        if item.inTheList {
+            sender.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "plus-button-2.png"), for: .normal)
+        }
     }
     
     override func viewDidLoad() {
@@ -115,9 +133,9 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         // Configure the cell...
         let item : Product
         if self.resultSearchController!.isActive {
-            item = products[indexPath.row]
-        } else {
             item = filtered[indexPath.row]
+        } else {
+            item = products[indexPath.row]
         }
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
@@ -162,15 +180,26 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
      }
      */
     
-    /*
+     /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showItem", sender: tableView)
+     }*/
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "showItem" {
+            let dst = segue.destination as! ItemDetailViewController
+            let currentRow = self.tableView.indexPathForSelectedRow!.row
+            if self.resultSearchController!.isActive {
+                dst.title = filtered[currentRow].name!
+            } else {
+                dst.title = products[currentRow].name!
+            }
+        }
      }
-     */
     
 }
 
