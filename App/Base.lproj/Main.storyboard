@@ -508,7 +508,7 @@
                         <outlet property="addButton" destination="Cnb-wk-qvk" id="XeX-hA-MV9"/>
                         <outlet property="descript" destination="WnS-84-MKu" id="fWn-ej-eme"/>
                         <outlet property="imgView" destination="x7C-WC-epH" id="Tl0-dz-uhc"/>
-                        <outlet property="minusButton" destination="q1V-bY-iHw" id="UBq-G8-9PF"/>
+                        <outlet property="minusButton" destination="jI6-Qe-Lbw" id="UpZ-R1-fiY"/>
                         <outlet property="plusButton" destination="T1a-UF-0mE" id="v6K-mO-Nwd"/>
                         <outlet property="quantityLabel" destination="2fP-vv-Ao5" id="seP-4H-p8F"/>
                     </connections>
