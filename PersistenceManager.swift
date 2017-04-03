@@ -40,7 +40,7 @@ class PersistenceManager{
         let context = getContext()
         var products=[Product]()
         let fetchRequest = NSFetchRequest<Product>(entityName: name)
-        fetchRequest.predicate = NSPredicate(format: "favourites===true")
+        fetchRequest.predicate = NSPredicate(format: "favourites==true")
         
         do{
             try products=context.fetch(fetchRequest)
