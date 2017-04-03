@@ -11,6 +11,9 @@ import UIKit
 
 class ShoppingListTableViewController: UITableViewController {
     
+    var list = PersistenceManager.fetchList()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

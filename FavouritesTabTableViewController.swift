@@ -15,7 +15,8 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         print("Sto per iniziare una ricerca")
     }
     
-    var favourites = [Product]()
+    var favourites = PersistenceManager.fetchFavourites()
+    
     
     var resultSearchController: UISearchController?
     
