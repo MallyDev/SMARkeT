@@ -11,11 +11,15 @@ import UIKit
 class ShoppingListTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     //TODO: reparto
     //TODO: peso/unità
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var quantity: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var minusButton: NSLayoutConstraint!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var newPriceLabel: UILabel!
     
     
     
@@ -31,4 +35,16 @@ class ShoppingListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func addButton(_ sender: Any) {
+        var value = Int.init(quantityLabel.text!)!
+        value += 1
+        quantityLabel.text = "\(value)"
+    }
+    
+    @IBAction func removeButton(_ sender: Any) {
+        var value = Int.init(quantityLabel.text!)!
+        value -= 1
+        quantityLabel.text = "\(value)"
+    }
+    
 }
