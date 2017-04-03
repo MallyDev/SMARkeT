@@ -227,8 +227,8 @@
                                             <color key="textColor" red="0.2666666667" green="0.58431372550000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-aj-ZbK">
-                                            <rect key="frame" x="122" y="68" width="49" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-aj-ZbK">
+                                            <rect key="frame" x="122" y="89" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.2666666667" green="0.58431372550000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -250,6 +250,7 @@
                                         <constraint firstItem="c85-ln-Lt9" firstAttribute="leading" secondItem="ofL-bq-N7U" secondAttribute="trailing" id="gCB-vO-wzD"/>
                                         <constraint firstItem="ofL-bq-N7U" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" id="pka-BJ-zcJ"/>
                                         <constraint firstItem="Qmm-6c-XnZ" firstAttribute="top" secondItem="cmH-jd-0Dh" secondAttribute="bottom" constant="8" id="r5F-Vn-k3f"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="JbW-aj-ZbK" secondAttribute="bottom" constant="2.5" id="sRN-dm-LDF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
