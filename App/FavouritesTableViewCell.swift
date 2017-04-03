@@ -10,10 +10,11 @@ import UIKit
 
 class FavouritesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var name: UILabel!
-    //TODO: category
-    //TODO: unità
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var addToListLabel: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

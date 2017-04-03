@@ -17,7 +17,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     //test
     let myList:[String] = ["MyList item 1","MyList item 2"]
     let favouritesList:[String] = ["Favourite item 1","Favourite item 2", "Favourite item 3"]
-    let expiringList:[String] = ["Expiring item 1", "Expiring item 2", "Expiring item 3", "Expiring item 4"]
+    let dailyList:[String] = ["Expiring item 1", "Expiring item 2", "Expiring item 3", "Expiring item 4"]
     let allList:[String] = ["All item 1", "All item 2", "All item 3", "All item 4"]
     
     
@@ -60,7 +60,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             break
             
         case 2:
-            let item = expiringList[indexPath.row]
+            let item = dailyList[indexPath.row]
             myCell.name.text = item
             break
             
@@ -108,7 +108,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             break
             
         case 2:
-            returnValue = expiringList.count
+            returnValue = dailyList.count
             break
         case 3:
             returnValue = allList.count
