@@ -15,7 +15,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var myTableView: UITableView!
     
     //test
-    let myList:[String] = ["MyList item 1","MyList item 2"]
+    var myList = PersistenceManager.fetchAll()
     let favouritesList:[String] = ["Favourite item 1","Favourite item 2", "Favourite item 3"]
     let dailyList:[String] = ["Expiring item 1", "Expiring item 2", "Expiring item 3", "Expiring item 4"]
     let allList:[String] = ["All item 1", "All item 2", "All item 3", "All item 4"]
@@ -23,7 +23,8 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         myList.append(PersistenceManager.newEmptyProd())
+         myList[0].name="Pluto"
         
         // Do any additional setup after loading the view.
     }
@@ -52,7 +53,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         case 0:
             print("O")
             let item = myList[indexPath.row]
-            myCell.name.text = item
+            myCell.name.text = item.name
             break
         case 1:
             let item = favouritesList[indexPath.row]
