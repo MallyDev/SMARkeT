@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -296,7 +296,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqg-u0-jhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030.4347826086957" y="-1057.3369565217392"/>
+            <point key="canvasLocation" x="1021" y="-1136"/>
         </scene>
         <!--Add Item Table View Controller-->
         <scene sceneID="cao-AG-ckz">
@@ -307,7 +307,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="vDT-GN-aNv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addItemTableCell" rowHeight="100" id="vDT-GN-aNv">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
@@ -375,7 +375,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-f2-21r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="-1414"/>
+            <point key="canvasLocation" x="1978" y="-1491"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="qQB-9f-qFY">
@@ -450,7 +450,7 @@
                                         <rect key="frame" x="93" y="9" width="32" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="A8C00344-892D-4E48-B7C0-01CC68F1EA9F"/>
+                                        <state key="normal" image="button:T1a-UF-0mE:image"/>
                                         <connections>
                                             <action selector="addButton:" destination="XqV-6f-Q2C" eventType="touchUpInside" id="47D-hm-ukF"/>
                                         </connections>
@@ -669,7 +669,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A8C00344-892D-4E48-B7C0-01CC68F1EA9F" width="32" height="32">
+        <image name="barcode" width="24" height="24"/>
+        <image name="button:T1a-UF-0mE:image" width="32" height="32">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -788,7 +789,6 @@ AKsArQCyALUAtwC5ALsAvQDCANkA2wDdGX8ZhBmPGZgZqxmvGboZwxnIGdAZ0xnYGecZ6xnyGfoaBxoM
 Gg4aEBoVGh0aIBolGi0aMBpCGkUaSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABpMA
 </mutableData>
         </image>
-        <image name="barcode" width="24" height="24"/>
         <image name="online-store" width="24" height="24"/>
         <image name="plus-button-2.png" width="32" height="32"/>
         <image name="plus-button.png" width="32" height="32"/>
@@ -797,6 +797,7 @@ Gg4aEBoVGh0aIBolGi0aMBpCGkUaSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABpMA
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JK4-F8-G8d"/>
+        <segue reference="8UM-Zf-0IR"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
