@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var regSupermarket: CLBeaconRegion!
     
+    var productsInList: [Product]!
+    
+    var favourites: [Product]!
+    
+    
+    
     
     
     
@@ -36,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         content.title = "Welcome"
         content.body = "Dear custumer,all the staff is happy for your visit."
         content.sound = UNNotificationSound.default()
+        
         
         //Set the trigger of the notification -- here a timer.
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -83,11 +90,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         switch nearestRegion.major{
         case 21413 : //Food
+            
             break
             
-        case 35887:
+        case 35887: //Fruit
             break
-        case 27161:
+        
+        case 27161: //Item
             break
         default:
             break
@@ -132,6 +141,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         self.regSupermarket = CLBeaconRegion(
             proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,identifier : "SUPERMARKET")
         
+        //Request the permission to use location and notification
+        beaconManager.requestAlwaysAuthorization()
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        }
+        
+        
         beaconManager.startMonitoring(for: regSupermarket)
         beaconManager.startRangingBeacons(in: regSupermarket)
         
@@ -158,6 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+       
+        beaconManager.stopMonitoring(for: regSupermarket)
+        beaconManager.stopRangingBeacons(in: regSupermarket)
+        
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
