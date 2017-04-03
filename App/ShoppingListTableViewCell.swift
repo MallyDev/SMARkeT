@@ -43,7 +43,9 @@ class ShoppingListTableViewCell: UITableViewCell {
     
     @IBAction func removeButton(_ sender: Any) {
         var value = Int.init(quantityLabel.text!)!
-        value -= 1
+        if value >= 0 {
+           value -= 1 
+        }
         quantityLabel.text = "\(value)"
     }
     

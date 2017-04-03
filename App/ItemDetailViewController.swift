@@ -15,7 +15,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: NSLayoutConstraint!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var descript: UITextView!
     @IBOutlet weak var imgView: UIImageView!
     
@@ -43,7 +43,9 @@ class ItemDetailViewController: UIViewController {
     
     @IBAction func removeButton(_ sender: Any) {
         var value = Int.init(quantityLabel.text!)!
-        value -= 1
+        if value >= 0{
+           value -= 1 
+        }
         quantityLabel.text = "\(value)"
     }
     

@@ -13,7 +13,10 @@ class ShoppingListTableViewController: UITableViewController {
     
     var list : Array<Product> = []
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        list = PersistenceManager.fetchList()
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,12 +104,9 @@ class ShoppingListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         let backItem = UIBarButtonItem()
         backItem.title = ""
-        backItem.tintColor = UIColor.white
+        backItem.tintColor = .white
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-        if segue.identifier == "addItem" {
-            let dstView = segue.destination as! AddItemTableViewController
-            dstView.list = list
-        }
+
         if segue.identifier == "showItem" {
             let currentRow = tableView.indexPathForSelectedRow?.row
             let currentItem = list[currentRow!]
