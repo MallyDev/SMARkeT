@@ -178,9 +178,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             }
         default:
             break
-        
         }
-}
+
+    }
     
         func filterList(search: String) -> [Product]{
             var filterList = [Product]()
