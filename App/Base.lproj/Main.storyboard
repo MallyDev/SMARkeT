@@ -276,6 +276,7 @@
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
                                     <outlet property="quantity" destination="ofL-bq-N7U" id="6EZ-z8-qcw"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="DYP-6Z-ZU9"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -288,7 +289,7 @@
                         <barButtonItem key="rightBarButtonItem" image="plus-button.png" id="fx8-6O-AYm">
                             <color key="tintColor" red="0.96862745100000003" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="xZm-iB-d7H" kind="show" id="Nem-RR-v5G"/>
+                                <segue destination="xZm-iB-d7H" kind="show" identifier="addItem" id="Nem-RR-v5G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -374,7 +375,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-f2-21r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989.5999999999999" y="-1057.4212893553224"/>
+            <point key="canvasLocation" x="1986" y="-1414"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="qQB-9f-qFY">
@@ -576,6 +577,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="B35-oU-XPo" id="KgS-DZ-jy0"/>
+                                            <segue destination="XqV-6f-Q2C" kind="show" id="JK4-F8-G8d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -794,4 +796,7 @@ Gg4aEBoVGh0aIBolGi0aMBpCGkUaSgAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABpMA
         <image name="sales" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JK4-F8-G8d"/>
+    </inferredMetricsTieBreakers>
 </document>

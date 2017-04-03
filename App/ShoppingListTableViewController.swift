@@ -64,17 +64,17 @@ class ShoppingListTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        if editingStyle == .delete {
+        // Delete the row from the data source
+            PersistenceManager.deleteProduct(product: list[indexPath.row])
+            list.remove(at: indexPath.row)
+            PersistenceManager.saveContext()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
      }
-     }
-     */
     
     /*
      // Override to support rearranging the table view.
@@ -102,8 +102,9 @@ class ShoppingListTableViewController: UITableViewController {
         backItem.title = ""
         backItem.tintColor = UIColor.white
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-        
+        if segue.identifier == "addItem" {
+            
+        }
     }
-    
 }
 
