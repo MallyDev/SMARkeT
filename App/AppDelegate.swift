@@ -221,10 +221,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
        }
         
     
-    
-    
-    
-    
     lazy var persistentContainer : NSPersistentContainer = {
         let container = NSPersistentContainer(name: "product")
         container.loadPersistentStores(completionHandler: { (storeDescription,error) in
@@ -240,8 +236,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //configuring database
+        FIRApp.configure()
+            
         //Creation of the lists
-        
         productsInList = PersistenceManager.fetchList()
         
         
@@ -265,8 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
-        
-        
+            
         beaconManager.startMonitoring(for: regSupermarket)
         beaconManager.startRangingBeacons(in: regSupermarket)
         

@@ -9,6 +9,8 @@
 import Foundation
 import AVFoundation
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 struct AppUtility {
     
@@ -30,9 +32,10 @@ struct AppUtility {
     
 }
 
-class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    let prod = PersistenceManager.newEmptyProd()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +111,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: readableObject.stringValue);
+            find(barCode: readableObject.stringValue)
         }
         
         dismiss(animated: true)
@@ -123,6 +127,63 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    //funzione per cercare il prodotto in Firebase
+    func find(barCode: String){
+        let ref = FIRDatabase.database().reference()
+        let item = ref.child("Prodotti")
+        item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
+            print(snap)
+            let product_read = snap.value! as! NSDictionary
+
+            self.prod.barCode = barCode
+            self.prod.name = product_read.value(forKey: "name") as! String?
+            self.prod.department = product_read.value(forKey: "department") as! String?
+            self.prod.descr = product_read.value(forKey: "descr") as! String?
+            self.prod.price = product_read.value(forKey: "price") as! Float
+            print(self.prod)
+        })
+        
+        //mando il prodotto finito a showPopUp
+        showPopup(product: prod)
+    }
+    
+    func showPopup(product: Product){
+        
+        let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        self.present(popUp, animated: true, completion: nil)
+        
+        popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+            //aggiungere il prodotto nell'array di shopping list
+            self.prod.inTheList = true
+            PersistenceManager.saveContext()
+            //far comparire la view di shopping list
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! ShoppingListTableViewController
+            print("Carico la ShoppingListView")
+            self.present(vc, animated: true, completion: nil)
+            //far scomparire la ScannerView
+            self.viewWillDisappear(true)
+        }))
+        
+        popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                self.prod.favourite = true
+                PersistenceManager.saveContext()
+                //far comparire la view dei Favourites
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! FavouritesTabTableViewController
+                print("Carico la FavouritesView")
+                self.present(vc, animated: true, completion: nil)
+                //far scomparire la ScannerView
+                self.viewWillDisappear(true)
+        }))
+        
+        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                self.viewDidLoad()
+        }))
+        
     }
     
 }

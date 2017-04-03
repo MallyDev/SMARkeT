@@ -11,10 +11,58 @@ import UIKit
 
 class AddItemTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate{
     
-    public func updateSearchResults(for searchController: UISearchController) {
-        print("Sto per iniziare una ricerca")
-    }
     var resultSearchController: UISearchController?
+    var products : Array<Product> = []
+    var filtered : Array<Product> = []
+    
+    public func updateSearchResults(for searchController: UISearchController) {
+        self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
+    }
+    
+    func filtraContenuti(testoCercato: String, scope: String) {
+        filtered.removeAll(keepingCapacity: true)
+        for x in products {
+            /*var justOne = false
+            for (_, categoria) in x.department.enumerate() {
+                if (scope == "Tutti" || categoria == scope) {
+                    if((x.nome.rangeOfString(testoCercato.localizedLowercaseString) != nil) && justOne == false) {
+                        print("aggiungo \(x.nome) alla listaFiltrata")
+                        listaFiltrata.append(x)
+                        justOne = true
+                    }
+                }
+            }*/
+            if (scope == "Tutti") {
+                if (x.name?.range(of: testoCercato.localizedLowercase) != nil) {
+                    filtered.append(x)
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    @IBAction func addItem(_ sender: UIButton) {
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentRow = tableView.indexPathForRow(at: buttonPosition)
+        let item : Product
+        
+        //aggiungiElemento
+        if self.resultSearchController!.isActive {
+            item = filtered[currentRow!.row]
+            item.inTheList = !item.inTheList
+        } else {
+            item = products[currentRow!.row]
+            item.inTheList = !item.inTheList
+        }
+        PersistenceManager.saveContext()
+        
+        //cambia icona
+        if item.inTheList {
+            sender.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "plus-button-2.png"), for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +79,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             // impongo alla searchBar, contenuta all'interno del controller, di adattarsi alle dimensioni dell'applicazioni
             controller.searchBar.sizeToFit()
             
-            // atacco alla parte superiore della TableView la searchBar
+            // attacco alla parte superiore della TableView la searchBar
             self.navigationItem.titleView = controller.searchBar
             
             controller.hidesNavigationBarDuringPresentation = false
@@ -42,6 +90,8 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             return controller
         })()
         
+        //inizializza la lista di prodotti
+        products = PersistenceManager.fetchAll()
         UIBarButtonItem.appearance().tintColor = .white
         
         // Uncomment the following line to preserve selection between presentations
@@ -60,19 +110,41 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let controller = self.resultSearchController else {
+            return 0
+        }
+        
+        if controller.isActive {
+            return self.filtered.count
+        } else {
+            return self.products.count
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addItemTableCell", for: indexPath) as! AddItemTableViewCell
         
         // Configure the cell...
+        let item : Product
+        if self.resultSearchController!.isActive {
+            item = filtered[indexPath.row]
+        } else {
+            item = products[indexPath.row]
+        }
+        cell.nameLabel.text = item.name!
+        cell.priceLabel.text = "\(item.price)"
+        cell.departmentLabel.text = item.department!
+        if item.inTheList {
+            cell.addButton.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
+        } else {
+            cell.addButton.setImage(#imageLiteral(resourceName: "plus-button-2.png"), for: .normal)
+        }
         
         return cell
     }
@@ -113,15 +185,26 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
      }
      */
     
-    /*
+     /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showItem", sender: tableView)
+     }*/
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "showItem" {
+            let dst = segue.destination as! ItemDetailViewController
+            let currentRow = self.tableView.indexPathForSelectedRow!.row
+            if self.resultSearchController!.isActive {
+                dst.title = filtered[currentRow].name!
+            } else {
+                dst.title = products[currentRow].name!
+            }
+        }
      }
-     */
     
 }
 
