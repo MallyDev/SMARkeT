@@ -11,15 +11,25 @@ import UIKit
 
 class AddItemTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate{
     
+    var resultSearchController: UISearchController?
+    var list : Array<Product> = []
+    var products : Array<Product> = []
+    
     public func updateSearchResults(for searchController: UISearchController) {
         print("Sto per iniziare una ricerca")
     }
-    var resultSearchController: UISearchController?
+    
+    @IBAction func addItem(_ sender: UIButton) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.resultSearchController = ({
+            //inizializza la lista di prodotti
+            products = PersistenceManager.fetchAll()
+            
             // creo un oggetto di tipo UISearchController
             let controller = UISearchController(searchResultsController: nil)
             // rimuove la tableView di sottofondo in modo da poter successivamente visualizzare gli elementi cercati
@@ -60,19 +70,23 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return products.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addItemTableCell", for: indexPath) as! AddItemTableViewCell
         
         // Configure the cell...
+        let item = products[indexPath.row]
+        cell.nameLabel.text = item.name!
+        cell.priceLabel.text = "\(item.price)"
+        cell.departmentLabel.text = item.department!
         
         return cell
     }

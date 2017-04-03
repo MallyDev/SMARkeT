@@ -11,7 +11,7 @@ import UIKit
 
 class ShoppingListTableViewController: UITableViewController {
     
-    var list = PersistenceManager.fetchList()
+    var list : Array<Product> = []
     
     
     override func viewDidLoad() {
@@ -44,15 +44,16 @@ class ShoppingListTableViewController: UITableViewController {
     
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as!ShoppingListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as!ShoppingListTableViewCell
      
-     // Configure the cell...
-     cell.nameLabel.text = list[indexPath.row].name!
-     cell.departmentLabel.text = list[indexPath.row].department
-     cell.priceLabel.text = "\(list[indexPath.row].price) €"
-     cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
+        // Configure the cell...
+        cell.nameLabel.text = list[indexPath.row].name!
+        cell.departmentLabel.text = list[indexPath.row].department
+        cell.priceLabel.text = "\(list[indexPath.row].price) €"
+        cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
-     return cell
+        return cell
      }
  
     
@@ -103,7 +104,14 @@ class ShoppingListTableViewController: UITableViewController {
         backItem.tintColor = UIColor.white
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
         if segue.identifier == "addItem" {
-            
+            let dstView = segue.destination as! AddItemTableViewController
+            dstView.list = list
+        }
+        if segue.identifier == "showItem" {
+            let currentRow = tableView.indexPathForSelectedRow?.row
+            let currentItem = list[currentRow!]
+            let dstView = segue.destination as! ItemDetailViewController
+            dstView.item = currentItem
         }
     }
 }
