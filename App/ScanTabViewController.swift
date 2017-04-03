@@ -108,6 +108,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: readableObject.stringValue);
+            showPopup(barCode: readableObject.stringValue)
         }
         
         dismiss(animated: true)
@@ -123,6 +124,16 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    func showPopup(barCode: String){
+        
+        let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler: nil))
+        popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler: nil))
+        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        
+        popUp.present(popUp, animated: true, completion: nil)
     }
     
 }
