@@ -85,5 +85,14 @@ class PersistenceManager{
         context.delete(product)
     }
     
+    static func saveContext(){
+        let context = getContext()
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            fatalError("Unresolved error in saving context. \(error)")
+        }
+    }
     
 }
