@@ -9,6 +9,8 @@
 import Foundation
 import AVFoundation
 import UIKit
+import FirebaseDatabase
+import Firebase
 
 struct AppUtility {
     
@@ -108,7 +110,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: readableObject.stringValue);
-            showPopup(barCode: readableObject.stringValue)
+            find(barCode: readableObject.stringValue)
         }
         
         dismiss(animated: true)
@@ -126,14 +128,27 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         return .portrait
     }
     
-    func showPopup(barCode: String){
+    func find(barCode: String){
+        let ref = FIRDatabase.database().reference()
+        let item = ref.child("Prodotti")
+        item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
+            print(snap)
+           
+            let product_read = snap.value! as! NSDictionary
+            print(product_read.value(forKey: "department")!)
+        })
         
-        let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.alert)
+    }
+    
+    func showPopup(prod: Product){
+        
+        let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler: nil))
         popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler: nil))
         popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
         
         self.present(popUp, animated: true, completion: nil)
+        
     }
     
 }
