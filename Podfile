@@ -3,7 +3,9 @@
 
 target 'App' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  pod 'BRYXBanner', '~> 0.7'
   use_frameworks!
+  
 
   # Pods for App
 
@@ -18,5 +20,9 @@ target 'App' do
   end
 
 pod 'Firebase/Database’
+
+
+
+
 
 end

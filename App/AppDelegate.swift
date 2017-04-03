@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import UserNotifications
+import BRYXBanner
 
 
 
@@ -29,17 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var favourites: [Product]!
     
+    var once = 0
     
     
     
     
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(UNNotificationPresentationOptions.alert)
+    }
     
     
-    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+   /* func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
-        let content = UNMutableNotificationContent()
+       
+        /*let content = UNMutableNotificationContent()
         content.title = "Welcome"
         content.body = "Dear custumer,all the staff is happy for your visit."
         content.sound = UNNotificationSound.default()
@@ -57,9 +63,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             trigger: trigger)
         
         let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: nil)
+        center.add(request, withCompletionHandler: nil)*/
         
-    }
+        let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+        banner.dismissesOnSwipe=true
+        banner.dismissesOnTap = true
+        banner.show(duration: 3.0)
+        
+      
+    } */
     
     
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
@@ -83,11 +95,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: nil)
+        
     }
+    
     
     func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
-        let nearestRegion = beacons[0]
+        if(once != 1){
+        let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+            banner.dismissesOnTap = true
+            banner.show(duration: 3.0)
+            once = 1
+        }
+        
+      
+        
+        if let nearestRegion = beacons.first{
         
         var listaFiltrata = [Product]()
         
@@ -181,6 +204,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             break
         }
 
+        }
+    
     }
     
     
@@ -222,6 +247,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         productsInList = PersistenceManager.fetchList()
         
         
+            
         favourites = PersistenceManager.fetchFavourites()
         
         //Init the value of the beaconManager
