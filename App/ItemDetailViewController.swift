@@ -15,7 +15,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: NSLayoutConstraint!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var descript: UITextView!
     @IBOutlet weak var imgView: UIImageView!
     
