@@ -17,9 +17,10 @@ class ShoppingListTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: NSLayoutConstraint!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var newPriceLabel: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
     
     
     

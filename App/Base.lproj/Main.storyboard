@@ -269,7 +269,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="departmentLabel" destination="Qmm-6c-XnZ" id="iYi-Vk-gX9"/>
-                                    <outlet property="minusButton" destination="YRp-Kg-lK8" id="vsK-Km-fzb"/>
+                                    <outlet property="imgView" destination="5xt-94-RYT" id="qeN-L7-AEw"/>
+                                    <outlet property="minusButton" destination="mCg-Cd-ES4" id="6U2-dG-kxb"/>
                                     <outlet property="nameLabel" destination="cmH-jd-0Dh" id="X4c-KY-2YL"/>
                                     <outlet property="newPriceLabel" destination="JbW-aj-ZbK" id="dGZ-Wz-LQK"/>
                                     <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
