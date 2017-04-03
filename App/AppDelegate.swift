@@ -84,9 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         case 21413 : //Food
             break
             
-        case 35887:
+        case 35887: //Fruit
             break
-        case 27161:
+        
+        case 27161: //Item
             break
         default:
             break
