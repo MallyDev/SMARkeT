@@ -88,26 +88,116 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         let nearestRegion = beacons[0]
         
+        var listaFiltrata = [Product]()
+        
+        
         switch nearestRegion.major{
         case 21413 : //Food
+            listaFiltrata = filterList(search: "Food")
+            if(listaFiltrata.count != 0){
+                var nameProduct: String = ""
+                for product in listaFiltrata{
+                    nameProduct += "\n" + product.name!
+                }
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Hey! You're in the Food's Area. Remind to buy: "
+                content.body = nameProduct
+                content.sound = UNNotificationSound.default()
+                
+                //Set the trigger of the notification -- here a timer.
+                let trigger = UNTimeIntervalNotificationTrigger(
+                    timeInterval: 1.0,
+                    repeats: false)
+                
+                //Set the request for the notification from the above
+                let request = UNNotificationRequest(
+                    identifier: "FoodArea",
+                    content: content,
+                    trigger: trigger)
+                
+                let center = UNUserNotificationCenter.current()
+                center.add(request, withCompletionHandler: nil)
+            }
             
-            break
             
         case 35887: //Fruit
-            break
+            listaFiltrata = filterList(search: "Fruit")
+            if(listaFiltrata.count != 0){
+                var nameProduct: String = ""
+                for product in listaFiltrata{
+                    nameProduct += "\n" + product.name!
+                }
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Hey! You're in the Fruit's Area. Remind to buy: "
+                content.body = nameProduct
+                content.sound = UNNotificationSound.default()
+                
+                //Set the trigger of the notification -- here a timer.
+                let trigger = UNTimeIntervalNotificationTrigger(
+                    timeInterval: 1.0,
+                    repeats: false)
+                
+                //Set the request for the notification from the above
+                let request = UNNotificationRequest(
+                    identifier: "FruitArea",
+                    content: content,
+                    trigger: trigger)
+                
+                let center = UNUserNotificationCenter.current()
+                center.add(request, withCompletionHandler: nil)
+            }
         
         case 27161: //Item
-            break
+            listaFiltrata = filterList(search: "Item")
+            if(listaFiltrata.count != 0){
+                var nameProduct: String = ""
+                for product in listaFiltrata{
+                    nameProduct += "\n" + product.name!
+                }
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Hey! You're in the Item's Area. Remind to buy: "
+                content.body = nameProduct
+                content.sound = UNNotificationSound.default()
+                
+                //Set the trigger of the notification -- here a timer.
+                let trigger = UNTimeIntervalNotificationTrigger(
+                    timeInterval: 1.0,
+                    repeats: false)
+                
+                //Set the request for the notification from the above
+                let request = UNNotificationRequest(
+                    identifier: "ItemArea",
+                    content: content,
+                    trigger: trigger)
+                
+                let center = UNUserNotificationCenter.current()
+                center.add(request, withCompletionHandler: nil)
+            }
         default:
             break
         
-        
-        
-        
         }
+}
+    
+        func filterList(search: String) -> [Product]{
+            var filterList = [Product]()
+            
+            for x in productsInList {
+                
+                if( x.department == search){
+                    filterList.append(x)
+                    }
+                }
+            
+            return filterList
+       }
         
-        
-    }
+    
+    
+    
     
     
     lazy var persistentContainer : NSPersistentContainer = {
@@ -120,15 +210,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         return container
     }()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  
+        
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //Creation of the lists
         
-        var productsInList = PersistenceManager.fetchList()
+        productsInList = PersistenceManager.fetchList()
         
         
-        var favourites = PersistenceManager.fetchFavourites()
+        favourites = PersistenceManager.fetchFavourites()
         
         //Init the value of the beaconManager
         beaconManager = ESTBeaconManager()
