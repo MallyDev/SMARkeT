@@ -64,7 +64,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         
         //cambia icona
         if item.inTheList {
-            sender.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "check-mark-white-on-black-circular-background-2.png"), for: .normal)
         } else {
             sender.setImage(#imageLiteral(resourceName: "plus-button-2.png"), for: .normal)
         }
