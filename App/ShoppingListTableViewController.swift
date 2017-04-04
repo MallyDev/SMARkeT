@@ -72,6 +72,7 @@ class ShoppingListTableViewController: UITableViewController {
         cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
+        PersistenceManager.saveContext()
     }
  
     
@@ -89,6 +90,7 @@ class ShoppingListTableViewController: UITableViewController {
         cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
+        PersistenceManager.saveContext()
     }
  */
     /*
@@ -139,7 +141,6 @@ class ShoppingListTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
 
         if segue.identifier == "showItem" {
-            print("i'm in!")
             let currentRow = tableView.indexPathForSelectedRow?.row
             let currentItem = list[currentRow!]
             let dstView = segue.destination as! ItemDetailViewController

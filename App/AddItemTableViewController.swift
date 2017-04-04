@@ -200,8 +200,10 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             let currentRow = self.tableView.indexPathForSelectedRow!.row
             if self.resultSearchController!.isActive {
                 dst.title = filtered[currentRow].name!
+                dst.item = filtered[currentRow]
             } else {
                 dst.title = products[currentRow].name!
+                dst.item = products[currentRow]
             }
         }
      }
