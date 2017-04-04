@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var favourites: [Product]!
     
-    var once = 0
+   
     
     
     
@@ -46,35 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
-       
-        /*let content = UNMutableNotificationContent()
-        content.title = "Welcome"
-        content.body = "Dear custumer,all the staff is happy for your visit."
-        content.sound = UNNotificationSound.default()
-        
-        
-        //Set the trigger of the notification -- here a timer.
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 1.0,
-            repeats: false)
-        
-        //Set the request for the notification from the above
-        let request = UNNotificationRequest(
-            identifier: "SupermarketEnter",
-            content: content,
-            trigger: trigger)
-        
-        let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: nil)*/
-        
         let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
         banner.dismissesOnSwipe=true
         banner.dismissesOnTap = true
         banner.show(duration: 3.0)
     
-    
-        
-      
     }
     
     
@@ -82,9 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         //Now the User is with is Device out of the Supermarket
         
         let content = UNMutableNotificationContent()
+        var reminder = ""
+        
+        if productsInList.count > 0 {
+            
+            for el in productsInList{
+                reminder += el.name! + ""
+            }
+            
+            content.title = "Hey"
+            content.body = "You have other items in List:" + reminder
+            content.sound = UNNotificationSound.default()
+        }
+            else {
+        
+        
         content.title = "Goodbye"
         content.body = "Hope to see you soon."
         content.sound = UNNotificationSound.default()
+        }
         
         //Set the trigger of the notification -- here a timer.
         let trigger = UNTimeIntervalNotificationTrigger(
@@ -108,15 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         if let nearestRegion = beacons.first{
         
         var listaFiltrata = [Product]()
-            
-         /*   if(once != 1){
-                let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                banner.dismissesOnTap = true
-                banner.dismissesOnSwipe = true
-                banner.show()
-                once = 1
-            }
-        */
+         
         switch nearestRegion.major{
         case 21413 : //Food
             listaFiltrata = filterList(search: "Food")
