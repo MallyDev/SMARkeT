@@ -16,6 +16,7 @@ class FavouritesTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addToListLabel: NSLayoutConstraint!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

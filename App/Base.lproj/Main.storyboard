@@ -97,7 +97,7 @@
                                             <state key="normal" title="Button" image="plus-button-2.png"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDk-c3-J1E">
-                                            <rect key="frame" x="96" y="-11.666666666666664" width="48" height="21"/>
+                                            <rect key="frame" x="96" y="-11.666666666666666" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -133,6 +133,7 @@
                                     <outlet property="imageLabel" destination="a6H-eN-eRQ" id="Cgu-OK-cl8"/>
                                     <outlet property="nameLabel" destination="PDk-c3-J1E" id="cfN-2d-ci3"/>
                                     <outlet property="priceLabel" destination="iBa-4q-bvM" id="VsF-jI-4IK"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="QsS-v9-ZTo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -209,7 +210,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-jd-0Dh">
-                                            <rect key="frame" x="96" y="0.3333333333333357" width="48" height="21"/>
+                                            <rect key="frame" x="96" y="0.33333333333333393" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -329,7 +330,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVU-4K-5hh">
-                                            <rect key="frame" x="96" y="-11.666666666666664" width="48" height="21"/>
+                                            <rect key="frame" x="96" y="-11.666666666666666" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -401,7 +402,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOE-j6-paq" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="411"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7C-WC-epH">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7C-WC-epH">
                                         <rect key="frame" x="57" y="8" width="300" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="x7C-WC-epH" secondAttribute="height" multiplier="1:1" id="IUd-CB-hxg"/>
@@ -447,7 +448,7 @@
                             <view contentMode="scaleToFill" verticalHuggingPriority="252" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sos-HU-d3U" userLabel="ButtonsView">
                                 <rect key="frame" x="0.0" y="436" width="414" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-wk-qvk">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-wk-qvk">
                                         <rect key="frame" x="260" y="12.666666666666742" width="138" height="24"/>
                                         <color key="backgroundColor" red="1" green="0.75480736875192234" blue="0.07519127426938399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
@@ -472,7 +473,7 @@
                                             <action selector="modifyQuantity:" destination="XqV-6f-Q2C" eventType="valueChanged" id="pAi-qX-D1c"/>
                                         </connections>
                                     </stepper>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" ambiguous="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fP-vv-Ao5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fP-vv-Ao5">
                                         <rect key="frame" x="126" y="15" width="100" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="Z6D-x3-Iew"/>
@@ -697,7 +698,7 @@
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8UM-Zf-0IR"/>
+        <segue reference="QsS-v9-ZTo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

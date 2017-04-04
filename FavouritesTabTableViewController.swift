@@ -11,14 +11,14 @@ import UIKit
 
 class FavouritesTabTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate{
     
-    public func updateSearchResults(for searchController: UISearchController) {
-        print("Sto per iniziare una ricerca")
-    }
-    
-    var favourites = PersistenceManager.fetchFavourites()
-    
-    
+    var favourites = [Product]()
+    var filtered : Array<Product> = []
     var resultSearchController: UISearchController?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        favourites = PersistenceManager.fetchFavourites()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,18 +45,32 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             return controller
         })()
         
-        
+        favourites = PersistenceManager.fetchFavourites()
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.editButtonItem.tintColor = UIColor.white
         UIBarButtonItem.appearance().tintColor = .white
-        
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    public func updateSearchResults(for searchController: UISearchController) {
+        self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
+    }
+    
+    func filtraContenuti(testoCercato: String, scope: String) {
+        filtered.removeAll(keepingCapacity: true)
+        for x in favourites {
+            if (scope == "Tutti") {
+                if (x.name?.range(of: testoCercato) != nil) {
+                    filtered.append(x)
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,24 +87,50 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.favourites.count
+        guard let controller = self.resultSearchController else {
+            return 0
+        }
+        
+        if controller.isActive {
+            return self.filtered.count
+        } else {
+            return self.favourites.count
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell", for: indexPath) as! FavouritesTableViewCell
         
-        // Configure the cell...
-        let product = self.favourites[indexPath.row]
+        let item : Product
+        if self.resultSearchController!.isActive {
+            item = filtered[indexPath.row]
+        } else {
+            item = favourites[indexPath.row]
+        }
+        cell.nameLabel.text = item.name!
+        cell.priceLabel.text = "\(item.price)"
+        cell.departmentLabel.text = item.department!
         
-        cell.nameLabel.text = product.name
-        
-        //TODO: SETTARE I CAMPI
         return cell
     }
     
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        backItem.tintColor = .white
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        if segue.identifier == "showItem" {
+            let currentRow = tableView.indexPathForSelectedRow?.row
+            let currentItem = favourites[currentRow!]
+            let dstView = segue.destination as! ItemDetailViewController
+            dstView.title = currentItem.name!
+            dstView.item = currentItem
+        }
+    }
     
     /*
      // Override to support conditional editing of the table view.

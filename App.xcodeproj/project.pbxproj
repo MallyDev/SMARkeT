@@ -187,6 +187,7 @@
 				6C70DD481E9293FA0060E760 /* AddItemTableViewCell.swift */,
 				194B5BCE1E923ED5000DBDE6 /* ShoppingListTableViewCell.swift */,
 				2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */,
+				194B5BD01E924128000DBDE6 /* FavouritesTableViewCell.swift */,
 				2963D78F1E8FE8E80043D171 /* ObjCBridge.h */,
 				2489B4AB1E938921009D2C1C /* Main.storyboard */,
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
@@ -202,7 +203,6 @@
 				2963D7981E8FEE270043D171 /* Icon */,
 				2963D75E1E8FE2C00043D171 /* Info.plist */,
 				2436417A1E902825008F2F5E /* GoogleService-Info.plist */,
-				194B5BD01E924128000DBDE6 /* FavouritesTableViewCell.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";

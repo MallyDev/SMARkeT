@@ -19,6 +19,11 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        products = PersistenceManager.fetchAll()
+        self.tableView.reloadData()
+    }
+    
     func filtraContenuti(testoCercato: String, scope: String) {
         filtered.removeAll(keepingCapacity: true)
         for x in products {
@@ -49,17 +54,15 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         //aggiungiElemento
         if self.resultSearchController!.isActive {
             item = filtered[currentRow!.row]
-            if item.inTheList {
-                item.quantity = 0
-            }
-            item.inTheList = !item.inTheList
         } else {
             item = products[currentRow!.row]
-            if item.inTheList {
-                item.quantity = 0
-            }
-            item.inTheList = !item.inTheList
         }
+        if item.inTheList {
+            item.quantity = 0
+        } else {
+            item.quantity = 1
+        }
+        item.inTheList = !item.inTheList
         PersistenceManager.saveContext()
         
         //cambia icona
