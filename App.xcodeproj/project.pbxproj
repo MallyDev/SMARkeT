@@ -38,6 +38,7 @@
 		29F0DEE81E913DD000205C9E /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F0DEE71E913DD000205C9E /* Offers.swift */; };
 		33C9E4B7A68A01D9306D00C6 /* Pods_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB3D8FD7E26348CA4394F807 /* Pods_AppTests.framework */; };
 		6C70DD491E9293FA0060E760 /* AddItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C70DD481E9293FA0060E760 /* AddItemTableViewCell.swift */; };
+		6CC674FA1E939BC9007ECEE5 /* file.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6CC674F91E939BC9007ECEE5 /* file.gitignore */; };
 		966AB9F182FEBC2AF91FDCEB /* Pods_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E297AACA5ABAD7A4F24A7DE5 /* Pods_AppUITests.framework */; };
 		F5276C83C591E770637703CF /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		29F0DEE71E913DD000205C9E /* Offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
 		6C70DD481E9293FA0060E760 /* AddItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemTableViewCell.swift; sourceTree = "<group>"; };
+		6CC674F91E939BC9007ECEE5 /* file.gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file.gitignore; sourceTree = "<group>"; };
 		7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA89C04F5393CBE7D18547D7 /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB3D8FD7E26348CA4394F807 /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				2963D7591E8FE2C00043D171 /* Assets.xcassets */,
 				2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */,
 				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
+				6CC674F91E939BC9007ECEE5 /* file.gitignore */,
 				2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */,
 				2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */,
 				2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */,
@@ -365,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC674FA1E939BC9007ECEE5 /* file.gitignore in Resources */,
 				2963D7971E8FEE050043D171 /* rounded-delete-button-with-minus.png in Resources */,
 				194D14691E9385EC0080929A /* food-default.png in Resources */,
 				2436417B1E902825008F2F5E /* GoogleService-Info.plist in Resources */,
