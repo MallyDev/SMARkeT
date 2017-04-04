@@ -271,7 +271,7 @@
                                     <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="ahK-CB-Ab7"/>
-                                    <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -682,7 +682,7 @@
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JK4-F8-G8d"/>
+        <segue reference="6Dk-r5-M42"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
