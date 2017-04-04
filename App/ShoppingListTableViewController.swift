@@ -15,8 +15,8 @@ class ShoppingListTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         list = PersistenceManager.fetchList()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
