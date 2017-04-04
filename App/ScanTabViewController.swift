@@ -114,7 +114,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             find(barCode: readableObject.stringValue)
         }
         
-        dismiss(animated: true)
+        //dismiss(animated: true)   deve stare commentata, altrimenti scompare il popUp
     }
     
     func found(code: String) {
@@ -160,11 +160,9 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             self.prod.inTheList = true
             PersistenceManager.saveContext()
             //far comparire la view di shopping list
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! ShoppingListTableViewController
-            print("Carico la ShoppingListView")
-            self.present(vc, animated: true, completion: nil)
-            //far scomparire la ScannerView
-            self.viewWillDisappear(true)
+            self.tabBarController?.selectedIndex = 0
+            //far scomparire la view di scanner
+            self.dismiss(animated: true, completion: nil)
         }))
         
         popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
@@ -172,18 +170,15 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 self.prod.favourite = true
                 PersistenceManager.saveContext()
                 //far comparire la view dei Favourites
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "id") as! FavouritesTabTableViewController
-                print("Carico la FavouritesView")
-                self.present(vc, animated: true, completion: nil)
+                self.tabBarController?.selectedIndex = 3
                 //far scomparire la ScannerView
-                self.viewWillDisappear(true)
+                self.dismiss(animated: true, completion: nil)
         }))
         
         popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
-        
     }
     
 }

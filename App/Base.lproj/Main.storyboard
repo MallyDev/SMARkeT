@@ -15,7 +15,7 @@
         <!--Shopping List-->
         <scene sceneID="FU3-zS-3AZ">
             <objects>
-                <navigationController id="njt-HR-E7l" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationShopping" id="njt-HR-E7l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Shopping List" image="online-store" id="9Ex-0M-hdf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ims-7N-sK6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -55,7 +55,7 @@
         <!--Favourites-->
         <scene sceneID="U9g-RG-oEl">
             <objects>
-                <tableViewController id="oRO-oY-ZYW" customClass="FavouritesTabTableViewController" customModule="App" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavouritesScene" id="oRO-oY-ZYW" customClass="FavouritesTabTableViewController" customModule="App" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pC9-Bz-DKj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -655,7 +655,7 @@
         <!--Favourites-->
         <scene sceneID="smc-C2-Qag">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fCi-ma-IvF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationFavourites" automaticallyAdjustsScrollViewInsets="NO" id="fCi-ma-IvF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favourites" image="star" id="h2i-cL-uyr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LBN-Yl-J19">
