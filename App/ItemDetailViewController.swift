@@ -32,6 +32,7 @@ class ItemDetailViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = favouriteButton
         // Do any additional setup after loading the view.
+        self.title=item?.name
         self.quantityLabel.text = "\(item!.quantity)"
         self.descript.text = item!.descr
         self.priceLabel.text = "\(item!.price) €"
