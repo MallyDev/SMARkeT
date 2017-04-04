@@ -15,8 +15,8 @@ class ShoppingListTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         list = PersistenceManager.fetchList()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class ShoppingListTableViewController: UITableViewController {
         
         return cell
      }
- /*
+ 
     @IBAction func addButton(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
@@ -92,7 +92,7 @@ class ShoppingListTableViewController: UITableViewController {
         item.quantity = Int32(value)
         PersistenceManager.saveContext()
     }
- */
+ 
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
