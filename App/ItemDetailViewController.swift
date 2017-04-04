@@ -38,7 +38,6 @@ class ItemDetailViewController: UIViewController {
         var value = Int.init(quantityLabel.text!)!
         value += 1
         quantityLabel.text = "\(value)"
-        item?.quantity = Int32.init(quantityLabel.text!)!
         PersistenceManager.saveContext()
     }
     
@@ -48,9 +47,10 @@ class ItemDetailViewController: UIViewController {
            value -= 1 
         }
         quantityLabel.text = "\(value)"
-        item?.quantity = Int32.init(quantityLabel.text!)!
         PersistenceManager.saveContext()
     }
+    
+    
     
     /*
      // MARK: - Navigation

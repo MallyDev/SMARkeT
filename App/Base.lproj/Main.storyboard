@@ -56,13 +56,13 @@
         <scene sceneID="U9g-RG-oEl">
             <objects>
                 <tableViewController id="oRO-oY-ZYW" customClass="FavouritesTabTableViewController" customModule="App" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pC9-Bz-DKj">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="1" sectionFooterHeight="1" id="pC9-Bz-DKj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteCell" rowHeight="120" id="REq-P9-7X6" customClass="FavouritesTableViewCell" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REq-P9-7X6" id="2mP-XL-KqL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
@@ -178,13 +178,13 @@
         <scene sceneID="afQ-dB-9vK">
             <objects>
                 <tableViewController storyboardIdentifier="FirstController" id="ggc-tG-BEM" customClass="ShoppingListTableViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U2V-Td-rxf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="1" sectionFooterHeight="1" id="U2V-Td-rxf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingListCell" rowHeight="120" id="nOF-gR-ebX" customClass="ShoppingListTableViewCell" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nOF-gR-ebX" id="xFB-mz-1P7">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
@@ -302,13 +302,13 @@
         <scene sceneID="cao-AG-ckz">
             <objects>
                 <tableViewController storyboardIdentifier="AddItem" id="xZm-iB-d7H" customClass="AddItemTableViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TW1-0u-xG1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="1" sectionFooterHeight="1" id="TW1-0u-xG1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addItemTableCell" rowHeight="120" id="vDT-GN-aNv" customClass="AddItemTableViewCell" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
@@ -510,7 +510,7 @@
                         <outlet property="imgView" destination="x7C-WC-epH" id="Tl0-dz-uhc"/>
                         <outlet property="minusButton" destination="jI6-Qe-Lbw" id="UpZ-R1-fiY"/>
                         <outlet property="plusButton" destination="T1a-UF-0mE" id="v6K-mO-Nwd"/>
-                        <outlet property="priceLabel" destination="Sk8-C9-CWT" id="sFv-GK-ixU"/>
+                        <outlet property="priceLabel" destination="Sk8-C9-CWT" id="Cva-cE-PDY"/>
                         <outlet property="quantityLabel" destination="2fP-vv-Ao5" id="seP-4H-p8F"/>
                     </connections>
                 </viewController>
@@ -564,12 +564,12 @@
                                     <action selector="segmentedControlActionChangedWithSender:" destination="sFU-pc-a8M" eventType="valueChanged" id="xdh-OP-HdQ"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Arw-xa-NrQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Arw-xa-NrQ">
                                 <rect key="frame" x="20" y="102" width="374" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="G7J-kd-ooz" customClass="OfferCellTableViewCell" customModule="App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="1" width="374" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7J-kd-ooz" id="2FB-4v-74w">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>

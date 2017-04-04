@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     
     
+    
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(UNNotificationPresentationOptions.alert)
     }
@@ -241,9 +243,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             
         //Creation of the lists
         productsInList = PersistenceManager.fetchList()
-        
-        
-            
+         
+        //Creation of the favourites's list
         favourites = PersistenceManager.fetchFavourites()
         
         //Init the value of the beaconManager

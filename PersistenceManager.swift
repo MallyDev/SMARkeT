@@ -22,7 +22,7 @@ class PersistenceManager{
         let context=getContext()
         
         let product = NSEntityDescription.insertNewObject(forEntityName: name, into: context) as! Product
-        product.name="Pippo"
+        product.name=""
         product.barCode=""
         product.descr=""
         product.price=0.0
