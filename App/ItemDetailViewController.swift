@@ -34,14 +34,14 @@ class ItemDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addButton(_ sender: Any) {
+    @IBAction func addButton(_ sender: UIButton) {
         var value = Int.init(quantityLabel.text!)!
         value += 1
         quantityLabel.text = "\(value)"
         PersistenceManager.saveContext()
     }
     
-    @IBAction func removeButton(_ sender: Any) {
+    @IBAction func removeButton(_ sender: UIButton) {
         var value = Int.init(quantityLabel.text!)!
         if value > 0{
            value -= 1 
