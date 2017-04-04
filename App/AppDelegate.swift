@@ -239,6 +239,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+            
+            for product in PersistenceManager.fetchAll(){
+                PersistenceManager.deleteProduct(product: product)
+            }
+            PersistenceManager.saveContext()
         
         //configuring database
         FIRApp.configure()
