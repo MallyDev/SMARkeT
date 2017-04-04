@@ -65,7 +65,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REq-P9-7X6" id="2mP-XL-KqL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-eN-eRQ">
@@ -276,7 +276,7 @@
                                     <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="ahK-CB-Ab7"/>
-                                    <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-ZB-3Yc">
@@ -510,6 +510,7 @@
                         <outlet property="imgView" destination="x7C-WC-epH" id="Tl0-dz-uhc"/>
                         <outlet property="minusButton" destination="jI6-Qe-Lbw" id="UpZ-R1-fiY"/>
                         <outlet property="plusButton" destination="T1a-UF-0mE" id="v6K-mO-Nwd"/>
+                        <outlet property="priceLabel" destination="Sk8-C9-CWT" id="sFv-GK-ixU"/>
                         <outlet property="quantityLabel" destination="2fP-vv-Ao5" id="seP-4H-p8F"/>
                     </connections>
                 </viewController>

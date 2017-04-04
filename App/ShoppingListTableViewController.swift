@@ -60,24 +60,31 @@ class ShoppingListTableViewController: UITableViewController {
      }
  /*
     @IBAction func addButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
-        value += 1
-        quantityLabel.text = "\(value)"
         let buttonPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        
+        var value = Int.init(cell.quantityLabel.text!)!
+        value += 1
+        
+        cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }
  
     
     @IBAction func removeButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        
+        
+        var value = Int.init(cell.quantityLabel.text!)!
         if value > 0 {
             value -= 1
         }
-        quantityLabel.text = "\(value)"
-        let buttonPosition = sender.convert(CGPoint(), to: tableView)
-        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        
+        cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }
@@ -130,9 +137,11 @@ class ShoppingListTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
 
         if segue.identifier == "showItem" {
+            print("i'm in!")
             let currentRow = tableView.indexPathForSelectedRow?.row
             let currentItem = list[currentRow!]
             let dstView = segue.destination as! ItemDetailViewController
+            dstView.title = currentItem.name!
             dstView.item = currentItem
         }
     }
