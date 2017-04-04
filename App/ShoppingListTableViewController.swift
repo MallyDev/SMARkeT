@@ -62,23 +62,30 @@ class ShoppingListTableViewController: UITableViewController {
      }
  
     @IBAction func addButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
-        value += 1
-        quantityLabel.text = "\(value)"
         let buttonPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        
+        var value = Int.init(cell.quantityLabel.text!)!
+        value += 1
+        
+        cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }
     
     @IBAction func removeButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        
+        
+        var value = Int.init(cell.quantityLabel.text!)!
         if value > 0 {
             value -= 1
         }
-        quantityLabel.text = "\(value)"
-        let buttonPosition = sender.convert(CGPoint(), to: tableView)
-        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        
+        cell.quantityLabel.text = "\(value)"
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }

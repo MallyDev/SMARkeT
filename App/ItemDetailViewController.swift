@@ -18,16 +18,16 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var descript: UITextView!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
-        if item != nil {
-            self.navigationItem.title = item!.name
-            self.quantityLabel.text = "\(item!.quantity)"
-            self.descript.text = item!.descr
-        }
+        self.navigationItem.title = item!.name
+        self.quantityLabel.text = "\(item!.quantity)"
+        self.descript.text = item!.descr
+        self.priceLabel.text = "\(item!.price)"
     }
     
     override func didReceiveMemoryWarning() {
