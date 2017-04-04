@@ -60,7 +60,7 @@ class ShoppingListTableViewController: UITableViewController {
         
         return cell
      }
- 
+ /*
     @IBAction func addButton(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
@@ -73,6 +73,7 @@ class ShoppingListTableViewController: UITableViewController {
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }
+ 
     
     @IBAction func removeButton(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint(), to: tableView)
@@ -89,6 +90,7 @@ class ShoppingListTableViewController: UITableViewController {
         let item = list[currentIndexPath!.row]
         item.quantity = Int32(value)
     }
+ */
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -137,9 +139,11 @@ class ShoppingListTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
 
         if segue.identifier == "showItem" {
+            print("i'm in!")
             let currentRow = tableView.indexPathForSelectedRow?.row
             let currentItem = list[currentRow!]
             let dstView = segue.destination as! ItemDetailViewController
+            dstView.title = currentItem.name!
             dstView.item = currentItem
         }
     }

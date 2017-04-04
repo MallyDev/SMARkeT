@@ -24,7 +24,6 @@ class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
         addButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
-        self.navigationItem.title = item!.name
         self.quantityLabel.text = "\(item!.quantity)"
         self.descript.text = item!.descr
         self.priceLabel.text = "\(item!.price)"
