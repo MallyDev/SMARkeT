@@ -15,7 +15,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         print("Sto per iniziare una ricerca")
     }
     
-    var favourites = PersistenceManager.fetchFavourites()
+    var favourites = [Product]()
     
     
     var resultSearchController: UISearchController?
@@ -45,7 +45,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             return controller
         })()
         
-        
+        favourites=PersistenceManager.fetchFavourites()
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.editButtonItem.tintColor = UIColor.white
         UIBarButtonItem.appearance().tintColor = .white
@@ -89,6 +89,23 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        backItem.tintColor = .white
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        if segue.identifier == "showItem" {
+            let currentRow = tableView.indexPathForSelectedRow?.row
+            let currentItem = favourites[currentRow!]
+            let dstView = segue.destination as! ItemDetailViewController
+            dstView.title = currentItem.name!
+            dstView.item = currentItem
+        }
+    }
+
     
     
     
