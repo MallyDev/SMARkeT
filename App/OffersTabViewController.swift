@@ -23,8 +23,13 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var temp : Product
+        temp=PersistenceManager.newEmptyProd()
+        temp.inTheList=true
+        temp.favourite=true
         myList=PersistenceManager.fetchAll()
         favouritesList=PersistenceManager.fetchFavourites()
+        PersistenceManager.saveContext()
         
     }
     
@@ -125,10 +130,35 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         
         if segue.identifier == "showItem" {
             let currentRow = myTableView.indexPathForSelectedRow?.row
+            
+            switch (typeOfferte.selectedSegmentIndex){
+            case 0:
+                let item=myList[currentRow!]
+                let dstView = segue.destination as! ItemDetailViewController
+                dstView.title=item.name!
+                dstView.item=item
+            case 1:
+                let item=favouritesList[currentRow!]
+                let dstView = segue.destination as! ItemDetailViewController
+                dstView.title=item.name!
+                dstView.item=item
+            case 2:
+                let item=dailyList[currentRow!]
+                let dstView = segue.destination as! ItemDetailViewController
+                dstView.title=item
+            case 3:
+                let item=allList[currentRow!]
+                let dstView = segue.destination as! ItemDetailViewController
+                dstView.title=item
+            default:
+                break
+                
+            }
+            /*let currentRow = myTableView.indexPathForSelectedRow?.row
             let currentItem = myList[currentRow!]
             let dstView = segue.destination as! ItemDetailViewController
             dstView.title = currentItem.name!
-            dstView.item = currentItem
+            dstView.item = currentItem*/
         }
     }
 
