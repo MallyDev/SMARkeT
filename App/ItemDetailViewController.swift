@@ -14,10 +14,9 @@ class ItemDetailViewController: UIViewController {
     var item : Product?
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var descript: UITextView!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var priceLabel: UILabel!
     var favouriteButton : UIBarButtonItem?
     
@@ -38,11 +37,15 @@ class ItemDetailViewController: UIViewController {
         self.priceLabel.text = "\(item!.price) €"
         if (item?.inTheList)! {
             addButton.setTitle("Remove from List", for: .normal)
-            addButton.backgroundColor = .red
+            addButton.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             addButton.setTitle( "Add to List", for: .normal)
             addButton.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
+        stepper.value = Double((item?.quantity)!)
+        
+        //prova immagine
+        imgView.image = #imageLiteral(resourceName: "plus-button.png")
     }
     
     func addFavourite () {
@@ -65,7 +68,7 @@ class ItemDetailViewController: UIViewController {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
             sender.setTitle("Remove from List", for: .normal)
-            sender.backgroundColor = .red
+            sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             sender.setTitle( "Add to List", for: .normal)
             sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
@@ -73,24 +76,11 @@ class ItemDetailViewController: UIViewController {
         PersistenceManager.saveContext()
     }
     
-    @IBAction func addButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
-        value += 1
-        quantityLabel.text = "\(value)"
-        item?.quantity = Int32(value)
+    @IBAction func modifyQuantity(_ sender: UIStepper) {
+        item?.quantity = Int32(sender.value)
+        quantityLabel.text = "\(Int32(sender.value))"
         PersistenceManager.saveContext()
     }
-    
-    @IBAction func removeButton(_ sender: UIButton) {
-        var value = Int.init(quantityLabel.text!)!
-        if value > 0{
-            value -= 1
-        }
-        quantityLabel.text = "\(value)"
-        item?.quantity = Int32(value)
-        PersistenceManager.saveContext()
-    }
-    
     
     
     /*
