@@ -140,17 +140,23 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      }
      */
     
-    /*
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            let item : Product
+            if self.resultSearchController!.isActive {
+                item = filtered[indexPath.row]
+                filtered.remove(at: indexPath.row)
+            } else {
+                item = favourites[indexPath.row]
+                favourites.remove(at: indexPath.row)
+            }
+            item.favourite = false
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            PersistenceManager.saveContext()
+        }
      }
-     }
-     */
     
     /*
      // Override to support rearranging the table view.

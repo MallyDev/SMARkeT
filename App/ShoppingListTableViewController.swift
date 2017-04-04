@@ -9,9 +9,29 @@
 import Foundation
 import UIKit
 
-class ShoppingListTableViewController: UITableViewController {
+class ShoppingListTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     var list : Array<Product> = []
+    
+    let dataSource:[String] = ["1","2","3","4","5","6","7","8","9"]
+    var picker = UIPickerView()
+    var cellModified = ShoppingListTableViewCell()
+    var itemModified = Product()
+    
+    @IBAction func updateQuantity(_ sender: UITextField) {
+        let textFieldPosition = sender.convert(CGPoint(), to: tableView)
+        let currentIndexPath = tableView.indexPathForRow(at: textFieldPosition)
+        cellModified = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        cellModified.resignFirstResponder()
+        //let value = Int.init(cellModified.quantityLabel.text!)!
+        //cellModified.quantityLabel.text = "\(value)"
+        //picker.selectedRow(inComponent: value)
+        itemModified = list[currentIndexPath!.row]
+        //itemModified.quantity = Int32(value)
+        //cellModified.quantityLabel.text = "\(value)"
+    }
+    
+   
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -19,8 +39,11 @@ class ShoppingListTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.dataSource = self
+        picker.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,7 +71,7 @@ class ShoppingListTableViewController: UITableViewController {
     }
     
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as!ShoppingListTableViewCell
         
         // Configure the cell...
@@ -56,43 +79,13 @@ class ShoppingListTableViewController: UITableViewController {
         cell.departmentLabel.text = list[indexPath.row].department
         cell.priceLabel.text = "\(list[indexPath.row].price) €"
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
+        cell.quantityLabel.inputView = picker
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
         return cell
-     }
- 
-    @IBAction func addButton(_ sender: UIButton) {
-        let buttonPosition = sender.convert(CGPoint(), to: tableView)
-        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
-        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
-        
-        var value = Int.init(cell.quantityLabel.text!)!
-        value += 1
-        
-        cell.quantityLabel.text = "\(value)"
-        let item = list[currentIndexPath!.row]
-        item.quantity = Int32(value)
-        PersistenceManager.saveContext()
     }
- 
     
-    @IBAction func removeButton(_ sender: UIButton) {
-        let buttonPosition = sender.convert(CGPoint(), to: tableView)
-        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
-        let cell = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
-        
-        
-        var value = Int.init(cell.quantityLabel.text!)!
-        if value > 0 {
-            value -= 1
-        }
-        
-        cell.quantityLabel.text = "\(value)"
-        let item = list[currentIndexPath!.row]
-        item.quantity = Int32(value)
-        PersistenceManager.saveContext()
-    }
- 
+    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -102,16 +95,16 @@ class ShoppingListTableViewController: UITableViewController {
      */
     
     
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-        // Delete the row from the data source
+            // Delete the row from the data source
             PersistenceManager.deleteProduct(product: list[indexPath.row])
             list.remove(at: indexPath.row)
             PersistenceManager.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-     }
+    }
     
     /*
      // Override to support rearranging the table view.
@@ -139,7 +132,7 @@ class ShoppingListTableViewController: UITableViewController {
         backItem.title = ""
         backItem.tintColor = .white
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-
+        
         if segue.identifier == "showItem" {
             let currentRow = tableView.indexPathForSelectedRow?.row
             let currentItem = list[currentRow!]
@@ -148,5 +141,27 @@ class ShoppingListTableViewController: UITableViewController {
             dstView.item = currentItem
         }
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataSource.count
+    }
+   
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        cellModified.quantityLabel.text! = dataSource[row]
+        itemModified.quantity = Int32.init(cellModified.quantityLabel.text!)!
+        PersistenceManager.saveContext()
+    }
+    
+    //cellModified.quantityLabel.resignFirstResponder()
+    
+    
 }
 
