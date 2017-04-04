@@ -71,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         banner.dismissesOnSwipe=true
         banner.dismissesOnTap = true
         banner.show(duration: 3.0)
+    
+    
         
       
     }
