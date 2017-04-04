@@ -38,6 +38,7 @@ class ItemDetailViewController: UIViewController {
         var value = Int.init(quantityLabel.text!)!
         value += 1
         quantityLabel.text = "\(value)"
+        PersistenceManager.saveContext()
     }
     
     @IBAction func removeButton(_ sender: Any) {
@@ -46,6 +47,7 @@ class ItemDetailViewController: UIViewController {
            value -= 1 
         }
         quantityLabel.text = "\(value)"
+        PersistenceManager.saveContext()
     }
     
     /*
