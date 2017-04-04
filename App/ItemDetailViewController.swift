@@ -52,7 +52,9 @@ class ItemDetailViewController: UIViewController {
             favouriteButton = UIBarButtonItem(image: #imageLiteral(resourceName: "star-2.png"), style: .plain, target: self, action: #selector (addFavourite))
         }
         self.navigationItem.rightBarButtonItem = favouriteButton
+        PersistenceManager.saveContext()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,13 +63,13 @@ class ItemDetailViewController: UIViewController {
     @IBAction func insertIntoList(_ sender: UIButton) {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
-            addButton.setTitle("Remove from List", for: .normal)
-            addButton.backgroundColor = .red
+            sender.setTitle("Remove from List", for: .normal)
+            sender.backgroundColor = .red
         } else {
-            addButton.setTitle( "Add to List", for: .normal)
-            addButton.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
+            sender.setTitle( "Add to List", for: .normal)
+            sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
-        
+        PersistenceManager.saveContext()
     }
     
     @IBAction func addButton(_ sender: UIButton) {
