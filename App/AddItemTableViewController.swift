@@ -33,7 +33,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }*/
             if (scope == "Tutti") {
-                if (x.name?.range(of: testoCercato.localizedLowercase) != nil) {
+                if (x.name?.range(of: testoCercato) != nil) {
                     filtered.append(x)
                 }
             }

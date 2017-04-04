@@ -43,7 +43,7 @@ class ItemDetailViewController: UIViewController {
     
     @IBAction func removeButton(_ sender: Any) {
         var value = Int.init(quantityLabel.text!)!
-        if value >= 0{
+        if value > 0{
            value -= 1 
         }
         quantityLabel.text = "\(value)"
