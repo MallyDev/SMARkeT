@@ -16,11 +16,9 @@ class ShoppingListTableViewCell: UITableViewCell {
     //TODO: peso/unità
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var newPriceLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var quantityLabel: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

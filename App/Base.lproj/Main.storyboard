@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -200,27 +200,9 @@
                                                 <constraint firstAttribute="height" constant="80" id="T7e-rp-UzQ"/>
                                             </constraints>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c85-ln-Lt9">
-                                            <rect key="frame" x="374" y="24" width="32" height="32"/>
-                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <state key="normal" image="plus-button.png"/>
-                                            <connections>
-                                                <action selector="addButton:" destination="ggc-tG-BEM" eventType="touchUpInside" id="P1U-Fg-1lJ"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-jd-0Dh">
                                             <rect key="frame" x="96" y="0.33333333333333393" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofL-bq-N7U">
-                                            <rect key="frame" x="345" y="29.333333333333336" width="29" height="21.000000000000007"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="29" id="XQS-6d-laA"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -230,13 +212,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-Cd-ES4">
-                                            <rect key="frame" x="312" y="24" width="32" height="32"/>
-                                            <state key="normal" image="rounded-delete-button-with-minus.png"/>
-                                            <connections>
-                                                <action selector="removeButton:" destination="ggc-tG-BEM" eventType="touchUpInside" id="HbO-jJ-8TE"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-aj-ZbK">
                                             <rect key="frame" x="138" y="69.333333333333329" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -249,6 +224,15 @@
                                             <color key="textColor" red="0.2666666667" green="0.58431372550000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9x-Cn-dmc">
+                                            <rect key="frame" x="354" y="25" width="25" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="updateQuantity:" destination="ggc-tG-BEM" eventType="editingDidBegin" id="S4J-EJ-I4k"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="leadingMargin" secondItem="5xt-94-RYT" secondAttribute="leading" id="46b-Ea-mNb"/>
@@ -256,28 +240,22 @@
                                         <constraint firstItem="Qmm-6c-XnZ" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" constant="5.6666666666666643" id="4tr-Cw-Xt1"/>
                                         <constraint firstItem="6dp-9w-3fs" firstAttribute="leading" secondItem="5xt-94-RYT" secondAttribute="trailing" constant="8" id="8U6-hg-BT6"/>
                                         <constraint firstItem="JbW-aj-ZbK" firstAttribute="leading" secondItem="6dp-9w-3fs" secondAttribute="trailing" constant="16" id="CVW-fO-yxG"/>
-                                        <constraint firstItem="c85-ln-Lt9" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" id="H3q-A5-PWU"/>
                                         <constraint firstItem="cmH-jd-0Dh" firstAttribute="leading" secondItem="5xt-94-RYT" secondAttribute="trailing" constant="8" id="JoC-8r-p6A"/>
                                         <constraint firstItem="6dp-9w-3fs" firstAttribute="top" secondItem="Qmm-6c-XnZ" secondAttribute="bottom" constant="11.000000000000014" id="KGG-ZM-hBC"/>
                                         <constraint firstItem="5xt-94-RYT" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" constant="8.1666666666666643" id="Nd0-ud-ucd"/>
-                                        <constraint firstItem="ofL-bq-N7U" firstAttribute="leading" secondItem="mCg-Cd-ES4" secondAttribute="trailing" constant="1" id="TuA-js-YCY"/>
-                                        <constraint firstItem="mCg-Cd-ES4" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" id="YRp-Kg-lK8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="c85-ln-Lt9" secondAttribute="trailing" id="aO6-pA-DxP"/>
-                                        <constraint firstItem="c85-ln-Lt9" firstAttribute="leading" secondItem="ofL-bq-N7U" secondAttribute="trailing" id="gCB-vO-wzD"/>
-                                        <constraint firstItem="ofL-bq-N7U" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" id="pka-BJ-zcJ"/>
                                         <constraint firstItem="Qmm-6c-XnZ" firstAttribute="top" secondItem="cmH-jd-0Dh" secondAttribute="bottom" constant="13.666666666666657" id="r5F-Vn-k3f"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="JbW-aj-ZbK" secondAttribute="bottom" constant="2.5" id="sRN-dm-LDF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="C9x-Cn-dmc" secondAttribute="trailing" constant="27" id="ug8-KU-MKM"/>
+                                        <constraint firstItem="C9x-Cn-dmc" firstAttribute="centerY" secondItem="xFB-mz-1P7" secondAttribute="centerY" id="wzx-Ye-sSg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="departmentLabel" destination="Qmm-6c-XnZ" id="iYi-Vk-gX9"/>
                                     <outlet property="imgView" destination="5xt-94-RYT" id="qeN-L7-AEw"/>
-                                    <outlet property="minusButton" destination="mCg-Cd-ES4" id="6U2-dG-kxb"/>
                                     <outlet property="nameLabel" destination="cmH-jd-0Dh" id="X4c-KY-2YL"/>
                                     <outlet property="newPriceLabel" destination="JbW-aj-ZbK" id="dGZ-Wz-LQK"/>
-                                    <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
-                                    <outlet property="quantityLabel" destination="ofL-bq-N7U" id="ahK-CB-Ab7"/>
+                                    <outlet property="quantityLabel" destination="C9x-Cn-dmc" id="yuQ-bq-zsf"/>
                                     <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
@@ -693,12 +671,11 @@
         <image name="online-store" width="24" height="24"/>
         <image name="plus-button-2.png" width="32" height="32"/>
         <image name="plus-button.png" width="32" height="32"/>
-        <image name="rounded-delete-button-with-minus.png" width="32" height="32"/>
         <image name="sales" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QsS-v9-ZTo"/>
+        <segue reference="6Dk-r5-M42"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
