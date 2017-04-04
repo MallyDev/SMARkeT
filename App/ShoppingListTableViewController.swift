@@ -61,7 +61,27 @@ class ShoppingListTableViewController: UITableViewController {
         return cell
      }
  
+    @IBAction func addButton(_ sender: UIButton) {
+        var value = Int.init(quantityLabel.text!)!
+        value += 1
+        quantityLabel.text = "\(value)"
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let item = list[currentIndexPath!.row]
+        item.quantity = Int32(value)
+    }
     
+    @IBAction func removeButton(_ sender: UIButton) {
+        var value = Int.init(quantityLabel.text!)!
+        if value > 0 {
+            value -= 1
+        }
+        quantityLabel.text = "\(value)"
+        let buttonPosition = sender.convert(CGPoint(), to: tableView)
+        let currentIndexPath = tableView.indexPathForRow(at: buttonPosition)
+        let item = list[currentIndexPath!.row]
+        item.quantity = Int32(value)
+    }
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
