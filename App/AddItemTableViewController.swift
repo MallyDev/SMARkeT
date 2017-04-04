@@ -33,7 +33,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }*/
             if (scope == "Tutti") {
-                if (x.name?.range(of: testoCercato.localizedLowercase) != nil) {
+                if (x.name?.range(of: testoCercato) != nil) {
                     filtered.append(x)
                 }
             }
@@ -49,9 +49,15 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         //aggiungiElemento
         if self.resultSearchController!.isActive {
             item = filtered[currentRow!.row]
+            if item.inTheList {
+                item.quantity = 0
+            }
             item.inTheList = !item.inTheList
         } else {
             item = products[currentRow!.row]
+            if item.inTheList {
+                item.quantity = 0
+            }
             item.inTheList = !item.inTheList
         }
         PersistenceManager.saveContext()
@@ -140,6 +146,8 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
+        
+        //cambia icona
         if item.inTheList {
             cell.addButton.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
         } else {
@@ -200,8 +208,10 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             let currentRow = self.tableView.indexPathForSelectedRow!.row
             if self.resultSearchController!.isActive {
                 dst.title = filtered[currentRow].name!
+                dst.item = filtered[currentRow]
             } else {
                 dst.title = products[currentRow].name!
+                dst.item = products[currentRow]
             }
         }
      }

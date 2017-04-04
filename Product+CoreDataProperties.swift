@@ -1,9 +1,9 @@
 //
 //  Product+CoreDataProperties.swift
-//  App
+//  
 //
-//  Created by Francesco Caposiena on 03/04/2017.
-//  Copyright © 2017 Francesco Caposiena. All rights reserved.
+//  Created by Francesco Caposiena on 04/04/2017.
+//
 //
 
 import Foundation
@@ -17,14 +17,15 @@ extension Product {
     }
 
     @NSManaged public var barCode: String?
+    @NSManaged public var department: String?
     @NSManaged public var descr: String?
     @NSManaged public var favourite: Bool
     @NSManaged public var inTheList: Bool
     @NSManaged public var name: String?
+    @NSManaged public var newPrice: Float
     @NSManaged public var price: Float
     @NSManaged public var quantity: Int32
     @NSManaged public var weight: Float
-    @NSManaged public var newPrice: Float
-    @NSManaged public var department: String?
+    @NSManaged public var imageUrl: String?
 
 }
