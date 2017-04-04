@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var favourites: [Product]!
     
+    var once = 0
+    
     
     
     
@@ -242,13 +244,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         //Creation of the lists
         productsInList = PersistenceManager.fetchList()
          
-            var prod1 = PersistenceManager.newEmptyProd()
-            prod1.department = "Food"
-            prod1.inTheList = true
-            PersistenceManager.saveContext()
-        
-        
-            
+        //Creation of the favourites's list
         favourites = PersistenceManager.fetchFavourites()
         
         //Init the value of the beaconManager
