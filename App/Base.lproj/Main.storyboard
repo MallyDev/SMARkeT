@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -65,7 +65,7 @@
                                 <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REq-P9-7X6" id="2mP-XL-KqL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-eN-eRQ">
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nOF-gR-ebX" id="xFB-mz-1P7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xt-94-RYT">
@@ -276,7 +276,7 @@
                                     <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
                                     <outlet property="quantityLabel" destination="ofL-bq-N7U" id="ahK-CB-Ab7"/>
-                                    <segue destination="XqV-6f-Q2C" kind="show" id="6Dk-r5-M42"/>
+                                    <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="1" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-ZB-3Yc">
@@ -510,6 +510,7 @@
                         <outlet property="imgView" destination="x7C-WC-epH" id="Tl0-dz-uhc"/>
                         <outlet property="minusButton" destination="jI6-Qe-Lbw" id="UpZ-R1-fiY"/>
                         <outlet property="plusButton" destination="T1a-UF-0mE" id="v6K-mO-Nwd"/>
+                        <outlet property="priceLabel" destination="Sk8-C9-CWT" id="Cva-cE-PDY"/>
                         <outlet property="quantityLabel" destination="2fP-vv-Ao5" id="seP-4H-p8F"/>
                     </connections>
                 </viewController>
@@ -571,7 +572,7 @@
                                         <rect key="frame" x="0.0" y="1" width="374" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G7J-kd-ooz" id="2FB-4v-74w">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B35-oU-XPo">
@@ -585,7 +586,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="B35-oU-XPo" id="KgS-DZ-jy0"/>
-                                            <segue destination="XqV-6f-Q2C" kind="show" id="JK4-F8-G8d"/>
+                                            <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="JK4-F8-G8d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -49,9 +49,15 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         //aggiungiElemento
         if self.resultSearchController!.isActive {
             item = filtered[currentRow!.row]
+            if item.inTheList {
+                item.quantity = 0
+            }
             item.inTheList = !item.inTheList
         } else {
             item = products[currentRow!.row]
+            if item.inTheList {
+                item.quantity = 0
+            }
             item.inTheList = !item.inTheList
         }
         PersistenceManager.saveContext()
@@ -140,6 +146,8 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
+        
+        //cambia icona
         if item.inTheList {
             cell.addButton.setImage(#imageLiteral(resourceName: "check-mark-button.png"), for: .normal)
         } else {
