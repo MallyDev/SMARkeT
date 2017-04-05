@@ -14,17 +14,39 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var typeOfferte: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
     
-    //test
+    //Liste di appoggio
+    var list: Array<Product> = []
+    var favourites : Array<Product> = []
+    
+    //Liste per i tab
     var myList : [Product] = []
     var favouritesList : [Product] = []
-    let dailyList: [Product] = []
-    let allList: [Product] = []
+    var dailyList: [Product] = []
+    var allList: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Effettuare caricamento delle offerte 
+        list = PersistenceManager.fetchList()
+        favourites = PersistenceManager.fetchFavourites()
         
+        //Effettuare caricamento delle offerte 
+        allList = PersistenceManager.fetchOffers()
+        
+        myList = matchList (list)
+        favouritesList = matchList (list)
+    }
+    
+    func matchList (_ source: Array<Product>) -> Array<Product> {
+        var temp = Array<Product> ()
+        
+        for item in allList {
+            if source.contains(item) {
+                temp.append(item)
+            }
+        }
+        
+        return temp
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,40 +62,28 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! OfferCellTableViewCell
+        let item: Product
         
-        switch(typeOfferte.selectedSegmentIndex)
-        {
-        
-        case 0:
-            let item = myList[indexPath.row]
-            myCell.name.text = item.name
-            break
-        
-        case 1:
-            let item = favouritesList[indexPath.row]
-            myCell.name.text = item.name
-            break
-            
-        case 2:
-            let item = dailyList[indexPath.row]
-            
-            break
-            
-        case 3:
-            let item = allList[indexPath.row]
-            
-            break
-            
-        default:
-            break
-            
+        switch(typeOfferte.selectedSegmentIndex) {
+            case 0:
+                item = myList[indexPath.row]
+            case 1:
+                item = favouritesList[indexPath.row]
+            case 2:
+                item = dailyList[indexPath.row]
+            case 3:
+                item = allList[indexPath.row]
+            default:
+                item = allList[indexPath.row]
         }
-        
-        
+        myCell.nameLabel.text = item.name!
+        myCell.priceLabel.text = "\(item.price) €"
+        myCell.departmentLabel.text = item.department
+        myCell.newPriceLabel.text = "\(item.newPrice) €"
+        //AGGIUNGERE IMMAGINE A IMGVIEW
+
         return myCell
     }
-    
-    
     
     @IBAction func refreshButtonTapped(sender: AnyObject) {
         myTableView.reloadData()
@@ -83,34 +93,22 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         myTableView.reloadData()
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue = 0
         
-        switch(typeOfferte.selectedSegmentIndex)
-        {
-        case 0:
-            returnValue = myList.count
-            break
-        case 1:
-            returnValue = favouritesList.count
-            break
-            
-        case 2:
-            returnValue = dailyList.count
-            break
-        case 3:
-            returnValue = allList.count
-            break
-        default:
-            break
-            
+        switch(typeOfferte.selectedSegmentIndex) {
+            case 0:
+                returnValue = myList.count
+            case 1:
+                returnValue = favouritesList.count
+            case 2:
+                returnValue = dailyList.count
+            case 3:
+                returnValue = allList.count
+            default:
+                returnValue = 0
         }
-        
         return returnValue
-        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -124,38 +122,23 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         
         if segue.identifier == "showItem" {
             let currentRow = myTableView.indexPathForSelectedRow?.row
-            
+            let item : Product
             switch (typeOfferte.selectedSegmentIndex){
-            case 0:
-                let item=myList[currentRow!]
-                let dstView = segue.destination as! ItemDetailViewController
-                dstView.title=item.name!
-                dstView.item=item
-            case 1:
-                let item=favouritesList[currentRow!]
-                let dstView = segue.destination as! ItemDetailViewController
-                dstView.title=item.name!
-                dstView.item=item
-            case 2:
-                let item=dailyList[currentRow!]
-                let dstView = segue.destination as! ItemDetailViewController
-                
-            case 3:
-                let item=allList[currentRow!]
-                let dstView = segue.destination as! ItemDetailViewController
-                
-            default:
-                break
-                
-            }
-            /*let currentRow = myTableView.indexPathForSelectedRow?.row
-            let currentItem = myList[currentRow!]
+                case 0:
+                    item=myList[currentRow!]
+                case 1:
+                    item=favouritesList[currentRow!]
+                case 2:
+                    item=dailyList[currentRow!]
+                case 3:
+                    item=allList[currentRow!]
+                default:
+                    item=allList[currentRow!]
+                }
             let dstView = segue.destination as! ItemDetailViewController
-            dstView.title = currentItem.name!
-            dstView.item = currentItem*/
+            dstView.title=item.name!
+            dstView.item=item
         }
     }
-
-    
 }
 
