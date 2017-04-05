@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddItemTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate{
+class AddItemTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     var resultSearchController: UISearchController?
     var products : Array<Product> = []
@@ -21,6 +21,9 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func viewWillAppear(_ animated: Bool) {
         products = PersistenceManager.fetchAll()
+        
+        filtered.removeAll(keepingCapacity: true)
+        
         self.tableView.reloadData()
             self.resultSearchController = ({
                 // creo un oggetto di tipo UISearchController
@@ -165,6 +168,39 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             cell.accessoryType = .none
         }
         
+        var u:String?
+        
+        if self.resultSearchController!.isActive {
+            u = filtered[indexPath.row].imageUrl
+        } else {
+            u = products[indexPath.row].imageUrl
+        }
+
+        //carico l'immagine
+        let url = URL(string: u!)
+        print(url!)
+        let request = URLRequest(url: url! as URL)
+        let session: URLSession = {
+            let config = URLSessionConfiguration.default
+            return URLSession(configuration: config)
+        }()
+        /*
+         if cell.departmentLabel.text == "Reparto"{
+         cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+         cell.imgView.backgroundColor = UIColor.white
+         }*/
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) -> Void in
+            let result = self.processImageRequest(data: data, error: error as NSError?)
+            
+            if case let .success(image) = result {
+                cell.imgView.backgroundColor = UIColor.white
+                cell.imgView.image = image
+            }
+        })
+        task.resume()
+        
         return cell
     }
     
@@ -227,5 +263,24 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         }
      }
     
+    func processImageRequest(data: Data?, error: NSError?) -> ImageResult {
+        
+        guard let
+            imageData = data,
+            let image = UIImage(data: imageData) else {
+                
+                // Couldn't create an image
+                if data == nil {
+                    return .failure(error!)
+                }
+                else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+        }
+        
+        return .success(image)
+    }
+    
+
 }
 
