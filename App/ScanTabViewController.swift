@@ -35,7 +35,6 @@ struct AppUtility {
 class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    var prod : Product
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +153,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         let result = PersistenceManager.searchProduct(barcode: barCode)
         if  result.1 {
-            prod = result.0
+            let prod = result.0
             showPopup(product: prod)
         } else {
             showAlert()
@@ -170,7 +169,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
             //aggiungere il prodotto nell'array di shopping list
-            self.prod.inTheList = true
+            product.inTheList = true
             PersistenceManager.saveContext()
             //far comparire la view di shopping list
             self.tabBarController?.selectedIndex = 0
@@ -181,7 +180,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
-                self.prod.favourite = true
+                product.favourite = true
                 PersistenceManager.saveContext()
                 //far comparire la view dei Favourites
                 self.tabBarController?.selectedIndex = 3
