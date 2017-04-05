@@ -162,6 +162,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             PersistenceManager.saveContext()
             //far comparire la view di shopping list
             self.tabBarController?.selectedIndex = 0
+            self.performSegue(withIdentifier: "ScanToShopp", sender: self)
             //far scomparire la view di scanner
             self.dismiss(animated: true, completion: nil)
         }))
@@ -172,6 +173,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 PersistenceManager.saveContext()
                 //far comparire la view dei Favourites
                 self.tabBarController?.selectedIndex = 3
+                self.performSegue(withIdentifier: "ScanToFav", sender: self)
                 //far scomparire la ScannerView
                 self.dismiss(animated: true, completion: nil)
         }))
