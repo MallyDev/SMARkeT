@@ -30,7 +30,7 @@ class PersistenceManager{
         product.inTheList=false
         product.quantity=0
         product.weight=0.0
-        product.newPrice=0.0
+        product.newPrice = -1
         product.department = "Reparto"
         
         return product

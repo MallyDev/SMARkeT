@@ -89,10 +89,14 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         // Configure the cell...
         cell.nameLabel.text = list[indexPath.row].name!
         cell.departmentLabel.text = list[indexPath.row].department!
-        print(list[indexPath.row].department!)
         cell.priceLabel.text = "\(list[indexPath.row].price) €"
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
+        if list[indexPath.row].newPrice >= 0 {
+            cell.newPriceLabel.text = "\(list[indexPath.row].newPrice)"
+        } else {
+            cell.newPriceLabel.text = ""
+        }
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
         return cell
