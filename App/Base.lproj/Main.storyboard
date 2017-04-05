@@ -30,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxh-VL-yvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="-1056"/>
+            <point key="canvasLocation" x="72" y="-1360"/>
         </scene>
         <!--Scan-->
         <scene sceneID="odJ-Ew-ruH">
@@ -106,14 +106,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e13-eL-eEs">
-                                            <rect key="frame" x="361" y="10" width="32" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="SvB-8M-RwE"/>
-                                                <constraint firstAttribute="width" constant="32" id="jk0-us-k4k"/>
-                                            </constraints>
-                                            <state key="normal" title="Button" image="plus-button-2.png"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 €" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNO-W5-wsd">
                                             <rect key="frame" x="144.33333333333334" y="26.999999999999996" width="20.333333333333314" height="15.666666666666661"/>
                                             <constraints>
@@ -132,15 +124,12 @@
                                         <constraint firstItem="YSe-my-e1g" firstAttribute="leading" secondItem="a6H-eN-eRQ" secondAttribute="trailing" constant="8" id="Y3F-xP-ChZ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="YSe-my-e1g" secondAttribute="bottom" id="YU1-GM-s69"/>
                                         <constraint firstItem="PDk-c3-J1E" firstAttribute="leading" secondItem="a6H-eN-eRQ" secondAttribute="trailing" constant="8" id="g6e-Lf-Y0I"/>
-                                        <constraint firstItem="e13-eL-eEs" firstAttribute="centerY" secondItem="2mP-XL-KqL" secondAttribute="centerY" constant="1.25" id="hPU-Un-ysd"/>
                                         <constraint firstItem="a6H-eN-eRQ" firstAttribute="leading" secondItem="2mP-XL-KqL" secondAttribute="leadingMargin" id="pCy-zn-Hc8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="mNO-W5-wsd" secondAttribute="bottom" id="qRI-Dd-y8v"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="e13-eL-eEs" secondAttribute="trailing" constant="13" id="uXb-vx-6wP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iBa-4q-bvM" secondAttribute="bottom" id="uwn-3E-N95"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="addToListLabel" destination="hPU-Un-ysd" id="DBl-HD-5iq"/>
                                     <outlet property="departmentLabel" destination="YSe-my-e1g" id="Lnm-EZ-Y0B"/>
                                     <outlet property="imageLabel" destination="a6H-eN-eRQ" id="Cgu-OK-cl8"/>
                                     <outlet property="nameLabel" destination="PDk-c3-J1E" id="cfN-2d-ci3"/>
@@ -311,7 +300,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1020.2898550724639" y="-1136.413043478261"/>
+            <point key="canvasLocation" x="997" y="-1361"/>
         </scene>
         <!--Add Item Table View Controller-->
         <scene sceneID="cao-AG-ckz">
@@ -391,14 +380,12 @@
                             <outlet property="delegate" destination="xZm-iB-d7H" id="hiB-cM-fNu"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="IrK-Iq-HXu"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-f2-21r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976.8115942028987" y="-1491.0326086956522"/>
+            <point key="canvasLocation" x="2151" y="-1361"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="qQB-9f-qFY">
@@ -534,6 +521,8 @@
                             <constraint firstItem="sos-HU-d3U" firstAttribute="top" secondItem="5dV-0a-L5x" secondAttribute="bottom" id="MLf-XY-xmj"/>
                         </constraints>
                     </stackView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="Cnb-wk-qvk" id="XeX-hA-MV9"/>
                         <outlet property="departmentLabel" destination="ZEG-zO-WiW" id="LHL-HH-a5A"/>
@@ -546,7 +535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="usQ-8G-Vs5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2894.202898550725" y="-1057.3369565217392"/>
+            <point key="canvasLocation" x="4493" y="0.0"/>
         </scene>
         <!--Offers-->
         <scene sceneID="KEd-nV-bHL">
@@ -567,7 +556,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SxE-7s-U9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="-345"/>
+            <point key="canvasLocation" x="2016" y="-264"/>
         </scene>
         <!--Offers-->
         <scene sceneID="GfM-Er-jjr">
@@ -581,7 +570,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-Pt-ogk">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-Pt-ogk">
                                 <rect key="frame" x="0.0" y="64" width="414" height="29"/>
                                 <segments>
                                     <segment title="My List"/>
@@ -711,7 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4q-jj-Sbo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814.4927536231885" y="-348.09782608695656"/>
+            <point key="canvasLocation" x="2797" y="-264"/>
         </scene>
         <!--Scan-->
         <scene sceneID="aiJ-k9-gdw">
@@ -763,12 +752,13 @@
     <resources>
         <image name="barcode" width="24" height="24"/>
         <image name="online-store" width="24" height="24"/>
-        <image name="plus-button-2.png" width="32" height="32"/>
         <image name="sales" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JK4-F8-G8d"/>
+        <segue reference="8UM-Zf-0IR"/>
+        <segue reference="1pL-mL-hvB"/>
+        <segue reference="kjt-ca-4SW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

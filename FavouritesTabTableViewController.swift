@@ -46,9 +46,9 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         })()
         
         favourites = PersistenceManager.fetchFavourites()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        /*self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.editButtonItem.tintColor = UIColor.white
-        UIBarButtonItem.appearance().tintColor = .white
+        UIBarButtonItem.appearance().tintColor = .white*/
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -116,6 +116,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         } else {
             cell.newPriceLabel.text = ""
         }
+        //Inizializzare immagine di icona
         
         return cell
     }
@@ -145,6 +146,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      }
      */
     
+    /*
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -161,7 +163,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             tableView.deleteRows(at: [indexPath], with: .fade)
             PersistenceManager.saveContext()
         }
-     }
+     }*/
     
     /*
      // Override to support rearranging the table view.
@@ -177,14 +179,4 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      return true
      }
      */
-    
-     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }*/
-    
 }
