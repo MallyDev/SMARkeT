@@ -142,6 +142,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             self.prod.department = product_read.value(forKey: "department") as! String?
             self.prod.descr = product_read.value(forKey: "descr") as! String?
             self.prod.price = product_read.value(forKey: "price") as! Float
+            self.prod.imageUrl = product_read.value(forKey: "url") as! String?
             print(self.prod)
         })
         
