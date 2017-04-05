@@ -21,7 +21,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     
     var list : Array<Product> = []
     
-    let dataSource:[String] = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+    var dataSource: Array<String> = []
     var picker = UIPickerView()
     var cellModified = ShoppingListTableViewCell()
     var itemModified = Product()
@@ -40,6 +40,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         itemModified = list[currentIndexPath!.row]
         //itemModified.quantity = Int32(value)
         //cellModified.quantityLabel.text = "\(value)"
+        picker.selectRow(Int.init(cellModified.quantityLabel.text!)!-1, inComponent: 0, animated: true)
     }
     
    
@@ -51,13 +52,18 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
 
     }
     
+    func inizializeData () {
+        for index in 1...100 {
+            dataSource.append("\(index)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.dataSource = self
         picker.delegate = self
         tableView.delegate = self
-        
+        inizializeData()
         
        // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
        // tapGesture.cancelsTouchesInView = true
@@ -103,7 +109,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         
         
         //carico l'immagine
-        let u: String? = list[indexPath.row].imageUrl
+        /*let u: String? = list[indexPath.row].imageUrl
         let url = URL(string: u!)
         print(url!)
         let request = URLRequest(url: url! as URL)
@@ -119,7 +125,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                 cell.imgView.image = image
             }
         })
-        task.resume()
+        task.resume()*/
         
         //
         let toolBar = UIToolbar()
