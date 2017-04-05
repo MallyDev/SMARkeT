@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ShoppingListTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class ShoppingListTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     var list : Array<Product> = []
     
@@ -18,6 +18,12 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     var cellModified = ShoppingListTableViewCell()
     var itemModified = Product()
     
+    @IBAction func dismissPicker(_ sender: UITapGestureRecognizer) {
+        if cellModified.nameLabel != nil{
+            cellModified.quantityLabel.delegate = self
+            cellModified.quantityLabel.resignFirstResponder()
+        }
+    }
     @IBAction func updateQuantity(_ sender: UITextField) {
         let textFieldPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: textFieldPosition)
@@ -45,6 +51,9 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         picker.dataSource = self
         picker.delegate = self
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
+        tapGesture.cancelsTouchesInView = true
+        tableView.addGestureRecognizer(tapGesture)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -53,6 +62,9 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         
     }
     
+    func hideKeyboard() {
+        tableView.endEditing(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -143,6 +155,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
