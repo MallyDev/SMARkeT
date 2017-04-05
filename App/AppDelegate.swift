@@ -75,35 +75,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
-        let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-        banner.dismissesOnSwipe=true
-        banner.dismissesOnTap = true
-        banner.show(duration: 3.0)
-    
-    }
+        let title1 = NSLocalizedString("Welcome to BaconTeam SuperMarket", comment: "")
+        let subtitle1 = NSLocalizedString("Dear custumer,all the staff is glad for your visit.", comment:"")
+        let banner = Banner(title: title1, subtitle: subtitle1, image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                banner.dismissesOnSwipe=true
+                banner.dismissesOnTap = true
+                banner.show(duration: 3.0)
+            
+       }
+        
+        
     
     
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
         //Now the User is with is Device out of the Supermarket
         
         let content = UNMutableNotificationContent()
-        var reminder = ""
+        var reminder = "\n"
         
         if productsInList.count > 0 {
             
             for el in productsInList{
                 reminder += el.name! + "\n"
             }
+          
             
             content.title = "Hey"
-            content.body = "You have other items in List:" + "\n" + reminder
+            content.subtitle = NSLocalizedString("You have other items in List:",comment: "")
+            content.body = reminder
             content.sound = UNNotificationSound.default()
-        }
+            
+            }
+        
             else {
         
         
-        content.title = "Goodbye"
-        content.body = "Hope to see you soon."
+        content.title = NSLocalizedString("Goodbye",comment: "")
+        content.body = NSLocalizedString("Hope to see you soon.", comment: "")
         content.sound = UNNotificationSound.default()
         }
         
@@ -131,7 +139,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         var listaFiltrata = [Product]()
          
         switch nearestRegion.major{
-        case 21413 : //Food
+        
+        
+        case 21413 : //Food-
             listaFiltrata = filterList(search: "Food")
             if(listaFiltrata.count != 0){
                 var nameProduct: String = ""
@@ -140,9 +150,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 }
                 
                 let content = UNMutableNotificationContent()
-                content.title = "Hey! You're in the Food's Area. Remind to buy: "
+                content.title = NSLocalizedString("Hey! You're in the Food's Area.",comment: "")
+                content.subtitle = NSLocalizedString("Remind to buy:",comment: "")
                 content.body = nameProduct
                 content.sound = UNNotificationSound.default()
+                
+                
                 
                 //Set the trigger of the notification -- here a timer.
                 let trigger = UNTimeIntervalNotificationTrigger(
@@ -160,18 +173,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             }
             
             
-        case 35887: //Fruit
-            listaFiltrata = filterList(search: "Fruit")
+        case 35887: //Drink
+            listaFiltrata = filterList(search: "Drink")
             if(listaFiltrata.count != 0){
                 var nameProduct: String = ""
                 for product in listaFiltrata{
                     nameProduct += "\n" + product.name!
                 }
-                
                 let content = UNMutableNotificationContent()
-                content.title = "Hey! You're in the Fruit's Area. Remind to buy: "
-                content.body = nameProduct
-                content.sound = UNNotificationSound.default()
+                    content.title = NSLocalizedString("Hey! You're in the Drink's Area.",comment:"")
+                    content.subtitle = NSLocalizedString("Remind to buy: ",comment: "")
+                    content.body = nameProduct
+                    content.sound = UNNotificationSound.default()
+                
                 
                 //Set the trigger of the notification -- here a timer.
                 let trigger = UNTimeIntervalNotificationTrigger(
@@ -180,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 
                 //Set the request for the notification from the above
                 let request = UNNotificationRequest(
-                    identifier: "FruitArea",
+                    identifier: "DrinkArea",
                     content: content,
                     trigger: trigger)
                 
@@ -197,9 +211,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 }
                 
                 let content = UNMutableNotificationContent()
-                content.title = "Hey! You're in the Item's Area. Remind to buy: "
-                content.body = nameProduct
-                content.sound = UNNotificationSound.default()
+                    content.title = NSLocalizedString("Hey! You're in the generic Item's Area.",comment: "")
+                    content.subtitle = NSLocalizedString("Remind to buy:",comment: "")
+                    content.body = nameProduct
+                    content.sound = UNNotificationSound.default()
+                
                 
                 //Set the trigger of the notification -- here a timer.
                 let trigger = UNTimeIntervalNotificationTrigger(
