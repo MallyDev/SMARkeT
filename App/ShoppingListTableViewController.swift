@@ -93,18 +93,23 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
         
+        //
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
         toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         toolBar.sizeToFit()
-        
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingListTableViewController.donePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        
-        
         toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
+        
+        
+        if list[indexPath.row].newPrice >= 0 {
+            cell.newPriceLabel.text = "\(list[indexPath.row].newPrice)"
+        } else {
+            cell.newPriceLabel.text = ""
+        }
         
         cell.quantityLabel.inputAccessoryView = toolBar
         
