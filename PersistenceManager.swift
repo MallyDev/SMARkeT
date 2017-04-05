@@ -32,6 +32,7 @@ class PersistenceManager{
         product.weight=0.0
         product.newPrice = -1
         product.department = "Reparto"
+        product.imageUrl = ""
         
         return product
     }
