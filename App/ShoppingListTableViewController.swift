@@ -105,6 +105,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         //carico l'immagine
         let u: String? = list[indexPath.row].imageUrl
         let url = URL(string: u!)
+        print(url!)
         let request = URLRequest(url: url! as URL)
         let session: URLSession = {
             let config = URLSessionConfiguration.default
