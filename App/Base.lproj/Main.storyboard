@@ -46,6 +46,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan" id="IvE-7Q-vLt"/>
+                    <connections>
+                        <segue destination="njt-HR-E7l" kind="show" identifier="ScanToShopp" id="1pL-mL-hvB"/>
+                        <segue destination="fCi-ma-IvF" kind="show" identifier="ScanToFav" id="kjt-ca-4SW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6h-JE-wsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

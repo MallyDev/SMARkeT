@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  App
+
+  Created by Marco Capozzo on 05/04/2017.
+  Copyright © 2017 Francesco Caposiena. All rights reserved.
+*/
+
+"You have other items in List:" = "You have other items in List:";
+"Dear custumer,all the staff is glad for your visit." = "Dear custumer,all the staff is glad for your visit.";
+"Welcome to BaconTeam SuperMarket" = "Welcome to BaconTeam SuperMarket";
+"Goodbye" = "Goodbye";
+"Hey! You're in the Food's Area." = "Hey! You're in the Food's Area.";
+"Hey! You're in the Drink's Area." = "Hey! You're in the Drink's Area.";
+"Hey! You're in the generic Item's Area." = "Hey! You're in the generic Item's Area.";
+"Remind to buy:" = "Remind to buy";
+
