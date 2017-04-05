@@ -15,21 +15,15 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var myTableView: UITableView!
     
     //test
-    var myList = [Product] ()
-    var favouritesList = [Product]()
-    let dailyList:[String] = ["Expiring item 1", "Expiring item 2", "Expiring item 3", "Expiring item 4"]
-    let allList:[String] = ["All item 1", "All item 2", "All item 3", "All item 4"]
-    
+    var myList : [Product] = []
+    var favouritesList : [Product] = []
+    let dailyList: [Product] = []
+    let allList: [Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*var temp : Product
-        temp=PersistenceManager.newEmptyProd()
-        temp.inTheList=true
-        temp.favourite=true
-        myList=PersistenceManager.fetchAll()
-        favouritesList=PersistenceManager.fetchFavourites()
-        PersistenceManager.saveContext()*/
+        
+        //Effettuare caricamento delle offerte 
         
     }
     
