@@ -55,10 +55,11 @@ class ItemDetailViewController: UIViewController {
         }
         
         if (item?.inTheList)! {
-            addButton.setTitle("Remove from List", for: .normal)
+            
+            addButton.setTitle(NSLocalizedString("Remove from List",comment:""), for: .normal)
             addButton.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
-            addButton.setTitle( "Add to List", for: .normal)
+            addButton.setTitle( NSLocalizedString("Add to List",comment:""), for: .normal)
             addButton.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
         stepper.value = Double((item?.quantity)!)
@@ -143,11 +144,11 @@ class ItemDetailViewController: UIViewController {
     @IBAction func insertIntoList(_ sender: UIButton) {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
-            sender.setTitle("Remove from List", for: .normal)
+            sender.setTitle(NSLocalizedString("Remove from List",comment:""), for: .normal)
             item?.quantity = 1
             sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
-            sender.setTitle( "Add to List", for: .normal)
+            sender.setTitle(NSLocalizedString("Add to List",comment:""), for: .normal)
             item?.quantity = 0
             sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }

@@ -13,6 +13,7 @@
 		194D14691E9385EC0080929A /* food-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 194D14661E9385EC0080929A /* food-default.png */; };
 		194D146A1E9385EC0080929A /* item-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 194D14671E9385EC0080929A /* item-default.png */; };
 		2436417B1E902825008F2F5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2436417A1E902825008F2F5E /* GoogleService-Info.plist */; };
+		2453077B1E953A8400EF5D20 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2453077A1E953A8400EF5D20 /* ImageStore.swift */; };
 		2489B4AD1E938921009D2C1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2489B4AB1E938921009D2C1C /* Main.storyboard */; };
 		2963D7511E8FE2C00043D171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963D7501E8FE2C00043D171 /* AppDelegate.swift */; };
 		2963D75A1E8FE2C00043D171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2963D7591E8FE2C00043D171 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		194D14671E9385EC0080929A /* item-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "item-default.png"; sourceTree = "<group>"; };
 		242A6CB7A0CDB1C1C96734FB /* Pods-AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2436417A1E902825008F2F5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2453077A1E953A8400EF5D20 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageStore.swift; path = App/ImageStore.swift; sourceTree = "<group>"; };
 		2489B4AC1E938921009D2C1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2963D74D1E8FE2C00043D171 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2963D7501E8FE2C00043D171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		2963D7441E8FE2C00043D171 = {
 			isa = PBXGroup;
 			children = (
+				2453077A1E953A8400EF5D20 /* ImageStore.swift */,
 				9BD668D91E94FF3E003C2FB6 /* Localizable.strings */,
 				2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */,
 				2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */,
@@ -369,7 +372,7 @@
 				TargetAttributes = {
 					2963D74C1E8FE2C00043D171 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = RFX667DMC5;
+						DevelopmentTeam = 7W46TPZT4W;
 						ProvisioningStyle = Automatic;
 					};
 					2963D7621E8FE2C00043D171 = {
@@ -591,6 +594,7 @@
 			files = (
 				6C70DD491E9293FA0060E760 /* AddItemTableViewCell.swift in Sources */,
 				2963D7A21E8FF2A90043D171 /* OfferCellTableViewCell.swift in Sources */,
+				2453077B1E953A8400EF5D20 /* ImageStore.swift in Sources */,
 				2963D79C1E8FF0590043D171 /* ScanTabViewController.swift in Sources */,
 				29F0DEE81E913DD000205C9E /* Offers.swift in Sources */,
 				194B5BCF1E923ED5000DBDE6 /* ShoppingListTableViewCell.swift in Sources */,
@@ -771,14 +775,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RFX667DMC5;
+				DEVELOPMENT_TEAM = 7W46TPZT4W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mally.Photorama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
@@ -792,14 +796,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RFX667DMC5;
+				DEVELOPMENT_TEAM = 7W46TPZT4W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mally.Photorama;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
