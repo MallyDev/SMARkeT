@@ -34,16 +34,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     
     
-    
-    
-    
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(UNNotificationPresentationOptions.alert)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch
+        
+        //configuring database
+        FIRApp.configure()
+        
+        //Creation of the lists
+        productsInList = PersistenceManager.fetchList()
+        
+        //Creation of the favourites's list
+        favourites = PersistenceManager.fetchFavourites()
+        
+        //Init the value of the beaconManager
+        beaconManager = ESTBeaconManager()
+        
+        //Definition of the object that implement the beacon manager's protocol
+        self.beaconManager.delegate = self
+        
+        //Definition of the region
+        
+        self.regSupermarket = CLBeaconRegion(
+            proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,identifier : "SUPERMARKET")
+        
+        //Request the permission to use location and notification
+        beaconManager.requestAlwaysAuthorization()
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+        }
+        
+        beaconManager.startMonitoring(for: regSupermarket)
+        beaconManager.startRangingBeacons(in: regSupermarket)
+        
+        return true
     }
     
+  
     
-   func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
+    func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
         
         let banner = Banner(title: "Welcome", subtitle: "Dear custumer,all the staff is happy for your visit.", image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
@@ -63,11 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         if productsInList.count > 0 {
             
             for el in productsInList{
-                reminder += el.name! + ""
+                reminder += el.name! + "\n"
             }
             
             content.title = "Hey"
-            content.body = "You have other items in List:" + reminder
+            content.body = "You have other items in List:" + "\n" + reminder
             content.sound = UNNotificationSound.default()
         }
             else {
@@ -221,41 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
 
   
         
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch
-        
-        //configuring database
-        FIRApp.configure()
-            
-        //Creation of the lists
-        productsInList = PersistenceManager.fetchList()
-         
-        //Creation of the favourites's list
-        favourites = PersistenceManager.fetchFavourites()
-        
-        //Init the value of the beaconManager
-        beaconManager = ESTBeaconManager()
-        
-        //Definition of the object that implement the beacon manager's protocol
-        self.beaconManager.delegate = self
-        
-        //Definition of the region
-        
-        self.regSupermarket = CLBeaconRegion(
-            proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,identifier : "SUPERMARKET")
-        
-        //Request the permission to use location and notification
-        beaconManager.requestAlwaysAuthorization()
-        
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-        }
-            
-        beaconManager.startMonitoring(for: regSupermarket)
-        beaconManager.startRangingBeacons(in: regSupermarket)
-        
-        return true
-    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
