@@ -109,7 +109,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
         
-        
+        /*
         //carico l'immagine
         if iS.image(forKey: list[indexPath.row].barCode!) == nil {
         let u: String? = list[indexPath.row].imageUrl
@@ -143,7 +143,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         }else{
             cell.imgView.image = iS.image(forKey: list[indexPath.row].barCode!)
         }
-        
+        */
         //
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -274,7 +274,38 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cellModified.quantityLabel.resignFirstResponder()
         
     }
-    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+       
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            // Delete the row from the data source
+            self.list[indexPath.row].inTheList = false
+            self.list.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            PersistenceManager.saveContext()
+
+        }
+        
+        
+        let done = UITableViewRowAction(style: .default, title: "Done") { (action, indexPath) in
+            // add to shopping list
+            let item : Product
+            item = self.list[indexPath.row]
+            tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange
+            tableView.reloadData()
+            PersistenceManager.saveContext()
+        }
+        
+        
+        
+        //addToList.backgroundColor = UIColor(patternImage: UIImage.init(imageLiteralResourceName: "/Users/mariocantalupo/Desktop/appShop/App/check-mark-white-on-black-circular-background-2.png"))
+        done.backgroundColor = UIColor.orange
+        
+        
+        
+        
+        return [delete, done]
+    }
 
 }
 

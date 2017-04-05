@@ -169,9 +169,9 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      }
      */
     
-    /*
+    
      // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     /*override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let item : Product
@@ -184,6 +184,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             }
             item.favourite = false
             tableView.deleteRows(at: [indexPath], with: .fade)
+            item.favourite = false
             PersistenceManager.saveContext()
         }
      }*/
@@ -202,4 +203,66 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      return true
      }
      */
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            let item : Product
+            if self.resultSearchController!.isActive {
+                item = self.filtered[indexPath.row]
+                self.filtered.remove(at: indexPath.row)
+            } else {
+                item = self.favourites[indexPath.row]
+                self.favourites.remove(at: indexPath.row)
+            }
+            item.favourite = false
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            item.favourite = false
+            PersistenceManager.saveContext()
+        }
+
+        
+        let itemTest:Product
+        if self.resultSearchController!.isActive {
+            itemTest = self.filtered[indexPath.row]
+        } else {
+            itemTest = self.favourites[indexPath.row]
+        }
+        
+        if itemTest.inTheList == false{
+        
+            
+ 
+                        let addToList = UITableViewRowAction(style: .normal, title: "Add to List") { (action, indexPath) in
+                                // add to shopping list
+                                let item : Product
+                                if self.resultSearchController!.isActive {
+                                    item = self.filtered[indexPath.row]
+                                } else {
+                                    item = self.favourites[indexPath.row]
+                                }
+                                    if item.inTheList == true{
+                                        tableView.reloadData()
+                                    }else{
+                                    
+                                        item.inTheList = true
+                                        PersistenceManager.saveContext()
+                                        tableView.reloadData()
+                                }
+                        }
+
+        
+    
+        //addToList.backgroundColor = UIColor(patternImage: UIImage.init(imageLiteralResourceName: "/Users/mariocantalupo/Desktop/appShop/App/check-mark-white-on-black-circular-background-2.png"))
+        addToList.backgroundColor = UIColor.orange
+        
+        
+    
+    
+        return [delete, addToList]
+        }else{
+            return [delete]
+        }
+        
+    }
 }
