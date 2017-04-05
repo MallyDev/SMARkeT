@@ -149,12 +149,11 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
-        
-        //cambia icona
+                
         if item.inTheList {
-            cell.addButton.setImage(#imageLiteral(resourceName: "check-mark-white-on-black-circular-background-2.png"), for: .normal)
+            cell.accessoryType = .checkmark
         } else {
-            cell.addButton.setImage(#imageLiteral(resourceName: "plus-button-2.png"), for: .normal)
+            cell.accessoryType = .none
         }
         
         return cell

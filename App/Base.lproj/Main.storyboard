@@ -385,8 +385,8 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="d8q-DK-ANk" secondAttribute="trailing" constant="16" id="uU1-N6-yYK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.34509803919999998" green="0.52156862749999999" blue="0.21960784310000001" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="addButton" destination="d8q-DK-ANk" id="SUH-yQ-yX4"/>
                                     <outlet property="departmentLabel" destination="oPV-Hc-nDR" id="Rck-F7-H4H"/>
                                     <outlet property="imgView" destination="rAW-ZB-3Yc" id="bEs-U3-gtV"/>
                                     <outlet property="nameLabel" destination="ZVU-4K-5hh" id="w24-pj-v7C"/>
@@ -400,6 +400,10 @@
                             <outlet property="delegate" destination="xZm-iB-d7H" id="hiB-cM-fNu"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="IrK-Iq-HXu"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9b-f2-21r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

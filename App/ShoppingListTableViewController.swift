@@ -13,22 +13,19 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     
     var list : Array<Product> = []
     
-    let dataSource:[String] = ["1","2","3","4","5","6","7","8","9"]
+    let dataSource:[String] = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
     var picker = UIPickerView()
     var cellModified = ShoppingListTableViewCell()
     var itemModified = Product()
     
-    @IBAction func dismissPicker(_ sender: UITapGestureRecognizer) {
-        if cellModified.nameLabel != nil{
-            cellModified.quantityLabel.delegate = self
-            cellModified.quantityLabel.resignFirstResponder()
-        }
-    }
+    
     @IBAction func updateQuantity(_ sender: UITextField) {
         let textFieldPosition = sender.convert(CGPoint(), to: tableView)
         let currentIndexPath = tableView.indexPathForRow(at: textFieldPosition)
         cellModified = tableView.cellForRow(at: currentIndexPath!) as! ShoppingListTableViewCell
+        cellModified.quantityLabel.delegate = self
         cellModified.resignFirstResponder()
+        tableView.resignFirstResponder()
         //let value = Int.init(cellModified.quantityLabel.text!)!
         //cellModified.quantityLabel.text = "\(value)"
         //picker.selectedRow(inComponent: value)
@@ -43,6 +40,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     override func viewWillAppear(_ animated: Bool) {
         list = PersistenceManager.fetchList()
         tableView.reloadData()
+
     }
     
     
@@ -50,10 +48,12 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         super.viewDidLoad()
         picker.dataSource = self
         picker.delegate = self
+        tableView.delegate = self
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
-        tapGesture.cancelsTouchesInView = true
-        tableView.addGestureRecognizer(tapGesture)
+        
+       // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
+       // tapGesture.cancelsTouchesInView = true
+       // tableView.addGestureRecognizer(tapGesture)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -92,11 +92,27 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.priceLabel.text = "\(list[indexPath.row].price) €"
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
+        
+        //
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingListTableViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        
         if list[indexPath.row].newPrice >= 0 {
             cell.newPriceLabel.text = "\(list[indexPath.row].newPrice)"
         } else {
             cell.newPriceLabel.text = ""
         }
+        
+        cell.quantityLabel.inputAccessoryView = toolBar
+        
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
         return cell
@@ -179,7 +195,15 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     }
     
     //cellModified.quantityLabel.resignFirstResponder()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        cellModified.quantityLabel.resignFirstResponder()
+        return true
+    }
     
-    
+    func donePicker() {
+        
+        cellModified.quantityLabel.resignFirstResponder()
+        
+    }
 }
 
