@@ -135,15 +135,19 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let item = ref.child("Prodotti")
         item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
             print(snap)
-            let product_read = snap.value! as! NSDictionary
+            let product_read = snap.value as! NSDictionary?
             
+            if(product_read != nil){
             self.prod.barCode = barCode
-            self.prod.name = product_read.value(forKey: "name") as! String?
-            self.prod.department = product_read.value(forKey: "department") as! String?
-            self.prod.descr = product_read.value(forKey: "descr") as! String?
-            self.prod.price = product_read.value(forKey: "price") as! Float
-            self.prod.imageUrl = product_read.value(forKey: "url") as! String?
+            self.prod.name = product_read!.value(forKey: "name") as! String?
+            self.prod.department = product_read!.value(forKey: "department") as! String?
+            self.prod.descr = product_read!.value(forKey: "descr") as! String?
+            self.prod.price = product_read!.value(forKey: "price") as! Float
+            self.prod.imageUrl = product_read!.value(forKey: "url") as! String?
             print(self.prod)
+            }else{
+                
+            }
         })
         
         //mando il prodotto finito a showPopUp

@@ -12,6 +12,8 @@ import UIKit
 class ItemDetailViewController: UIViewController {
     
     var item : Product?
+    var favouriteButton : UIBarButtonItem?
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var descript: UITextView!
@@ -19,7 +21,9 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
-    var favouriteButton : UIBarButtonItem?
+    @IBOutlet weak var newPriceLabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,20 @@ class ItemDetailViewController: UIViewController {
         self.quantityLabel.text = "\(item!.quantity)"
         self.descript.text = item!.descr
         self.departmentLabel.text = item!.department!
-        self.priceLabel.text = "\(item!.price) €"
+        if item!.newPrice <= 0{
+            self.priceLabel.text = "\(item!.price) €"
+        }else{
+            self.priceLabel.text = "\(item!.price) €"
+            self.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  self.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+             self.priceLabel.attributedText = attributeString
+            
+            self.newPriceLabel.text = "\(item!.newPrice) €"
+            
+        }
+        
         if (item?.inTheList)! {
             
             addButton.setTitle(NSLocalizedString("Remove from List",comment:""), for: .normal)

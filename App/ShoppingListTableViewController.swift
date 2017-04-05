@@ -20,6 +20,7 @@ enum PhotoError: Error {
 class ShoppingListTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     var list : Array<Product> = []
+    let iS = ImageStore()
     
     var dataSource: Array<String> = []
     var picker = UIPickerView()
@@ -110,27 +111,34 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         
         
         //carico l'immagine
+        if iS.image(forKey: list[indexPath.row].barCode!) == nil {
         let u: String? = list[indexPath.row].imageUrl
         let url = URL(string: u!)
-        print(url!)
+        print("L'url letto è \(url!)")
         let request = URLRequest(url: url! as URL)
         let session: URLSession = {
             let config = URLSessionConfiguration.default
             return URLSession(configuration: config)
         }()
+        /*
         if cell.departmentLabel.text == "Reparto"{
             cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
             cell.imgView.backgroundColor = UIColor.white
-        }
+        }*/
+        
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             let result = self.processImageRequest(data: data, error: error as NSError?)
             
             if case let .success(image) = result {
-                cell.imgView.image = image
+                self.iS.setImage(image, forKey: self.list[indexPath.row].barCode!)
+                //cell.imgView.image = image
             }
         })
         task.resume()
+        }else{
+            cell.imgView.image = iS.image(forKey: list[indexPath.row].barCode!)
+        }
         
         //
         let toolBar = UIToolbar()
