@@ -136,7 +136,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
             print(snap)
             let product_read = snap.value! as! NSDictionary
-
+            
             self.prod.barCode = barCode
             self.prod.name = product_read.value(forKey: "name") as! String?
             self.prod.department = product_read.value(forKey: "department") as! String?
