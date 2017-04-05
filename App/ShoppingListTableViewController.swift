@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+enum ImageResult {
+    case success(UIImage)
+    case failure(Error)
+}
+enum PhotoError: Error {
+    case imageCreationError
+}
+
 class ShoppingListTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     var list : Array<Product> = []
@@ -93,6 +101,25 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
         
+        
+        //carico l'immagine
+        let u: String? = list[indexPath.row].imageUrl
+        let url = URL(string: u!)
+        let request = URLRequest(url: url! as URL)
+        let session: URLSession = {
+            let config = URLSessionConfiguration.default
+            return URLSession(configuration: config)
+        }()
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) -> Void in
+            let result = self.processImageRequest(data: data, error: error as NSError?)
+            
+            if case let .success(image) = result {
+                cell.imgView.image = image
+            }
+        })
+        task.resume()
+        
         //
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -100,6 +127,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingListTableViewController.donePicker))
+        doneButton.tintColor = UIColor.green
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
@@ -118,6 +146,23 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         return cell
     }
     
+    func processImageRequest(data: Data?, error: NSError?) -> ImageResult {
+        
+        guard let
+            imageData = data,
+            let image = UIImage(data: imageData) else {
+                
+                // Couldn't create an image
+                if data == nil {
+                    return .failure(error!)
+                }
+                else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+        }
+        
+        return .success(image)
+    }
     
     /*
      // Override to support conditional editing of the table view.
