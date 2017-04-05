@@ -14,14 +14,21 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
     var favourites = [Product]()
     var filtered : Array<Product> = []
     var resultSearchController: UISearchController?
+   
     
     override func viewWillAppear(_ animated: Bool) {
         favourites = PersistenceManager.fetchFavourites()
-        tableView.reloadData()
+        
+        filtered.removeAll(keepingCapacity: true)
+        
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.definesPresentationContext = true
+        
         self.resultSearchController = ({
             // creo un oggetto di tipo UISearchController
             let controller = UISearchController(searchResultsController: nil)
@@ -62,14 +69,30 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
     }
     
     func filtraContenuti(testoCercato: String, scope: String) {
-        filtered.removeAll(keepingCapacity: true)
-        for x in favourites {
-            if (scope == "Tutti") {
-                if (x.name?.range(of: testoCercato) != nil) {
-                    filtered.append(x)
+        if testoCercato == ""{
+            filtered.removeAll(keepingCapacity: true)
+            filtered.append(contentsOf: favourites)
+        }else{
+            filtered.removeAll(keepingCapacity: true)
+            for x in favourites {
+                /*var justOne = false
+                 for (_, categoria) in x.department.enumerate() {
+                 if (scope == "Tutti" || categoria == scope) {
+                 if((x.nome.rangeOfString(testoCercato.localizedLowercaseString) != nil) && justOne == false) {
+                 print("aggiungo \(x.nome) alla listaFiltrata")
+                 listaFiltrata.append(x)
+                 justOne = true
+                 }
+                 }
+                 }*/
+                if (scope == "Tutti") {
+                    if (x.name?.range(of: testoCercato) != nil) {
+                        filtered.append(x)
+                    }
                 }
+                
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         }
     }
     
