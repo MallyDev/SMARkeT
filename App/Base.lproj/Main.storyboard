@@ -250,6 +250,15 @@
                                             <color key="textColor" red="0.2666666667" green="0.58431372550000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9x-Cn-dmc">
+                                            <rect key="frame" x="354" y="25" width="25" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="updateQuantity:" destination="ggc-tG-BEM" eventType="editingDidBegin" id="S4J-EJ-I4k"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="6dp-9w-3fs" secondAttribute="bottom" id="0DB-Uc-hWq"/>
@@ -271,12 +280,10 @@
                                 <connections>
                                     <outlet property="departmentLabel" destination="Qmm-6c-XnZ" id="iYi-Vk-gX9"/>
                                     <outlet property="imgView" destination="5xt-94-RYT" id="qeN-L7-AEw"/>
-                                    <outlet property="minusButton" destination="mCg-Cd-ES4" id="6U2-dG-kxb"/>
                                     <outlet property="nameLabel" destination="cmH-jd-0Dh" id="X4c-KY-2YL"/>
                                     <outlet property="newPriceLabel" destination="JbW-aj-ZbK" id="dGZ-Wz-LQK"/>
-                                    <outlet property="plusButton" destination="c85-ln-Lt9" id="Zld-HK-FPV"/>
                                     <outlet property="priceLabel" destination="6dp-9w-3fs" id="zEc-Sb-jG0"/>
-                                    <outlet property="quantityLabel" destination="ofL-bq-N7U" id="ahK-CB-Ab7"/>
+                                    <outlet property="quantityLabel" destination="C9x-Cn-dmc" id="yuQ-bq-zsf"/>
                                     <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="6Dk-r5-M42"/>
                                 </connections>
                             </tableViewCell>
@@ -296,6 +303,12 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqg-u0-jhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HDi-Xm-RPT">
+                    <connections>
+                        <action selector="dismissPicker:" destination="ggc-tG-BEM" id="hT1-sl-IXw"/>
+                        <outlet property="delegate" destination="U2V-Td-rxf" id="yBb-U5-GwJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1020.2898550724639" y="-1136.413043478261"/>
         </scene>
@@ -653,7 +666,6 @@
         <image name="online-store" width="24" height="24"/>
         <image name="plus-button-2.png" width="32" height="32"/>
         <image name="plus-button.png" width="32" height="32"/>
-        <image name="rounded-delete-button-with-minus.png" width="32" height="32"/>
         <image name="sales" width="24" height="24"/>
         <image name="star" width="24" height="24"/>
     </resources>
