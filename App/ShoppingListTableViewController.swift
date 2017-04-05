@@ -40,6 +40,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         itemModified = list[currentIndexPath!.row]
         //itemModified.quantity = Int32(value)
         //cellModified.quantityLabel.text = "\(value)"
+        picker.selectRow(Int.init(cellModified.quantityLabel.text!)!-1, inComponent: 0, animated: true)
     }
     
    
@@ -108,7 +109,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         
         
         //carico l'immagine
-        let u: String? = list[indexPath.row].imageUrl
+        /*let u: String? = list[indexPath.row].imageUrl
         let url = URL(string: u!)
         let request = URLRequest(url: url! as URL)
         let session: URLSession = {
@@ -123,7 +124,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                 cell.imgView.image = image
             }
         })
-        task.resume()
+        task.resume()*/
         
         //
         let toolBar = UIToolbar()
