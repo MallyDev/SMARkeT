@@ -42,6 +42,7 @@
 		6CA47ECA1E93CE530061407A /* check-mark-white-on-black-circular-background-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA47EC81E93CE530061407A /* check-mark-white-on-black-circular-background-2.png */; };
 		6CC674FA1E939BC9007ECEE5 /* file.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6CC674F91E939BC9007ECEE5 /* file.gitignore */; };
 		966AB9F182FEBC2AF91FDCEB /* Pods_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E297AACA5ABAD7A4F24A7DE5 /* Pods_AppUITests.framework */; };
+		9BD668D71E94FF3E003C2FB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BD668D91E94FF3E003C2FB6 /* Localizable.strings */; };
 		F5276C83C591E770637703CF /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		7624ADAFD7146366AFF6BFD5 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BD668D31E94D6E5003C2FB6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		9BD668D41E94D6E5003C2FB6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9BD668D81E94FF3E003C2FB6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9BD668DA1E94FF41003C2FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA89C04F5393CBE7D18547D7 /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB3D8FD7E26348CA4394F807 /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D0F96E764FBD50329B60C4 /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 		2963D7441E8FE2C00043D171 = {
 			isa = PBXGroup;
 			children = (
+				9BD668D91E94FF3E003C2FB6 /* Localizable.strings */,
 				2963D7831E8FE5490043D171 /* Product+CoreDataClass.swift */,
 				2963D7841E8FE5490043D171 /* Product+CoreDataProperties.swift */,
 				2963D7871E8FE55D0043D171 /* PersistenceManager.swift */,
@@ -184,23 +188,16 @@
 		2963D74F1E8FE2C00043D171 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */,
-				2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */,
-				6C70DD481E9293FA0060E760 /* AddItemTableViewCell.swift */,
-				194B5BCE1E923ED5000DBDE6 /* ShoppingListTableViewCell.swift */,
-				2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */,
-				194B5BD01E924128000DBDE6 /* FavouritesTableViewCell.swift */,
+				6C858F2C1E9514F900570B27 /* ShoppingListTab */,
+				6C858F2D1E95150600570B27 /* OffersTab */,
+				6C858F2E1E95150D00570B27 /* ScanTab */,
+				6C858F2F1E95151700570B27 /* FavouritesTab */,
 				2963D78F1E8FE8E80043D171 /* ObjCBridge.h */,
 				2489B4AB1E938921009D2C1C /* Main.storyboard */,
 				2963D7501E8FE2C00043D171 /* AppDelegate.swift */,
 				2963D7801E8FE4CF0043D171 /* product.xcdatamodeld */,
-				29F0DEE71E913DD000205C9E /* Offers.swift */,
 				2963D7591E8FE2C00043D171 /* Assets.xcassets */,
-				2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */,
-				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
 				6CC674F91E939BC9007ECEE5 /* file.gitignore */,
-				2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */,
-				2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */,
 				2963D75B1E8FE2C00043D171 /* LaunchScreen.storyboard */,
 				2963D7981E8FEE270043D171 /* Icon */,
 				2963D75E1E8FE2C00043D171 /* Info.plist */,
@@ -241,6 +238,45 @@
 				2963D7931E8FEE050043D171 /* rounded-delete-button-with-minus.png */,
 			);
 			name = Icon;
+			sourceTree = "<group>";
+		};
+		6C858F2C1E9514F900570B27 /* ShoppingListTab */ = {
+			isa = PBXGroup;
+			children = (
+				2963D7A51E8FF35D0043D171 /* ShoppingListTableViewController.swift */,
+				194B5BCE1E923ED5000DBDE6 /* ShoppingListTableViewCell.swift */,
+				2963D79F1E8FF2370043D171 /* AddItemTableViewController.swift */,
+				6C70DD481E9293FA0060E760 /* AddItemTableViewCell.swift */,
+				2963D7A71E8FF3C50043D171 /* ItemDetailViewController.swift */,
+			);
+			name = ShoppingListTab;
+			sourceTree = "<group>";
+		};
+		6C858F2D1E95150600570B27 /* OffersTab */ = {
+			isa = PBXGroup;
+			children = (
+				2963D7A31E8FF2F50043D171 /* OffersTabViewController.swift */,
+				2963D7A11E8FF2A90043D171 /* OfferCellTableViewCell.swift */,
+				29F0DEE71E913DD000205C9E /* Offers.swift */,
+			);
+			name = OffersTab;
+			sourceTree = "<group>";
+		};
+		6C858F2E1E95150D00570B27 /* ScanTab */ = {
+			isa = PBXGroup;
+			children = (
+				2963D79B1E8FF0590043D171 /* ScanTabViewController.swift */,
+			);
+			name = ScanTab;
+			sourceTree = "<group>";
+		};
+		6C858F2F1E95151700570B27 /* FavouritesTab */ = {
+			isa = PBXGroup;
+			children = (
+				2963D79D1E8FF1A80043D171 /* FavouritesTabTableViewController.swift */,
+				194B5BD01E924128000DBDE6 /* FavouritesTableViewCell.swift */,
+			);
+			name = FavouritesTab;
 			sourceTree = "<group>";
 		};
 		D27F1E4871B5B6985491F4D2 /* Pods */ = {
@@ -333,7 +369,7 @@
 				TargetAttributes = {
 					2963D74C1E8FE2C00043D171 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = RFX667DMC5;
+						DevelopmentTeam = US2HY323M5;
 						ProvisioningStyle = Automatic;
 					};
 					2963D7621E8FE2C00043D171 = {
@@ -357,6 +393,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 2963D7441E8FE2C00043D171;
 			productRefGroup = 2963D74E1E8FE2C00043D171 /* Products */;
@@ -385,6 +422,7 @@
 				2963D75A1E8FE2C00043D171 /* Assets.xcassets in Resources */,
 				6CA47EC91E93CE530061407A /* star-2.png in Resources */,
 				194D14681E9385EC0080929A /* fruit-default.png in Resources */,
+				9BD668D71E94FF3E003C2FB6 /* Localizable.strings in Resources */,
 				2963D7951E8FEE050043D171 /* plus-button-2.png in Resources */,
 				194D146A1E9385EC0080929A /* item-default.png in Resources */,
 				2963D7961E8FEE050043D171 /* plus-button.png in Resources */,
@@ -620,6 +658,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		9BD668D91E94FF3E003C2FB6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BD668D81E94FF3E003C2FB6 /* it */,
+				9BD668DA1E94FF41003C2FB6 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -724,14 +771,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RFX667DMC5;
+				DEVELOPMENT_TEAM = US2HY323M5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
+				PRODUCT_BUNDLE_IDENTIFIER = it.unisa.iOS.MarcoCapozzo.beacon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
@@ -745,14 +792,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RFX667DMC5;
+				DEVELOPMENT_TEAM = US2HY323M5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.live.ivan.App;
+				PRODUCT_BUNDLE_IDENTIFIER = it.unisa.iOS.MarcoCapozzo.beacon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
