@@ -75,11 +75,14 @@ class ItemDetailViewController: UIViewController {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
             sender.setTitle("Remove from List", for: .normal)
+            item?.quantity = 1
             sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             sender.setTitle( "Add to List", for: .normal)
+            item?.quantity = 0
             sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
+        quantityLabel.text = "\(item!.quantity)"
         PersistenceManager.saveContext()
     }
     
