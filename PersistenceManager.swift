@@ -85,7 +85,7 @@ class PersistenceManager{
         let context = getContext()
         var products = [Product]()
         let fetchRequest=NSFetchRequest<Product>(entityName: name)
-        fetchRequest.predicate = NSPredicate(format: "newPrice != 0")
+        fetchRequest.predicate = NSPredicate(format: "newPrice > 0")
         
         do {
             try products=context.fetch(fetchRequest)
