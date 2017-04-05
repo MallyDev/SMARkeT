@@ -50,6 +50,11 @@ class ItemDetailViewController: UIViewController {
         imgView.image = #imageLiteral(resourceName: "plus-button.png")
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descript.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
     func addFavourite () {
         item?.favourite = !(item?.favourite)!
         if (item?.favourite)! {
