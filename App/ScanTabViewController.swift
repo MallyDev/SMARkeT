@@ -35,7 +35,6 @@ struct AppUtility {
 class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    let prod = PersistenceManager.newEmptyProd()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +130,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     //funzione per cercare il prodotto in Firebase
     func find(barCode: String){
-        let ref = FIRDatabase.database().reference()
+        /*let ref = FIRDatabase.database().reference()
         let item = ref.child("Prodotti")
         
         item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
@@ -139,6 +138,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             let product_read = snap.value as! NSDictionary?
             
             if(product_read != nil){
+            self.prod = PersistenceManager.newEmptyProd()
             self.prod.barCode = barCode
             self.prod.name = product_read!.value(forKey: "name") as! String?
             self.prod.department = product_read!.value(forKey: "department") as! String?
@@ -149,10 +149,16 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }else{
                 
             }
-        })
+        })*/
         
-        //mando il prodotto finito a showPopUp
-        showPopup(product: prod)
+        let result = PersistenceManager.searchProduct(barcode: barCode)
+        if  result.1 {
+            let prod = result.0
+            showPopup(product: prod)
+        } else {
+            showAlert()
+        }
+        
     }
     
     func showPopup(product: Product){
@@ -163,7 +169,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
             //aggiungere il prodotto nell'array di shopping list
-            self.prod.inTheList = true
+            product.inTheList = true
             PersistenceManager.saveContext()
             //far comparire la view di shopping list
             self.tabBarController?.selectedIndex = 0
@@ -174,7 +180,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
-                self.prod.favourite = true
+                product.favourite = true
                 PersistenceManager.saveContext()
                 //far comparire la view dei Favourites
                 self.tabBarController?.selectedIndex = 3
@@ -189,4 +195,12 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }))
     }
     
+    func showAlert() {
+        let popUp = UIAlertController(title: "ERROR", message: "Product not found", preferredStyle: .actionSheet)
+        self.present(popUp,animated: true,completion: nil)
+        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                self.viewDidLoad()
+        }))
+    }
 }

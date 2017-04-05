@@ -14,7 +14,6 @@ class DatabaseManager {
     
     static func loadDatabase () {
         let ref = FIRDatabase.database().reference()
-        var temp : Array<Product> = []
         
         let item = ref.child("Prodotti")
         item.observeSingleEvent(of: .value, with: {(snap) in
