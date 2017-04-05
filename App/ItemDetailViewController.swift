@@ -64,8 +64,60 @@ class ItemDetailViewController: UIViewController {
         }
         stepper.value = Double((item?.quantity)!)
         
-        //prova immagine
-        imgView.image = #imageLiteral(resourceName: "plus-button.png")
+        //carico l'immagine
+        let u: String? = item?.imageUrl
+        let url = URL(string: u!)
+        print(url!)
+        let request = URLRequest(url: url! as URL)
+        let session: URLSession = {
+            let config = URLSessionConfiguration.default
+            return URLSession(configuration: config)
+        }()
+        /*
+         if cell.departmentLabel.text == "Reparto"{
+         cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+         cell.imgView.backgroundColor = UIColor.white
+         }*/
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) -> Void in
+            let result = self.processImageRequest(data: data, error: error as NSError?)
+            
+            if case var .success(image) = result {
+                self.imgView.backgroundColor = UIColor.white
+                image = self.resizeImage(image: image, targetSize: CGSize(width:250,height:250))
+                self.imgView.image = image
+            }
+        })
+        task.resume()
+        
+        
+    }
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,5 +172,22 @@ class ItemDetailViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    func processImageRequest(data: Data?, error: NSError?) -> ImageResult {
+        
+        guard let
+            imageData = data,
+            let image2 = UIImage(data: imageData) else {
+                
+                // Couldn't create an image
+                if data == nil {
+                    return .failure(error!)
+                }
+                else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+        }
+        
+        return .success(image2)
+    }
     
 }

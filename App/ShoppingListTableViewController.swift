@@ -126,13 +126,17 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             cell.imgView.backgroundColor = UIColor.white
         }*/
         
+        
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             let result = self.processImageRequest(data: data, error: error as NSError?)
             
-            if case let .success(image) = result {
-                self.iS.setImage(image, forKey: self.list[indexPath.row].barCode!)
-                //cell.imgView.image = image
+            if case var .success(image) = result {
+                cell.imgView.backgroundColor = UIColor.white
+                cell.imgView.image = image
+                cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+
+                
             }
         })
         task.resume()
@@ -270,5 +274,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cellModified.quantityLabel.resignFirstResponder()
         
     }
+    
+
 }
 
