@@ -56,12 +56,12 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             
         case 2:
             let item = dailyList[indexPath.row]
-            myCell.name.text = item
+            
             break
             
         case 3:
             let item = allList[indexPath.row]
-            myCell.name.text = item
+            
             break
             
         default:
@@ -139,11 +139,11 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             case 2:
                 let item=dailyList[currentRow!]
                 let dstView = segue.destination as! ItemDetailViewController
-                dstView.title=item
+                
             case 3:
                 let item=allList[currentRow!]
                 let dstView = segue.destination as! ItemDetailViewController
-                dstView.title=item
+                
             default:
                 break
                 
