@@ -109,7 +109,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         
         
         //carico l'immagine
-        /*let u: String? = list[indexPath.row].imageUrl
+        let u: String? = list[indexPath.row].imageUrl
         let url = URL(string: u!)
         print(url!)
         let request = URLRequest(url: url! as URL)
@@ -125,7 +125,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                 cell.imgView.image = image
             }
         })
-        task.resume()*/
+        task.resume()
         
         //
         let toolBar = UIToolbar()

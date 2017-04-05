@@ -60,10 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         //Request the permission to use location and notification
         beaconManager.requestAlwaysAuthorization()
         
-        for product in PersistenceManager.fetchAll(){
+        /*for product in PersistenceManager.fetchAll(){
             PersistenceManager.deleteProduct(product: product)
         }
-        PersistenceManager.saveContext()
+        PersistenceManager.saveContext()*/
         
         let product = PersistenceManager.newEmptyProd()
         PersistenceManager.saveContext()
