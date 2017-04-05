@@ -18,7 +18,7 @@
 "Cj7-hV-DIU.text" = "0 €";
 
 /* Class = "UIButton"; normalTitle = "Add to List"; ObjectID = "Cnb-wk-qvk"; */
-"Cnb-wk-qvk.normalTitle" = "Add to List";
+"Cnb-wk-qvk.normalTitle" = "Aggiungi alla Lista";
 
 /* Class = "UISegmentedControl"; ISE-Pt-ogk.segmentTitles[0] = "My List"; ObjectID = "ISE-Pt-ogk"; */
 "ISE-Pt-ogk.segmentTitles[0]" = "Lista";
