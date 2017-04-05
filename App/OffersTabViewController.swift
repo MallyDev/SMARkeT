@@ -23,13 +23,13 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var temp : Product
+        /*var temp : Product
         temp=PersistenceManager.newEmptyProd()
         temp.inTheList=true
         temp.favourite=true
         myList=PersistenceManager.fetchAll()
         favouritesList=PersistenceManager.fetchFavourites()
-        PersistenceManager.saveContext()
+        PersistenceManager.saveContext()*/
         
     }
     

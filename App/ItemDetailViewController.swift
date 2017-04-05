@@ -18,6 +18,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
     var favouriteButton : UIBarButtonItem?
     
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class ItemDetailViewController: UIViewController {
         self.title=item?.name
         self.quantityLabel.text = "\(item!.quantity)"
         self.descript.text = item!.descr
+        self.departmentLabel.text = item!.department!
         self.priceLabel.text = "\(item!.price) €"
         if (item?.inTheList)! {
             addButton.setTitle("Remove from List", for: .normal)
@@ -46,6 +48,11 @@ class ItemDetailViewController: UIViewController {
         
         //prova immagine
         imgView.image = #imageLiteral(resourceName: "plus-button.png")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descript.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func addFavourite () {
@@ -68,11 +75,14 @@ class ItemDetailViewController: UIViewController {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
             sender.setTitle("Remove from List", for: .normal)
+            item?.quantity = 1
             sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             sender.setTitle( "Add to List", for: .normal)
+            item?.quantity = 0
             sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
+        quantityLabel.text = "\(item!.quantity)"
         PersistenceManager.saveContext()
     }
     

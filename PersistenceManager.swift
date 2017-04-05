@@ -30,8 +30,9 @@ class PersistenceManager{
         product.inTheList=false
         product.quantity=0
         product.weight=0.0
-        product.newPrice=0.0
-        product.department=""
+        product.newPrice = -1
+        product.department = "Reparto"
+        product.imageUrl = "https://cdn.pixabay.com/photo/2015/10/31/12/00/question-1015308_1280.jpg"
         
         return product
     }

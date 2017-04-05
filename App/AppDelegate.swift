@@ -60,6 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         //Request the permission to use location and notification
         beaconManager.requestAlwaysAuthorization()
         
+        for product in PersistenceManager.fetchAll(){
+            PersistenceManager.deleteProduct(product: product)
+        }
+        PersistenceManager.saveContext()
+        
+        let product = PersistenceManager.newEmptyProd()
+        PersistenceManager.saveContext()
+        
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
