@@ -32,6 +32,7 @@ class PersistenceManager{
         product.weight=0.0
         product.newPrice = -1
         product.department = "Reparto"
+        product.imageUrl = "http://www.vishmax.com/en/innovattive-cms/themes/themax-theme-2015/images/no-image-found.gif"
         
         return product
     }
