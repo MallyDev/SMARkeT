@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         case 21413 : //Food-
             listaFiltrata = filterList(search: "Food")
-            if(listaFiltrata.count != 0){
+            if listaFiltrata.count > 0 {
                 var nameProduct: String = ""
                 for product in listaFiltrata{
                     nameProduct += "\n" + product.name!
@@ -183,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             
         case 35887: //Drink
             listaFiltrata = filterList(search: "Drink")
-            if(listaFiltrata.count != 0){
+            if listaFiltrata.count > 0 {
                 var nameProduct: String = ""
                 for product in listaFiltrata{
                     nameProduct += "\n" + product.name!
@@ -212,7 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         
         case 27161: //Item
             listaFiltrata = filterList(search: "Item")
-            if(listaFiltrata.count != 0){
+            if listaFiltrata.count > 0 {
                 var nameProduct: String = ""
                 for product in listaFiltrata{
                     nameProduct += "\n" + product.name!

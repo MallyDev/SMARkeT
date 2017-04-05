@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 class OfferCellTableViewCell: UITableViewCell {
     
-    
-    @IBOutlet weak var name: UILabel!
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var newPriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
