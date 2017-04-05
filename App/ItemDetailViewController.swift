@@ -18,6 +18,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var departmentLabel: UILabel!
     var favouriteButton : UIBarButtonItem?
     
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class ItemDetailViewController: UIViewController {
         self.title=item?.name
         self.quantityLabel.text = "\(item!.quantity)"
         self.descript.text = item!.descr
+        self.departmentLabel.text = item!.department!
         self.priceLabel.text = "\(item!.price) €"
         if (item?.inTheList)! {
             addButton.setTitle("Remove from List", for: .normal)
@@ -46,6 +48,11 @@ class ItemDetailViewController: UIViewController {
         
         //prova immagine
         imgView.image = #imageLiteral(resourceName: "plus-button.png")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descript.setContentOffset(CGPoint.zero, animated: false)
     }
     
     func addFavourite () {

@@ -127,6 +127,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShoppingListTableViewController.donePicker))
+        doneButton.tintColor = UIColor.green
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
