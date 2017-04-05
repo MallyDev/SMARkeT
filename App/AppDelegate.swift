@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         //configuring database
         FIRApp.configure()
         
+        DatabaseManager.loadDatabase()
         //Creation of the lists
         productsInList = PersistenceManager.fetchList()
         
@@ -65,8 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         }
         PersistenceManager.saveContext()*/
         
-        let product = PersistenceManager.newEmptyProd()
-        PersistenceManager.saveContext()
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in

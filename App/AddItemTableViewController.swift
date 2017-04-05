@@ -175,7 +175,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         } else {
             u = products[indexPath.row].imageUrl
         }
-
+/*
         //carico l'immagine
         let url = URL(string: u!)
         print(url!)
@@ -199,7 +199,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 cell.imgView.image = image
             }
         })
-        task.resume()
+        task.resume()*/
         
         return cell
     }

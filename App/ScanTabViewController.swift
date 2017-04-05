@@ -133,6 +133,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func find(barCode: String){
         let ref = FIRDatabase.database().reference()
         let item = ref.child("Prodotti")
+        
         item.child(barCode).observeSingleEvent(of: .value, with: {(snap) in
             print(snap)
             let product_read = snap.value as! NSDictionary?
