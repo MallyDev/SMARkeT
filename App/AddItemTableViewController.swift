@@ -14,42 +14,45 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     var resultSearchController: UISearchController?
     var products : Array<Product> = []
     var filtered : Array<Product> = []
-    // creo un oggetto di tipo UISearchController
-    let controller = UISearchController(searchResultsController: nil)
     
     public func updateSearchResults(for searchController: UISearchController) {
-        self.filtraContenuti(testoCercato: searchController.searchBar.text!.lowercased(), scope: "Tutti")
+        self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         products = PersistenceManager.fetchAll()
         self.tableView.reloadData()
+            self.resultSearchController = ({
+                // creo un oggetto di tipo UISearchController
+                let controller = UISearchController(searchResultsController: nil)
+                // rimuove la tableView di sottofondo in modo da poter successivamente visualizzare gli elementi cercati
+                controller.dimsBackgroundDuringPresentation = false
+                
+                // il searchResultsUpdater, ovvero colui che gestirà gli eventi di ricerca, sarà la ListaTableViewController (o self)
+                controller.searchResultsUpdater = self
+                
+                // impongo alla searchBar, contenuta all'interno del controller, di adattarsi alle dimensioni dell'applicazioni
+                controller.searchBar.sizeToFit()
+                
+                // attacco alla parte superiore della TableView la searchBar
+                self.navigationItem.titleView = controller.searchBar
+                
+                controller.hidesNavigationBarDuringPresentation = false
+                
+                controller.searchBar.delegate = self
+                
+                // restituisco il controller creato
+                return controller
+            })()
         
-        self.resultSearchController = ({
-            
-            // rimuove la tableView di sottofondo in modo da poter successivamente visualizzare gli elementi cercati
-            controller.dimsBackgroundDuringPresentation = false
-            
-            // il searchResultsUpdater, ovvero colui che gestirà gli eventi di ricerca, sarà la ListaTableViewController (o self)
-            controller.searchResultsUpdater = self
-            
-            // impongo alla searchBar, contenuta all'interno del controller, di adattarsi alle dimensioni dell'applicazioni
-            controller.searchBar.sizeToFit()
-            
-            // attacco alla parte superiore della TableView la searchBar
-            self.navigationItem.titleView = controller.searchBar
-            
-            controller.hidesNavigationBarDuringPresentation = false
-            
-            controller.searchBar.delegate = self
-            
-            // restituisco il controller creato
-            return controller
-        })()
+
     }
     
     func filtraContenuti(testoCercato: String, scope: String) {
+        if testoCercato == ""{
+        filtered.removeAll(keepingCapacity: true)
+        filtered.append(contentsOf: products)
+        }else{
         filtered.removeAll(keepingCapacity: true)
         for x in products {
             /*var justOne = false
@@ -63,12 +66,14 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             }*/
             if (scope == "Tutti") {
-                if (x.name?.lowercased().range(of: testoCercato) != nil) {
+                if (x.name?.range(of: testoCercato) != nil) {
                     filtered.append(x)
                 }
             }
+            
             self.tableView.reloadData()
         }
+            }
     }
     
     @IBAction func addItem(_ sender: UIButton) {
@@ -101,7 +106,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.definesPresentationContext = true
         
         //inizializza la lista di prodotti
         products = PersistenceManager.fetchAll()
