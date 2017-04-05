@@ -53,7 +53,8 @@ class ShoppingListTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.nameLabel.text = list[indexPath.row].name!
-        cell.departmentLabel.text = list[indexPath.row].department
+        cell.departmentLabel.text = list[indexPath.row].department!
+        print(list[indexPath.row].department!)
         cell.priceLabel.text = "\(list[indexPath.row].price) €"
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
