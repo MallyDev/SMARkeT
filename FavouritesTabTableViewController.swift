@@ -111,6 +111,11 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         cell.nameLabel.text = item.name!
         cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
+        if item.newPrice >= 0 {
+            cell.newPriceLabel.text = "\(item.newPrice)"
+        } else {
+            cell.newPriceLabel.text = ""
+        }
         
         return cell
     }
