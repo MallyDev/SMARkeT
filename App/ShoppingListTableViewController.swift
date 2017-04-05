@@ -120,10 +120,12 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             let config = URLSessionConfiguration.default
             return URLSession(configuration: config)
         }()
+        /*
         if cell.departmentLabel.text == "Reparto"{
             cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
             cell.imgView.backgroundColor = UIColor.white
-        }
+        }*/
+        
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             let result = self.processImageRequest(data: data, error: error as NSError?)
