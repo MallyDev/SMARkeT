@@ -117,6 +117,10 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             let config = URLSessionConfiguration.default
             return URLSession(configuration: config)
         }()
+        if cell.departmentLabel.text == "Reparto"{
+            cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+            cell.imgView.backgroundColor = UIColor.white
+        }
         let task = session.dataTask(with: request, completionHandler: {
             (data, response, error) -> Void in
             let result = self.processImageRequest(data: data, error: error as NSError?)
@@ -184,10 +188,10 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            PersistenceManager.deleteProduct(product: list[indexPath.row])
+            list[indexPath.row].inTheList = false
             list.remove(at: indexPath.row)
-            PersistenceManager.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            PersistenceManager.saveContext()
         }
     }
     
