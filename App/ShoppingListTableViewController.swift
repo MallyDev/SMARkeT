@@ -285,7 +285,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
        
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete",comment: "")) { (action, indexPath) in
             // delete item at indexPath
             // Delete the row from the data source
             self.list[indexPath.row].inTheList = false
@@ -301,7 +301,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         var done:UITableViewRowAction
         if item.bought == false{
         
-            done = UITableViewRowAction(style: .default, title: "Bought") { (action, indexPath) in
+            done = UITableViewRowAction(style: .default, title: NSLocalizedString("Bought",comment: "")) { (action, indexPath) in
                 // add to shopping list
                 self.list[indexPath.row].bought = true
                 tableView.reloadData()
@@ -310,7 +310,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             }
         }else{
                 
-                done = UITableViewRowAction(style: .default, title: "Add to list") { (action, indexPath) in
+                done = UITableViewRowAction(style: .default, title:NSLocalizedString("Add to List",comment:"")) { (action, indexPath) in
                     // add to shopping list
                     self.list[indexPath.row].bought = false
                     tableView.reloadData()
