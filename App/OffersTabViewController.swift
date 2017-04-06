@@ -13,6 +13,11 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var typeOfferte: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+    let iS = ImageStore()
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
    
     @IBAction func orderBy(_ sender: UIBarButtonItem) {
         showPopup()
@@ -105,7 +110,28 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             cell.newPriceLabel.text = "\(item.newPrice) €"
         }
 
-        //AGGIUNGERE IMMAGINE A IMGVIEW
+        //AGGIUNGE IMMAGINE A IMGVIEW
+        if iS.image(forKey: item.barCode!) == nil {
+            let url = URL.init(string: (item.imageUrl)!)
+            let request = URLRequest(url: url! as URL)
+            let task = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                let result = self.processImageRequest(data: data, error: error as NSError?)
+                
+                if case var .success(image) = result {
+                    OperationQueue.main.addOperation {
+                        cell.imgView.backgroundColor = UIColor.white
+                        cell.imgView.image = image
+                        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                    }
+                }
+            })
+            task.resume()
+        } else {
+            OperationQueue.main.addOperation {
+                cell.imgView.image = self.iS.image(forKey: item.barCode!)
+            }
+        }
 
         return cell
     }
@@ -243,6 +269,22 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
+    }
+
+    func processImageRequest(data: Data?, error: NSError?) -> ImageResult {
+        guard let
+            imageData = data,
+            let image = UIImage(data: imageData) else {
+                
+                // Couldn't create an image
+                if data == nil {
+                    return .failure(error!)
+                }
+                else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+        }
+        return .success(image)
     }
 
 }

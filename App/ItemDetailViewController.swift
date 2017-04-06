@@ -14,6 +14,11 @@ class ItemDetailViewController: UIViewController {
     
     var item : Product?
     var favouriteButton : UIBarButtonItem?
+    let iS = ImageStore()
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var quantityLabel: UILabel!
@@ -68,33 +73,27 @@ class ItemDetailViewController: UIViewController {
         stepper.value = Double((item?.quantity)!)
         
         //carico l'immagine
-        let u: String? = item?.imageUrl
-        let url = URL(string: u!)
-        print(url!)
-        let request = URLRequest(url: url! as URL)
-        let session: URLSession = {
-            let config = URLSessionConfiguration.default
-            return URLSession(configuration: config)
-        }()
-        /*
-         if cell.departmentLabel.text == "Reparto"{
-         cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
-         cell.imgView.backgroundColor = UIColor.white
-         }*/
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            let result = self.processImageRequest(data: data, error: error as NSError?)
-            
-            if case var .success(image) = result {
-                self.imgView.backgroundColor = UIColor.white
-                image = self.resizeImage(image: image, targetSize: CGSize(width:250,height:250))
-                self.imgView.image = image
+        if iS.image(forKey: (item?.barCode!)!) == nil && item?.imageUrl != nil {
+            let url = URL.init(string: (item?.imageUrl)!)
+            let request = URLRequest(url: url! as URL)
+            let task = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                let result = self.processImageRequest(data: data, error: error as NSError?)
+                
+                if case var .success(image) = result {
+                    OperationQueue.main.addOperation {
+                        self.imgView.backgroundColor = UIColor.white
+                        image = self.resizeImage(image: image, targetSize: CGSize(width:250,height:250))
+                        self.imgView.image = image
+                    }
+                }
+            })
+            task.resume()
+        } else {
+            OperationQueue.main.addOperation {
+                self.imgView.image = self.iS.image(forKey: (self.item?.barCode!)!)
             }
-        })
-        task.resume()
-        
-        
+        }
     }
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
@@ -152,7 +151,7 @@ class ItemDetailViewController: UIViewController {
             sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             sender.setTitle(NSLocalizedString("Add to List",comment:""), for: .normal)
-            item?.quantity = 0
+            item?.quantity = 1
             sender.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
         quantityLabel.text = "\(item!.quantity)"

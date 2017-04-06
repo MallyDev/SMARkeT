@@ -14,6 +14,11 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     var resultSearchController: UISearchController?
     var products : Array<Product> = []
     var filtered : Array<Product> = []
+    let iS = ImageStore()
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
     
     public func updateSearchResults(for searchController: UISearchController) {
         self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
@@ -188,38 +193,27 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             cell.accessoryType = .none
         }
         
-        var u:String?
-        
-        if self.resultSearchController!.isActive {
-            u = filtered[indexPath.row].imageUrl
+        if iS.image(forKey: item.barCode!) == nil && item.imageUrl != nil {
+            let url = URL.init(string: (item.imageUrl)!)
+            let request = URLRequest(url: url! as URL)
+            let task = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                let result = self.processImageRequest(data: data, error: error as NSError?)
+                
+                if case var .success(image) = result {
+                    OperationQueue.main.addOperation {
+                        cell.imgView.backgroundColor = UIColor.white
+                        cell.imgView.image = image
+                        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                    }
+                }
+            })
+            task.resume()
         } else {
-            u = products[indexPath.row].imageUrl
-        }
-/*
-        //carico l'immagine
-        let url = URL(string: u!)
-        print(url!)
-        let request = URLRequest(url: url! as URL)
-        let session: URLSession = {
-            let config = URLSessionConfiguration.default
-            return URLSession(configuration: config)
-        }()
-        /*
-         if cell.departmentLabel.text == "Reparto"{
-         cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
-         cell.imgView.backgroundColor = UIColor.white
-         }*/
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            let result = self.processImageRequest(data: data, error: error as NSError?)
-            
-            if case let .success(image) = result {
-                cell.imgView.backgroundColor = UIColor.white
-                cell.imgView.image = image
+            OperationQueue.main.addOperation {
+                cell.imgView.image = self.iS.image(forKey: item.barCode!)
             }
-        })
-        task.resume()*/
+        }
         
         return cell
     }

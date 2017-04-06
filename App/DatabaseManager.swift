@@ -40,11 +40,6 @@ class DatabaseManager {
                             if temp2 != nil {
                                 prod.imageUrl = product_read!.value(forKey: "url") as! String?
                             }
-
-                            //prod.imageUrl = product_read!.value(forKey: "url") as! String?
-                            /*if(product_read!.allKeys.contains(where: { $0 as! String == "newprice"})){
-                                prod.newPrice=product_read!.value(forKey: "newprice") as! Float
-                            }*/
                             let temp = product_read!.value(forKey: "newprice")
                             if temp != nil {
                                 prod.newPrice = product_read!.value(forKey: "newprice") as! Float
