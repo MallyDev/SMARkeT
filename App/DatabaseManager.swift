@@ -37,6 +37,9 @@ class DatabaseManager {
                             prod.descr = product_read!.value(forKey: "descr") as! String?
                             prod.price = product_read!.value(forKey: "price") as! Float
                             prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            if(product_read!.allKeys.contains(where: { $0 as! String == "newprice"})){
+                                prod.newPrice=product_read!.value(forKey: "newprice") as! Float
+                            }
                             PersistenceManager.saveContext()
                         })
                     } else {
