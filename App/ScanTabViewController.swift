@@ -29,7 +29,6 @@ struct AppUtility {
         
         UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
     }
-    
 }
 
 class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
@@ -152,13 +151,13 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         })*/
         
         let result = PersistenceManager.searchProduct(barcode: barCode)
+        
         if  result.1 {
             let prod = result.0
-            showPopup(product: prod)
+            showPopup(product: prod[0])
         } else {
             showAlert()
         }
-        
     }
     
     func showPopup(product: Product){
@@ -196,7 +195,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func showAlert() {
-        let popUp = UIAlertController(title: "ERROR", message: "Product not found", preferredStyle: .actionSheet)
+        let popUp = UIAlertController(title: "ERROR", message: "Product not found", preferredStyle: .alert)
         self.present(popUp,animated: true,completion: nil)
         popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in

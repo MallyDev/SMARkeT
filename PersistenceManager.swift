@@ -100,18 +100,22 @@ class PersistenceManager{
         context.delete(product)
     }
     
-    static func searchProduct (barcode: String) -> (Product,Bool) {
+    static func searchProduct (barcode: String) -> ([Product],Bool) {
         let context = getContext()
-        var product : Product
-        var result : Bool
+        var product : [Product]
+        var result : Bool = false
         
         let fetchRequest = NSFetchRequest<Product>(entityName: name)
-        fetchRequest.predicate = NSPredicate(format: "barcode == \(barcode)")
+        fetchRequest.predicate = NSPredicate(format: "barCode == \(barcode)")
         
         do {
             try product = context.fetch(fetchRequest)
         } catch let error as NSError {
             fatalError("Error in fetching product by its barcode. \(error)")
+        }
+        
+        if product.count != 0{
+            result = true
         }
         
         return (product,result)
@@ -126,5 +130,4 @@ class PersistenceManager{
             fatalError("Unresolved error in saving context. \(error)")
         }
     }
-    
 }
