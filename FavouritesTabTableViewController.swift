@@ -256,6 +256,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
                                     }else{
                                     
                                         item.inTheList = true
+                                        item.quantity = 1
                                         PersistenceManager.saveContext()
                                         tableView.reloadData()
                                 }
