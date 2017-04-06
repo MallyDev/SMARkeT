@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import UserNotifications
-import BWWalkthrough
 
 enum ImageResult {
     case success(UIImage)
