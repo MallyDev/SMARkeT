@@ -50,6 +50,7 @@
                     <connections>
                         <segue destination="njt-HR-E7l" kind="show" identifier="ScanToShopp" id="1pL-mL-hvB"/>
                         <segue destination="fCi-ma-IvF" kind="show" identifier="ScanToFav" id="kjt-ca-4SW"/>
+                        <segue destination="XqV-6f-Q2C" kind="show" identifier="ScanToDetail" id="3w3-zF-0wZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6h-JE-wsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,7 +706,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Offers" image="sales" id="uUH-Zu-Rh2"/>
                     <navigationItem key="navigationItem" title="Offers" id="e0R-Wp-SpN">
-                        <barButtonItem key="leftBarButtonItem" image="sort-by-attributes.png" id="I6m-56-Y1N">
+                        <barButtonItem key="leftBarButtonItem" image="sort.png" id="I6m-56-Y1N">
                             <connections>
                                 <action selector="orderBy:" destination="sFU-pc-a8M" id="b3E-uh-UiM"/>
                             </connections>
@@ -782,14 +783,15 @@
         <image name="barcode" width="24" height="24"/>
         <image name="online-store" width="24" height="24"/>
         <image name="sales" width="24" height="24"/>
-        <image name="sort-by-attributes.png" width="32" height="32"/>
+        <image name="sort.png" width="32" height="32"/>
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kjt-ca-4SW"/>
-        <segue reference="JK4-F8-G8d"/>
+        <segue reference="3w3-zF-0wZ"/>
         <segue reference="1pL-mL-hvB"/>
-        <segue reference="8UM-Zf-0IR"/>
+        <segue reference="JK4-F8-G8d"/>
+        <segue reference="kjt-ca-4SW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

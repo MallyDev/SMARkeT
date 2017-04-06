@@ -66,6 +66,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         tableView.delegate = self
         inizializeData()
         
+        
        // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
        // tapGesture.cancelsTouchesInView = true
        // tableView.addGestureRecognizer(tapGesture)
@@ -132,7 +133,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             cell.nameLabel.attributedText = NSMutableAttributedString(string:  cell.nameLabel.text!)
 
         }
-        /*
+        
         //carico l'immagine
         if iS.image(forKey: list[indexPath.row].barCode!) == nil {
         let u: String? = list[indexPath.row].imageUrl
@@ -143,11 +144,11 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             let config = URLSessionConfiguration.default
             return URLSession(configuration: config)
         }()
-        /*
+        
         if cell.departmentLabel.text == "Reparto"{
             cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
             cell.imgView.backgroundColor = UIColor.white
-        }*/
+        }
         
         
         let task = session.dataTask(with: request, completionHandler: {
@@ -166,7 +167,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         }else{
             cell.imgView.image = iS.image(forKey: list[indexPath.row].barCode!)
         }
-        */
+        
         //
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default

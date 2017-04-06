@@ -50,8 +50,7 @@ class ItemDetailViewController: UIViewController {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  self.priceLabel.text!)
             attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
             attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
-            self.priceLabel.attributedText = attributeString
-            
+             self.priceLabel.attributedText = attributeString
             self.newPriceLabel.text = "\(item!.newPrice) €"
         }
         
@@ -64,7 +63,7 @@ class ItemDetailViewController: UIViewController {
             addButton.backgroundColor = UIColor.init(red: 92/255, green: 162/255, blue: 41/255, alpha: 1.0)
         }
         stepper.value = Double((item?.quantity)!)
-        /*
+        
         //carico l'immagine
         let u: String? = item?.imageUrl
         let url = URL(string: u!)
@@ -91,7 +90,7 @@ class ItemDetailViewController: UIViewController {
             }
         })
         task.resume()
-        */
+        
         
     }
     
