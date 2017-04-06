@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import BWWalkthrough
 
 enum ImageResult {
     case success(UIImage)
@@ -99,6 +100,8 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+               
         picker.dataSource = self
         picker.delegate = self
         tableView.delegate = self

@@ -71,6 +71,8 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             myTableView.reloadData()
             if dailyList.count == 0{
                 let noDataLabel:UILabel = UILabel()
+                noDataLabel.numberOfLines = 2
+                
                 noDataLabel.text          = "The daily deals are available in the supermarket."
                 noDataLabel.textColor     = UIColor.black
                 noDataLabel.textAlignment = .center
