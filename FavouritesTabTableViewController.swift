@@ -139,6 +139,11 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         } else {
             cell.newPriceLabel.text = ""
         }
+        if item.inTheList {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         //Inizializzare immagine di icona
         
         return cell

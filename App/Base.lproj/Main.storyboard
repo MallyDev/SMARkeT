@@ -65,11 +65,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favouriteCell" rowHeight="50" id="REq-P9-7X6" customClass="FavouritesTableViewCell" customModule="App" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="favouriteCell" rowHeight="50" id="REq-P9-7X6" customClass="FavouritesTableViewCell" customModule="App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REq-P9-7X6" id="2mP-XL-KqL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-eN-eRQ">
@@ -130,6 +130,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="iBa-4q-bvM" secondAttribute="bottom" id="uwn-3E-N95"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.34509803919999998" green="0.52156862749999999" blue="0.21960784310000001" alpha="0.91000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="departmentLabel" destination="YSe-my-e1g" id="Lnm-EZ-Y0B"/>
                                     <outlet property="imageLabel" destination="a6H-eN-eRQ" id="Cgu-OK-cl8"/>
@@ -316,7 +317,7 @@
                                 <rect key="frame" x="0.0" y="1" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDT-GN-aNv" id="QvB-BV-aZq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAW-ZB-3Yc">
@@ -778,9 +779,9 @@
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1pL-mL-hvB"/>
         <segue reference="kjt-ca-4SW"/>
-        <segue reference="8UM-Zf-0IR"/>
+        <segue reference="1pL-mL-hvB"/>
+        <segue reference="QsS-v9-ZTo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

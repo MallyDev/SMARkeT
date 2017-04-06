@@ -109,6 +109,11 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
         cell.quantityLabel.inputView = picker
         
+        if list[indexPath.row].bought{
+            cell.backgroundColor = UIColor.yellow
+        }else{
+            cell.backgroundColor = UIColor.white
+        }
         /*
         //carico l'immagine
         if iS.image(forKey: list[indexPath.row].barCode!) == nil {
@@ -280,20 +285,35 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             // delete item at indexPath
             // Delete the row from the data source
             self.list[indexPath.row].inTheList = false
+             self.list[indexPath.row].bought = false
             self.list.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             PersistenceManager.saveContext()
 
         }
         
+        let item : Product
+        item = self.list[indexPath.row]
+        var done:UITableViewRowAction
+        if item.bought == false{
         
-        let done = UITableViewRowAction(style: .default, title: "Done") { (action, indexPath) in
-            // add to shopping list
-            let item : Product
-            item = self.list[indexPath.row]
-            tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.orange
-            tableView.reloadData()
-            PersistenceManager.saveContext()
+            done = UITableViewRowAction(style: .default, title: "Bought") { (action, indexPath) in
+                // add to shopping list
+                self.list[indexPath.row].bought = true
+                tableView.reloadData()
+                PersistenceManager.saveContext()
+        
+            }
+        }else{
+                
+                done = UITableViewRowAction(style: .default, title: "Add to list") { (action, indexPath) in
+                    // add to shopping list
+                    self.list[indexPath.row].bought = false
+                    tableView.reloadData()
+                    PersistenceManager.saveContext()
+        }
+        
+       
         }
         
         
