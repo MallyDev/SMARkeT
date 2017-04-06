@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var favourites: [Product]!
     
-   
+    var typeOffer = 0
     
     
     
@@ -111,7 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 banner.dismissesOnSwipe = true
                 banner.dismissesOnTap = true
                 banner.show(duration: 5.0)
-            
+        
+        DatabaseManager.loadDaily()
        }
         
         
@@ -353,7 +354,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             }
         }
     }
+    
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        //questo codice verrà eseguito ogni volta che le Quick Actions verranno eseguite
+        if (shortcutItem.type == "com.smarket.discoverOffer") {
+           
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
+            let rootTabBarController = self.window?.rootViewController as! UITabBarController
+            
+            let firstNavigationController = storyboard.instantiateViewController(withIdentifier: "offersNav") as! UINavigationController
+            
+            
+            rootTabBarController.selectedIndex = 1
+            //the viewController to present
+            let viewController = storyboard.instantiateViewController(withIdentifier: "offersTabViewController") as! OffersTabViewController
+            
+            //set variables in viewController
+            
+            self.typeOffer = 2
+            
+            firstNavigationController.pushViewController(viewController, animated: true)
+            
+            
+        }
+        if (shortcutItem.type == "com.smarket.scan") {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let rootTabBarController = self.window?.rootViewController as! UITabBarController
+            
+            let firstNavigationController = storyboard.instantiateViewController(withIdentifier: "scanNav") as! UINavigationController
+            
+            
+            rootTabBarController.selectedIndex = 2
+            //the viewController to present
+            let viewController = storyboard.instantiateViewController(withIdentifier: "scanTabViewController") as! ScanTabViewController
+            
+            //set variables in viewController
+            
+            self.typeOffer = 0
+            
+            firstNavigationController.pushViewController(viewController, animated: true)
+            
+            
+        }
+    }
 
 }
 

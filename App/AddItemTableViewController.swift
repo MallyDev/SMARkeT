@@ -64,12 +64,12 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     }
     
     func filtraContenuti(testoCercato: String, scope: String) {
-        if testoCercato == ""{
-        filtered.removeAll(keepingCapacity: true)
-        filtered.append(contentsOf: products)
-        }else{
-        filtered.removeAll(keepingCapacity: true)
-        for x in products {
+        if testoCercato == "" {
+            filtered.removeAll(keepingCapacity: true)
+            filtered.append(contentsOf: products)
+        } else {
+            filtered.removeAll(keepingCapacity: true)
+            for x in products {
             /*var justOne = false
             for (_, categoria) in x.department.enumerate() {
                 if (scope == "Tutti" || categoria == scope) {
@@ -80,15 +80,14 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                     }
                 }
             }*/
-            if (scope == "Tutti") {
-                if (x.name?.range(of: testoCercato) != nil) {
-                    filtered.append(x)
+                if (scope == "Tutti") {
+                    if (x.name?.localizedLowercase.range(of: testoCercato.localizedLowercase) != nil) {
+                        filtered.append(x)
+                    }
                 }
+                self.tableView.reloadData()
             }
-            
-            self.tableView.reloadData()
         }
-            }
     }
     
     @IBAction func addItem(_ sender: UIButton) {
@@ -200,7 +199,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 (data, response, error) -> Void in
                 let result = self.processImageRequest(data: data, error: error as NSError?)
                 
-                if case var .success(image) = result {
+                if case let .success(image) = result {
                     OperationQueue.main.addOperation {
                         cell.imgView.backgroundColor = UIColor.white
                         cell.imgView.image = image
@@ -209,12 +208,38 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 }
             })
             task.resume()
+        } else if item.imageUrl == nil {
+            switch item.department! {
+            case "Food":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            case "Item":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "item-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            case "Drink":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "water")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            default:
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "item-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            }
         } else {
             OperationQueue.main.addOperation {
                 cell.imgView.image = self.iS.image(forKey: item.barCode!)
             }
         }
-        
         return cell
     }
     
