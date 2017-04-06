@@ -25,6 +25,18 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         favourites = PersistenceManager.fetchFavourites()
         filtered.removeAll(keepingCapacity: true)
         self.tableView.reloadData()
+        if favourites.count == 0{
+            let noDataLabel:UILabel = UILabel()
+            noDataLabel.text          = "Your favorites list is empty. \n Select elements to add"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            self.tableView.backgroundView = noDataLabel
+            self.tableView.separatorStyle  = .none
+        }else{
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle  = .singleLine
+        }
+
     }
     
     override func viewDidLoad() {
@@ -289,6 +301,18 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             tableView.deleteRows(at: [indexPath], with: .fade)
             item.favourite = false
             PersistenceManager.saveContext()
+            
+            if self.favourites.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "Your favorites list is empty. \n Select elements to add"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                self.tableView.backgroundView = noDataLabel
+                self.tableView.separatorStyle  = .none
+            }else{
+                self.tableView.backgroundView = nil
+                self.tableView.separatorStyle  = .singleLine
+            }
         }
 
         

@@ -39,9 +39,125 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    @IBAction func onSwitch(_ sender: UISegmentedControl) {
+        switch(typeOfferte.selectedSegmentIndex) {
+        case 0:
+            myTableView.reloadData()
+            if myList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "No products in list is on offer"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 1:
+            myTableView.reloadData()
+            if favourites.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "No products in favourites is on offer"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 2:
+            myTableView.reloadData()
+            if dailyList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "The daily deals are available in the supermarket."
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 3:
+            myTableView.reloadData()
+            if allList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "There are no offers, now!"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        default:
+            break
+        }
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         caricaListe()
         myTableView.reloadData()
+        switch(typeOfferte.selectedSegmentIndex) {
+        case 0:
+            myTableView.reloadData()
+            if myList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "No products in list is on offer"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 1:
+            myTableView.reloadData()
+            if favourites.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "No products in favourites is on offer"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 2:
+            myTableView.reloadData()
+            if dailyList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "The daily deals are available in the supermarket."
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        case 3:
+            myTableView.reloadData()
+            if allList.count == 0{
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "There are no offers, now!"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                myTableView.backgroundView = noDataLabel
+                myTableView.separatorStyle  = .none
+            }else{
+                myTableView.backgroundView = nil
+                myTableView.separatorStyle  = .singleLine
+            }
+        default:
+            break
+        }
     }
 
     func caricaListe() {

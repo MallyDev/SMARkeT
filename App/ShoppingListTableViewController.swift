@@ -58,7 +58,17 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     override func viewWillAppear(_ animated: Bool) {
         list = PersistenceManager.fetchList()
         tableView.reloadData()
-        
+        if list.count == 0{
+            let noDataLabel:UILabel = UILabel()
+            noDataLabel.text          = "Your shopping list is empty. \n Add an item"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            self.tableView.backgroundView = noDataLabel
+            self.tableView.separatorStyle  = .none
+        }else{
+         self.tableView.backgroundView = nil
+            self.tableView.separatorStyle  = .singleLine
+        }
         numberNot = 0
         tabArray = self.tabBarController?.tabBar.items as NSArray!
         tabItem = tabArray?.object(at: 1) as! UITabBarItem
@@ -376,6 +386,21 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             self.list.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             PersistenceManager.saveContext()
+            
+            if self.list.count == 0{
+                
+                let noDataLabel:UILabel = UILabel()
+                noDataLabel.text          = "Your shopping list is empty. \n Add an item"
+                noDataLabel.textColor     = UIColor.black
+                noDataLabel.textAlignment = .center
+                self.tableView.backgroundView = noDataLabel
+                self.tableView.separatorStyle  = .none
+            }else{
+                self.tableView.backgroundView = nil
+                self.tableView.separatorStyle  = .singleLine
+            }
+
+            
             
             self.list = PersistenceManager.fetchList()
             self.numberNot = 0
