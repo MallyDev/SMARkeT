@@ -74,10 +74,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         beaconManager.startMonitoring(for: regSupermarket)
         beaconManager.startRangingBeacons(in: regSupermarket)
         
+        let tbc = self.window!.rootViewController as? UITabBarController
+        let tabArray = tbc?.tabBar.items as NSArray!
+        let tabItem = tabArray?.object(at: 1) as! UITabBarItem
+        var numberNot = 0
+        productsInList = PersistenceManager.fetchList()
+        for index in 0..<productsInList.count {
+            if productsInList[index].newPrice > 0 && self.productsInList[index].bought == false{
+                numberNot+=1
+            }
+        }
+        if numberNot != 0{
+            tabItem.badgeValue = String(numberNot)
+            let application = UIApplication.shared
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            application.registerForRemoteNotifications()
+            application.applicationIconBadgeNumber = numberNot
+        }else{
+            tabItem.badgeValue=nil
+        }
+        
+
+        
         return true
     }
-    
-  
     
     func beaconManager(_ manager: Any, didEnter region: CLBeaconRegion) {
          //Now the User is with is Device in the Supermarket
