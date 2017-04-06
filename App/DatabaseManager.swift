@@ -42,6 +42,34 @@ class DatabaseManager {
                             }
                             PersistenceManager.saveContext()
                         })
+                    } else {
+                        item.child(barcode).observeSingleEvent(of: .value, with: {(snap) in
+                            let product_read = snap.value as! NSDictionary?
+                            let prod = result.0
+                            //Aggiorna prodotto se i campi sono cambiati
+                            var temp = product_read!.value(forKey: "name") as! String?
+                            if temp != prod.name {
+                                prod.name = temp
+                            }
+                            temp = product_read!.value(forKey: "department") as! String?
+                            if temp != prod.department{
+                                prod.department = temp
+                            }
+                            temp = product_read!.value(forKey: "descr") as! String?
+                            if temp != prod.descr {
+                                prod.descr = temp
+                            }
+                            var temp2 = product_read!.value(forKey: "price") as! Float
+                            if temp2 != prod.price {
+                                prod.price = temp2
+                            }
+                            temp = product_read!.value(forKey: "url") as! String?
+                            if temp != prod.imageUrl {
+                                prod.imageUrl = temp
+                            }
+                            
+                            PersistenceManager.saveContext()
+                        })
                     }
                 }
             }

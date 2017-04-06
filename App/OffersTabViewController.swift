@@ -166,11 +166,11 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     func showPopup(){
         
-        let popUp = UIAlertController(title: "Order by", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let popUp = UIAlertController(title: NSLocalizedString("Order by",comment: ""),message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         self.present(popUp, animated: true, completion: nil)
         
-        popUp.addAction(UIAlertAction(title: "Name", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Name",comment: ""),style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
             
             switch (self.typeOfferte.selectedSegmentIndex){
             case 0:
@@ -191,7 +191,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             
         }))
         
-        popUp.addAction(UIAlertAction(title: "Price", style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Price",comment: ""), style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 switch (self.typeOfferte.selectedSegmentIndex){
                 case 0:
@@ -213,7 +213,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
                 
         }))
         
-        popUp.addAction(UIAlertAction(title: "Convenience", style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Convenience",comment: ""),style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 switch (self.typeOfferte.selectedSegmentIndex){
                 case 0:
@@ -235,7 +235,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         }))
         
         
-        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.destructive, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))

@@ -153,8 +153,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let result = PersistenceManager.searchProduct(barcode: barCode)
         
         if  result.1 {
-            let prod = result.0
-            showPopup(product: prod[0])
+            showPopup(product: result.0)
         } else {
             showAlert()
         }
