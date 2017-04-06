@@ -80,6 +80,22 @@ class PersistenceManager{
         return products
     }
     
+    static func fetchDaily() -> [Product]{
+        
+        let context=getContext()
+        var products=[Product]()
+        let fetchRequest=NSFetchRequest<Product>(entityName: name)
+        fetchRequest.predicate = NSPredicate(format: "isDaily==true")
+        
+        do{
+            try products=context.fetch(fetchRequest)
+        }catch let error as NSError{
+            fatalError("Error in fetching the list. \(error)")
+        }
+        return products
+    }
+
+    
     static func fetchOffers () -> [Product]{
         
         let context = getContext()

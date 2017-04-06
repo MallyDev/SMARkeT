@@ -27,6 +27,7 @@ extension Product {
     @NSManaged public var weight: Float
     
     //Proprietà per la gestione
+    @NSManaged public var isDaily: Bool
     @NSManaged public var inTheList: Bool
     @NSManaged public var bought: Bool
     @NSManaged public var favourite: Bool
