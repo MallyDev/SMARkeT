@@ -64,6 +64,11 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filtraContenuti(testoCercato: "", scope: "Tutti")
+        tableView.reloadData()
+    }
+    
     public func updateSearchResults(for searchController: UISearchController) {
         self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
     }
@@ -210,7 +215,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      */
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete",comment: "")) { (action, indexPath) in
             // delete item at indexPath
             let item : Product
             if self.resultSearchController!.isActive {
@@ -236,9 +241,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         
         if itemTest.inTheList == false{
         
-            
- 
-                        let addToList = UITableViewRowAction(style: .normal, title: "Add to List") { (action, indexPath) in
+            let addToList = UITableViewRowAction(style: .normal, title: NSLocalizedString("Add to List",comment : "")) { (action, indexPath) in
                                 // add to shopping list
                                 let item : Product
                                 if self.resultSearchController!.isActive {
