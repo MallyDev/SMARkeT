@@ -110,9 +110,13 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         cell.quantityLabel.inputView = picker
         
         if list[indexPath.row].bought{
-            cell.backgroundColor = UIColor.yellow
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.nameLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.black, range: NSMakeRange(0, attributeString.length))
+            cell.nameLabel.attributedText = attributeString
         }else{
-            cell.backgroundColor = UIColor.white
+            cell.nameLabel.attributedText = NSMutableAttributedString(string:  cell.nameLabel.text!)
+
         }
         /*
         //carico l'immagine
