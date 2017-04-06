@@ -34,6 +34,7 @@ struct AppUtility {
 class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    var prod : [Product]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +117,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func found(code: String) {
-        print(code)
+        print("Codice trovato: ",code)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -153,7 +154,8 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let result = PersistenceManager.searchProduct(barcode: barCode)
         
         if  result.1 {
-            showPopup(product: result.0)
+            prod = result.0
+            showPopup(product: prod[0])
         } else {
             showAlert()
         }
@@ -161,7 +163,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     func showPopup(product: Product){
         
-        let popUp = UIAlertController(title: NSLocalizedString("Add to:",comment: ""), message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let popUp = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         self.present(popUp, animated: true, completion: nil)
         
@@ -188,18 +190,39 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 self.dismiss(animated: true, completion: nil)
         }))
         
-        popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: "View Item", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                PersistenceManager.saveContext()
+                //far comparire la view dei Favourites
+                self.performSegue(withIdentifier: "ScanToDetail", sender: self)
+                //far scomparire la ScannerView
+                self.dismiss(animated: true, completion: nil)
+        }))
+
+        
+        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
     }
     
     func showAlert() {
-        let popUp = UIAlertController(title: NSLocalizedString("ERROR",comment: ""), message: "Product not found", preferredStyle: .alert)
+        let popUp = UIAlertController(title: "ERROR", message: "Product not in database", preferredStyle: .alert)
         self.present(popUp,animated: true,completion: nil)
         popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+   
+        if segue.identifier == "ScanToDetail" {
+            let dstView = segue.destination as! ItemDetailViewController
+            dstView.title = prod[0].name!
+            dstView.item = prod[0]
+            }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 enum ImageResult {
     case success(UIImage)
@@ -50,7 +51,26 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     override func viewWillAppear(_ animated: Bool) {
         list = PersistenceManager.fetchList()
         tableView.reloadData()
-
+        
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray?.object(at: 1) as! UITabBarItem
+        var numberNot = 0
+        for index in 0..<list.count {
+            if list[index].newPrice > 0{
+               numberNot+=1
+            }
+        }
+        if numberNot != 0{
+        tabItem.badgeValue = String(numberNot)
+            let application = UIApplication.shared
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            application.registerForRemoteNotifications()
+            application.applicationIconBadgeNumber = numberNot
+        }
+        
     }
     
     func inizializeData () {
@@ -65,6 +85,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         picker.delegate = self
         tableView.delegate = self
         inizializeData()
+        
         
        // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ShoppingListTableViewController.hideKeyboard))
        // tapGesture.cancelsTouchesInView = true
@@ -132,7 +153,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             cell.nameLabel.attributedText = NSMutableAttributedString(string:  cell.nameLabel.text!)
 
         }
-        /*
+        
         //carico l'immagine
         if iS.image(forKey: list[indexPath.row].barCode!) == nil {
         let u: String? = list[indexPath.row].imageUrl
@@ -143,11 +164,11 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             let config = URLSessionConfiguration.default
             return URLSession(configuration: config)
         }()
-        /*
+        
         if cell.departmentLabel.text == "Reparto"{
             cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
             cell.imgView.backgroundColor = UIColor.white
-        }*/
+        }
         
         
         let task = session.dataTask(with: request, completionHandler: {
@@ -166,7 +187,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         }else{
             cell.imgView.image = iS.image(forKey: list[indexPath.row].barCode!)
         }
-        */
+        
         //
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default

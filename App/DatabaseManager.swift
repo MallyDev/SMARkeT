@@ -36,7 +36,12 @@ class DatabaseManager {
                             prod.department = product_read!.value(forKey: "department") as! String?
                             prod.descr = product_read!.value(forKey: "descr") as! String?
                             prod.price = product_read!.value(forKey: "price") as! Float
-                            prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            let temp2 = product_read!.value(forKey: "url")
+                            if temp2 != nil {
+                                prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            }
+
+                            //prod.imageUrl = product_read!.value(forKey: "url") as! String?
                             /*if(product_read!.allKeys.contains(where: { $0 as! String == "newprice"})){
                                 prod.newPrice=product_read!.value(forKey: "newprice") as! Float
                             }*/
@@ -53,7 +58,7 @@ class DatabaseManager {
                     } else {
                         item.child(barcode).observeSingleEvent(of: .value, with: {(snap) in
                             let product_read = snap.value as! NSDictionary?
-                            let prod = result.0
+                            let prod = result.0[0]
                             //Aggiorna prodotto se i campi sono cambiati
                             var temp = product_read!.value(forKey: "name") as! String?
                             if temp != prod.name {
