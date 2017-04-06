@@ -44,11 +44,18 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                 
                 controller.searchBar.delegate = self
                 
+                
+                
                 // restituisco il controller creato
                 return controller
             })()
         
 
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filtraContenuti(testoCercato: "", scope: "Tutti")
+        tableView.reloadData()
     }
     
     func filtraContenuti(testoCercato: String, scope: String) {
@@ -280,6 +287,8 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         
         return .success(image)
     }
+    
+    
     
 
 }

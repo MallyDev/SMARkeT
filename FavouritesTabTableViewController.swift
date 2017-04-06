@@ -64,6 +64,11 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filtraContenuti(testoCercato: "", scope: "Tutti")
+        tableView.reloadData()
+    }
+    
     public func updateSearchResults(for searchController: UISearchController) {
         self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
     }
