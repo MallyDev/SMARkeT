@@ -119,7 +119,7 @@ class PersistenceManager{
         }
         
         return (product,result)
-    }*/
+    }
     
     static func saveContext(){
         let context = getContext()
