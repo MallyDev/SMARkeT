@@ -27,6 +27,11 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     var picker = UIPickerView()
     var cellModified = ShoppingListTableViewCell()
     var itemModified = Product()
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
+
     
     
     @IBAction func updateQuantity(_ sender: UITextField) {
@@ -44,9 +49,6 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         //cellModified.quantityLabel.text = "\(value)"
         picker.selectRow(Int.init(cellModified.quantityLabel.text!)!-1, inComponent: 0, animated: true)
     }
-    
-   
-    
     
     override func viewWillAppear(_ animated: Bool) {
         list = PersistenceManager.fetchList()
@@ -154,39 +156,48 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
 
         }
         
+        if cell.departmentLabel.text == "Reparto"{
+            OperationQueue.main.addOperation {
+                cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+                cell.imgView.backgroundColor = UIColor.white
+            }
+        }
         //carico l'immagine
         if iS.image(forKey: list[indexPath.row].barCode!) == nil {
-        let u: String? = list[indexPath.row].imageUrl
-        let url = URL(string: u!)
-        print("L'url letto è \(url!)")
-        let request = URLRequest(url: url! as URL)
-        let session: URLSession = {
-            let config = URLSessionConfiguration.default
-            return URLSession(configuration: config)
-        }()
-        
-        if cell.departmentLabel.text == "Reparto"{
-            cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
-            cell.imgView.backgroundColor = UIColor.white
-        }
-        
-        
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            let result = self.processImageRequest(data: data, error: error as NSError?)
+            let url = URL.init(string: (item.imageUrl)!)
+            let request = URLRequest(url: url! as URL)
+            let task = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                let result = self.processImageRequest(data: data, error: error as NSError?)
             
-            if case var .success(image) = result {
-                cell.imgView.backgroundColor = UIColor.white
-                cell.imgView.image = image
-                cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-
-                
+                if case var .success(image) = result {
+                    OperationQueue.main.addOperation {
+                        cell.imgView.backgroundColor = UIColor.white
+                        cell.imgView.image = image
+                        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                    }
+                }
+            })
+            task.resume()
+        } else {
+            OperationQueue.main.addOperation {
+                cell.imgView.image = self.iS.image(forKey: item.barCode!)
             }
-        })
-        task.resume()
-        }else{
-            cell.imgView.image = iS.image(forKey: list[indexPath.row].barCode!)
         }
+        
+        /*if (item.imageUrl != nil) {
+            OperationQueue.main.addOperation {
+                let url = URL.init(string: (item.imageUrl)!)
+                var dat : Data = Data()
+                do {
+                    dat = try Data.init(contentsOf: url!)
+                } catch let error as NSError {
+                    print("ERROR LOADING IMAGE: ",error)
+                }
+                let image = UIImage.init(data: dat, scale: 2.0)
+                cell.imgView.image = image
+            }
+        }*/
         
         //
         let toolBar = UIToolbar()

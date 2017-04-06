@@ -14,13 +14,16 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
     var favourites = [Product]()
     var filtered : Array<Product> = []
     var resultSearchController: UISearchController?
+    let iS = ImageStore()
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
    
     
     override func viewWillAppear(_ animated: Bool) {
         favourites = PersistenceManager.fetchFavourites()
-        
         filtered.removeAll(keepingCapacity: true)
-        
         self.tableView.reloadData()
     }
     
@@ -157,7 +160,29 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         } else {
             cell.accessoryType = .none
         }
+        
         //Inizializzare immagine di icona
+        if iS.image(forKey: item.barCode!) == nil {
+            let url = URL.init(string: (item.imageUrl)!)
+            let request = URLRequest(url: url! as URL)
+            let task = session.dataTask(with: request, completionHandler: {
+                (data, response, error) -> Void in
+                let result = self.processImageRequest(data: data, error: error as NSError?)
+                
+                if case var .success(image) = result {
+                    OperationQueue.main.addOperation {
+                        cell.imageLabel.backgroundColor = UIColor.white
+                        cell.imageLabel.image = image
+                        cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                    }
+                }
+            })
+            task.resume()
+        } else {
+            OperationQueue.main.addOperation {
+                cell.imageLabel.image = self.iS.image(forKey: item.barCode!)
+            }
+        }
         
         return cell
     }
@@ -280,6 +305,21 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         }else{
             return [delete]
         }
-        
+    }
+    
+    func processImageRequest(data: Data?, error: NSError?) -> ImageResult {
+        guard let
+            imageData = data,
+            let image = UIImage(data: imageData) else {
+                
+                // Couldn't create an image
+                if data == nil {
+                    return .failure(error!)
+                }
+                else {
+                    return .failure(PhotoError.imageCreationError)
+                }
+        }
+        return .success(image)
     }
 }

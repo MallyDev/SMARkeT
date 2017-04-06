@@ -28,7 +28,7 @@ class PersistenceManager{
         product.price=0.0
         product.favourite=false
         product.inTheList=false
-        product.quantity=0
+        product.quantity=1
         product.weight=0.0
         product.newPrice = -1
         product.department = "Reparto"
