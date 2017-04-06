@@ -37,8 +37,16 @@ class DatabaseManager {
                             prod.descr = product_read!.value(forKey: "descr") as! String?
                             prod.price = product_read!.value(forKey: "price") as! Float
                             prod.imageUrl = product_read!.value(forKey: "url") as! String?
-                            if(product_read!.allKeys.contains(where: { $0 as! String == "newprice"})){
+                            /*if(product_read!.allKeys.contains(where: { $0 as! String == "newprice"})){
                                 prod.newPrice=product_read!.value(forKey: "newprice") as! Float
+                            }*/
+                            let temp = product_read!.value(forKey: "newprice")
+                            if temp != nil {
+                                prod.newPrice = product_read!.value(forKey: "newprice") as! Float
+                            }
+                            let temp1 = product_read!.value(forKey: "weight")
+                            if temp1 != nil {
+                                prod.weight = product_read!.value(forKey: "weight") as! Float
                             }
                             PersistenceManager.saveContext()
                         })
@@ -67,7 +75,20 @@ class DatabaseManager {
                             if temp != prod.imageUrl {
                                 prod.imageUrl = temp
                             }
-                            
+                            var temp1 = product_read!.value(forKey: "newprice")
+                            if temp1 != nil {
+                                temp2 = product_read!.value(forKey: "newprice") as! Float
+                                if temp2 != prod.newPrice {
+                                    prod.newPrice = temp2
+                                }
+                            }
+                            temp1 = product_read!.value(forKey: "weight")
+                            if temp1 != nil {
+                                temp2 = product_read!.value(forKey: "weight") as! Float
+                                if temp2 != prod.weight {
+                                    prod.weight = temp2
+                                }
+                            }
                             PersistenceManager.saveContext()
                         })
                     }
