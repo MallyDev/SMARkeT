@@ -378,7 +378,7 @@
 				TargetAttributes = {
 					2963D74C1E8FE2C00043D171 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7W46TPZT4W;
+						DevelopmentTeam = 57SS2T3E32;
 						ProvisioningStyle = Automatic;
 					};
 					2963D7621E8FE2C00043D171 = {
@@ -783,14 +783,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7W46TPZT4W;
+				DEVELOPMENT_TEAM = 57SS2T3E32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Mally.Photorama;
+				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
@@ -804,14 +804,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7W46TPZT4W;
+				DEVELOPMENT_TEAM = 57SS2T3E32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Mally.Photorama;
+				PRODUCT_BUNDLE_IDENTIFIER = FrancescoCaposiena.App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ObjCBridge.h;
 				SWIFT_VERSION = 3.0;
