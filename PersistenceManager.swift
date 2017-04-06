@@ -99,7 +99,7 @@ class PersistenceManager{
         let context = getContext()
         context.delete(product)
     }
-    
+    /*
     static func searchProduct (barcode: String) -> (Product,Bool) {
         let context = getContext()
         var product : Product
@@ -115,7 +115,7 @@ class PersistenceManager{
         }
         
         return (product,result)
-    }
+    }*/
     
     static func saveContext(){
         let context = getContext()
