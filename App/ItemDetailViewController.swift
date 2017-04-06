@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class ItemDetailViewController: UIViewController {
     
@@ -57,6 +58,8 @@ class ItemDetailViewController: UIViewController {
             attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
              self.priceLabel.attributedText = attributeString
             self.newPriceLabel.text = "\(item!.newPrice) €"
+            
+            
         }
         
         if (item?.inTheList)! {
@@ -153,6 +156,34 @@ class ItemDetailViewController: UIViewController {
         }
         quantityLabel.text = "\(item!.quantity)"
         PersistenceManager.saveContext()
+        
+        
+        
+        var numberNot = 0
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray?.object(at: 1) as! UITabBarItem
+        let application = UIApplication.shared
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+        let list = PersistenceManager.fetchList()
+        
+        application.registerForRemoteNotifications()
+        for index in 0..<list.count {
+            if list[index].newPrice > 0 && list[index].bought == false{
+                numberNot+=1
+            }
+        }
+        if numberNot != 0{
+            tabItem.badgeValue = String(numberNot)
+            application.applicationIconBadgeNumber = numberNot
+        }else{
+            tabItem.badgeValue=nil
+            application.applicationIconBadgeNumber = 0
+        }
+
     }
     
     @IBAction func modifyQuantity(_ sender: UIStepper) {

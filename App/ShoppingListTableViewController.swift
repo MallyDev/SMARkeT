@@ -33,6 +33,11 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     }()
 
     
+    var tabArray:NSArray!
+    var tabItem:UITabBarItem!
+    var numberNot = 0
+    let application = UIApplication.shared
+    let center = UNUserNotificationCenter.current()
     
     @IBAction func updateQuantity(_ sender: UITextField) {
         let textFieldPosition = sender.convert(CGPoint(), to: tableView)
@@ -54,25 +59,26 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         list = PersistenceManager.fetchList()
         tableView.reloadData()
         
-        let tabArray = self.tabBarController?.tabBar.items as NSArray!
-        let tabItem = tabArray?.object(at: 1) as! UITabBarItem
-        var numberNot = 0
+        numberNot = 0
+        tabArray = self.tabBarController?.tabBar.items as NSArray!
+        tabItem = tabArray?.object(at: 1) as! UITabBarItem
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+        application.registerForRemoteNotifications()
         for index in 0..<list.count {
-            if list[index].newPrice > 0{
-               numberNot+=1
+            if list[index].newPrice > 0 && self.list[index].bought == false{
+                numberNot+=1
             }
         }
         if numberNot != 0{
-        tabItem.badgeValue = String(numberNot)
-            let application = UIApplication.shared
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-                // Enable or disable features based on authorization.
-            }
-            application.registerForRemoteNotifications()
+            tabItem.badgeValue = String(numberNot)
             application.applicationIconBadgeNumber = numberNot
+        }else{
+            tabItem.badgeValue=nil
+            application.applicationIconBadgeNumber = 0
         }
-        
+
     }
     
     func inizializeData () {
@@ -339,6 +345,26 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             self.list.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             PersistenceManager.saveContext()
+            
+            self.list = PersistenceManager.fetchList()
+            self.numberNot = 0
+            self.center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            self.application.registerForRemoteNotifications()
+            for index in 0..<self.list.count{
+                if self.list[index].newPrice > 0  && self.list[index].bought == false{
+                    self.numberNot+=1
+                }
+            }
+            if self.numberNot != 0{
+                self.tabItem.badgeValue = String(self.numberNot)
+                self.application.applicationIconBadgeNumber = self.numberNot
+            }else{
+                self.tabItem.badgeValue=nil
+                self.application.applicationIconBadgeNumber = 0
+            }
+
 
         }
         
@@ -352,15 +378,51 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                 self.list[indexPath.row].bought = true
                 tableView.reloadData()
                 PersistenceManager.saveContext()
+                self.list = PersistenceManager.fetchList()
+                self.numberNot = 0
+                self.center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                    // Enable or disable features based on authorization.
+                }
+                self.application.registerForRemoteNotifications()
+                for index in 0..<self.list.count {
+                    if self.list[index].newPrice > 0 && self.list[index].bought == false{
+                        self.numberNot+=1
+                    }
+                }
+                if self.numberNot != 0 {
+                    self.tabItem.badgeValue = String(self.numberNot)
+                    self.application.applicationIconBadgeNumber = self.numberNot
+                }else{
+                    self.tabItem.badgeValue=nil
+                    self.application.applicationIconBadgeNumber = 0
+                }
         
             }
         }else{
-                
+            
                 done = UITableViewRowAction(style: .default, title:NSLocalizedString("Add to List",comment:"")) { (action, indexPath) in
                     // add to shopping list
                     self.list[indexPath.row].bought = false
                     tableView.reloadData()
                     PersistenceManager.saveContext()
+                    self.list = PersistenceManager.fetchList()
+                    self.numberNot = 0
+                    self.center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                        // Enable or disable features based on authorization.
+                    }
+                    self.application.registerForRemoteNotifications()
+                    for index in 0..<self.list.count{
+                        if self.list[index].newPrice > 0  && self.list[index].bought == false{
+                            self.numberNot+=1
+                        }
+                    }
+                    if self.numberNot != 0{
+                        self.tabItem.badgeValue = String(self.numberNot)
+                        self.application.applicationIconBadgeNumber = self.numberNot
+                    }else{
+                        self.tabItem.badgeValue=nil
+                        self.application.applicationIconBadgeNumber = 0
+                    }
         }
         
        
