@@ -97,6 +97,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
         //Now the User is with is Device out of the Supermarket
         
+        //Reload the new list
+        productsInList = PersistenceManager.fetchList()
+        favourites = PersistenceManager.fetchFavourites()
+        
         let content = UNMutableNotificationContent()
         var reminder = "\n"
         
@@ -140,6 +144,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     
     func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        
+        //Reload the new list
+        productsInList = PersistenceManager.fetchList()
+        
+        favourites = PersistenceManager.fetchFavourites()
+        
         
         if let nearestRegion = beacons.first{
         

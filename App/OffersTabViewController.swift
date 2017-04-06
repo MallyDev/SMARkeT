@@ -170,12 +170,16 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             switch (self.typeOfferte.selectedSegmentIndex){
             case 0:
                 self.myList = self.myList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
             case 1:
                 self.favouritesList = self.favouritesList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
             case 2:
                 self.dailyList = self.dailyList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
             case 3:
                 self.allList = self.allList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
             default:
                 break
             }
@@ -187,12 +191,16 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
                 switch (self.typeOfferte.selectedSegmentIndex){
                 case 0:
                     self.myList = self.myList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
                 case 1:
                     self.favouritesList = self.favouritesList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
                 case 2:
                     self.dailyList = self.dailyList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
                 case 3:
                     self.allList = self.allList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
                 default:
                     break
                 }
@@ -204,17 +212,20 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             {(paramAction: UIAlertAction!) in
                 switch (self.typeOfferte.selectedSegmentIndex){
                 case 0:
-                    self.myList = self.myList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice) })
+                    self.myList = self.myList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice) })
+                    self.myTableView.reloadData()
                 case 1:
-                    self.favouritesList = self.favouritesList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice) })
+                    self.favouritesList = self.favouritesList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice) })
+                    self.myTableView.reloadData()
                 case 2:
-                    self.dailyList = self.dailyList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice)})
+                    self.dailyList = self.dailyList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice)})
+                    self.myTableView.reloadData()
                 case 3:
-                    self.allList = self.allList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice)})
+                    self.allList = self.allList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice)})
+                    self.myTableView.reloadData()
                 default:
                     break
                 }
-
                 
         }))
         
