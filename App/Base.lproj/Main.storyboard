@@ -50,6 +50,7 @@
                     <connections>
                         <segue destination="njt-HR-E7l" kind="show" identifier="ScanToShopp" id="1pL-mL-hvB"/>
                         <segue destination="fCi-ma-IvF" kind="show" identifier="ScanToFav" id="kjt-ca-4SW"/>
+                        <segue destination="XqV-6f-Q2C" kind="show" identifier="ScanToDetail" id="3w3-zF-0wZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6h-JE-wsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,8 +782,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kjt-ca-4SW"/>
+        <segue reference="3w3-zF-0wZ"/>
         <segue reference="1pL-mL-hvB"/>
-        <segue reference="6Dk-r5-M42"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -36,7 +36,9 @@ class DatabaseManager {
                             prod.department = product_read!.value(forKey: "department") as! String?
                             prod.descr = product_read!.value(forKey: "descr") as! String?
                             prod.price = product_read!.value(forKey: "price") as! Float
-                            prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            if product_read!.value(forKey: "url") != nil{
+                                prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            }
                             PersistenceManager.saveContext()
                         })
                        
