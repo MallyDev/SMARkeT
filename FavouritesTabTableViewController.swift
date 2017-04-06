@@ -137,12 +137,20 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             item = favourites[indexPath.row]
         }
         cell.nameLabel.text = item.name!
-        cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
-        if item.newPrice >= 0 {
-            cell.newPriceLabel.text = "\(item.newPrice)"
-        } else {
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
             cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
         }
         if item.inTheList {
             cell.accessoryType = .checkmark
