@@ -53,7 +53,7 @@ class DatabaseManager {
                     } else {
                         item.child(barcode).observeSingleEvent(of: .value, with: {(snap) in
                             let product_read = snap.value as! NSDictionary?
-                            let prod = result.0
+                            let prod = result.0[0]
                             //Aggiorna prodotto se i campi sono cambiati
                             var temp = product_read!.value(forKey: "name") as! String?
                             if temp != prod.name {
