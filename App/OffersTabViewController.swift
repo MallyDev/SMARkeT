@@ -43,6 +43,11 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         favouritesList = matchList (list)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        myTableView.reloadData()
+    }
+
+    
     func matchList (_ source: Array<Product>) -> Array<Product> {
         var temp = Array<Product> ()
         
