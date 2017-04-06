@@ -113,14 +113,14 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         }
 
         //AGGIUNGE IMMAGINE A IMGVIEW
-        if iS.image(forKey: item.barCode!) == nil {
+        if iS.image(forKey: item.barCode!) == nil && item.imageUrl != nil {
             let url = URL.init(string: (item.imageUrl)!)
             let request = URLRequest(url: url! as URL)
             let task = session.dataTask(with: request, completionHandler: {
                 (data, response, error) -> Void in
                 let result = self.processImageRequest(data: data, error: error as NSError?)
                 
-                if case var .success(image) = result {
+                if case let .success(image) = result {
                     OperationQueue.main.addOperation {
                         cell.imgView.backgroundColor = UIColor.white
                         cell.imgView.image = image
@@ -129,6 +129,33 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             })
             task.resume()
+        } else if item.imageUrl == nil {
+            switch item.department! {
+            case "Food":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "fruit-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            case "Item":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "item-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            case "Drink":
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "water")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            default:
+                OperationQueue.main.addOperation {
+                    cell.imgView.backgroundColor = UIColor.white
+                    cell.imgView.image = #imageLiteral(resourceName: "item-default.png")
+                    cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                }
+            }
         } else {
             OperationQueue.main.addOperation {
                 cell.imgView.image = self.iS.image(forKey: item.barCode!)
