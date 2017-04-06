@@ -50,7 +50,16 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
     override func viewWillAppear(_ animated: Bool) {
         list = PersistenceManager.fetchList()
         tableView.reloadData()
-
+        
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray?.object(at: 1) as! UITabBarItem
+        var numberNot = 0
+        for index in 0..<list.count {
+            if list[index].newPrice > 0{
+               numberNot+=1
+            }
+        }
+        tabItem.badgeValue = String(numberNot)
     }
     
     func inizializeData () {
