@@ -168,6 +168,7 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
         cell.nameLabel.text = item.name!
         if item.newPrice <= 0{
             cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
             cell.newPriceLabel.text = ""
         }else{
             cell.priceLabel.text = "\(item.price) €"

@@ -42,6 +42,8 @@ class ItemDetailViewController: UIViewController {
         self.departmentLabel.text = item!.department!
         if item!.newPrice <= 0{
             self.priceLabel.text = "\(item!.price) €"
+            self.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
+            self.newPriceLabel.text = ""
         }else{
             self.priceLabel.text = "\(item!.price) €"
             self.priceLabel.textColor = UIColor.red
