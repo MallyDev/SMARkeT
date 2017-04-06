@@ -25,5 +25,7 @@
 "Convenience" = "Convenienza";
 "Cancel" = "Annulla";
 "Scanning not supported" = "Scanner non supportato";
-"Your device does not support scanning a code from an item." = "Il dispositivo non supporta lo scanner di un codice."
+"Your device does not support scanning a code from an item." = "Il dispositivo non supporta lo scanner di un codice.";
 "ERROR" = "ERRORE";
+"Add to:" = "Aggiungi a:";
+"Favourite" = "Preferiti";
