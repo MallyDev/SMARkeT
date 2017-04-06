@@ -85,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         let title1 = NSLocalizedString("Welcome to BaconTeam SuperMarket", comment: "")
         let subtitle1 = NSLocalizedString("Dear custumer,all the staff is glad for your visit.", comment:"")
         let banner = Banner(title: title1, subtitle: subtitle1, image: UIImage(named: "AppIcon"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
-                banner.dismissesOnSwipe=true
+                banner.dismissesOnSwipe = true
                 banner.dismissesOnTap = true
-                banner.show(duration: 3.0)
+                banner.show(duration: 5.0)
             
        }
         
@@ -96,6 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     func beaconManager(_ manager: Any, didExitRegion region: CLBeaconRegion) {
         //Now the User is with is Device out of the Supermarket
+        
+        //Reload the new list
+        productsInList = PersistenceManager.fetchList()
+        favourites = PersistenceManager.fetchFavourites()
         
         let content = UNMutableNotificationContent()
         var reminder = "\n"
@@ -141,6 +145,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
+        //Reload the new list
+        productsInList = PersistenceManager.fetchList()
+        
+        favourites = PersistenceManager.fetchFavourites()
+        
+        
         if let nearestRegion = beacons.first{
         
         var listaFiltrata = [Product]()
@@ -152,8 +162,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             listaFiltrata = filterList(search: "Food")
             if listaFiltrata.count > 0 {
                 var nameProduct: String = ""
-                for product in listaFiltrata{
-                    nameProduct += "\n" + product.name!
+               
+                for index in 0..<listaFiltrata.count {
+                    nameProduct += listaFiltrata[index].name! + "\n"
                 }
                 
                 let content = UNMutableNotificationContent()
@@ -183,9 +194,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         case 35887: //Drink
             listaFiltrata = filterList(search: "Drink")
             if listaFiltrata.count > 0 {
-                var nameProduct: String = ""
-                for product in listaFiltrata{
-                    nameProduct += "\n" + product.name!
+                var nameProduct: String = "\n"
+                
+                for index in 0..<listaFiltrata.count {
+                    nameProduct += listaFiltrata[index].name! + "\n"
                 }
                 let content = UNMutableNotificationContent()
                     content.title = NSLocalizedString("Hey! You're in the Drink's Area.",comment:"")
@@ -212,10 +224,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         case 27161: //Item
             listaFiltrata = filterList(search: "Item")
             if listaFiltrata.count > 0 {
-                var nameProduct: String = ""
-                for product in listaFiltrata{
-                    nameProduct += "\n" + product.name!
+                var nameProduct: String = "\n"
+                
+                for index in 0..<listaFiltrata.count {
+                    nameProduct += listaFiltrata[index].name! + "\n"
                 }
+                
                 
                 let content = UNMutableNotificationContent()
                     content.title = NSLocalizedString("Hey! You're in the generic Item's Area.",comment: "")
@@ -240,7 +254,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             }
         default:
             break
-        }
+            }
 
         }
     

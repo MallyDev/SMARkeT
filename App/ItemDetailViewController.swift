@@ -42,6 +42,8 @@ class ItemDetailViewController: UIViewController {
         self.departmentLabel.text = item!.department!
         if item!.newPrice <= 0{
             self.priceLabel.text = "\(item!.price) €"
+            self.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
+            self.newPriceLabel.text = ""
         }else{
             self.priceLabel.text = "\(item!.price) €"
             self.priceLabel.textColor = UIColor.red
@@ -50,7 +52,6 @@ class ItemDetailViewController: UIViewController {
             attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
              self.priceLabel.attributedText = attributeString
             self.newPriceLabel.text = "\(item!.newPrice) €"
-            
         }
         
         if (item?.inTheList)! {

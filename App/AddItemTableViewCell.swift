@@ -14,6 +14,7 @@ class AddItemTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var newPriceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

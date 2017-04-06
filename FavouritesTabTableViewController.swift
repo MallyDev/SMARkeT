@@ -64,6 +64,11 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filtraContenuti(testoCercato: "", scope: "Tutti")
+        tableView.reloadData()
+    }
+    
     public func updateSearchResults(for searchController: UISearchController) {
         self.filtraContenuti(testoCercato: searchController.searchBar.text!, scope: "Tutti")
     }
@@ -132,12 +137,20 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
             item = favourites[indexPath.row]
         }
         cell.nameLabel.text = item.name!
-        cell.priceLabel.text = "\(item.price)"
         cell.departmentLabel.text = item.department!
-        if item.newPrice >= 0 {
-            cell.newPriceLabel.text = "\(item.newPrice)"
-        } else {
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
             cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
         }
         if item.inTheList {
             cell.accessoryType = .checkmark
@@ -210,7 +223,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
      */
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete",comment: "")) { (action, indexPath) in
             // delete item at indexPath
             let item : Product
             if self.resultSearchController!.isActive {
@@ -236,9 +249,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
         
         if itemTest.inTheList == false{
         
-            
- 
-                        let addToList = UITableViewRowAction(style: .normal, title: "Add to List") { (action, indexPath) in
+            let addToList = UITableViewRowAction(style: .normal, title: NSLocalizedString("Add to List",comment : "")) { (action, indexPath) in
                                 // add to shopping list
                                 let item : Product
                                 if self.resultSearchController!.isActive {
@@ -251,6 +262,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
                                     }else{
                                     
                                         item.inTheList = true
+                                        item.quantity = 1
                                         PersistenceManager.saveContext()
                                         tableView.reloadData()
                                 }

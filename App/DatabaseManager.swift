@@ -26,11 +26,11 @@ class DatabaseManager {
                 for barcode in keys {
                     let result = PersistenceManager.searchProduct(barcode: barcode)
                     if !result.1 {
-                        let prod = PersistenceManager.newEmptyProd()
                         item.child(barcode).observeSingleEvent(of: .value, with: {(snap) in
                             let product_read = snap.value as! NSDictionary?
                         
                             //Inizializza prodotto
+                            let prod = PersistenceManager.newEmptyProd()
                             prod.barCode = barcode
                             prod.name = product_read!.value(forKey: "name") as! String?
                             prod.department = product_read!.value(forKey: "department") as! String?
@@ -41,7 +41,6 @@ class DatabaseManager {
                             }
                             PersistenceManager.saveContext()
                         })
-                       
                     }
                 }
             }

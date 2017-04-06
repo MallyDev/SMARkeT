@@ -104,10 +104,24 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as!ShoppingListTableViewCell
         
         // Configure the cell...
-        cell.nameLabel.text = list[indexPath.row].name!
+        let item = list[indexPath.row]
+        cell.nameLabel.text = item.name!
         cell.departmentLabel.text = list[indexPath.row].department!
-        cell.priceLabel.text = "\(list[indexPath.row].price) €"
-        cell.quantityLabel.text = "\(list[indexPath.row].quantity)"
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
+            cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
+        }
+        cell.quantityLabel.text = "\(item.quantity)"
         cell.quantityLabel.inputView = picker
         
         if list[indexPath.row].bought{

@@ -13,6 +13,12 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var typeOfferte: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+   
+    @IBAction func orderBy(_ sender: UIBarButtonItem) {
+    
+        showPopup()
+    
+    }
     
     //Liste di appoggio
     var list: Array<Product> = []
@@ -36,6 +42,11 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         myList = matchList (list)
         favouritesList = matchList (list)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        myTableView.reloadData()
+    }
+
     
     func matchList (_ source: Array<Product>) -> Array<Product> {
         var temp = Array<Product> ()
@@ -61,7 +72,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
  
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! OfferCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! OfferCellTableViewCell
         let item: Product
         
         switch(typeOfferte.selectedSegmentIndex) {
@@ -76,13 +87,26 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             default:
                 item = allList[indexPath.row]
         }
-        myCell.nameLabel.text = item.name!
-        myCell.priceLabel.text = "\(item.price) €"
-        myCell.departmentLabel.text = item.department
-        myCell.newPriceLabel.text = "\(item.newPrice) €"
+        cell.nameLabel.text = item.name!
+        cell.departmentLabel.text = item.department
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor(red: 68/255, green: 149/255, blue: 52/255, alpha: 1)
+            cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
+        }
+
         //AGGIUNGERE IMMAGINE A IMGVIEW
 
-        return myCell
+        return cell
     }
     
     @IBAction func refreshButtonTapped(sender: AnyObject) {
@@ -140,5 +164,83 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             dstView.item=item
         }
     }
+    
+    func showPopup(){
+        
+        let popUp = UIAlertController(title: NSLocalizedString("Order by",comment: ""),message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        self.present(popUp, animated: true, completion: nil)
+        
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Name",comment: ""),style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+            
+            switch (self.typeOfferte.selectedSegmentIndex){
+            case 0:
+                self.myList = self.myList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
+            case 1:
+                self.favouritesList = self.favouritesList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
+            case 2:
+                self.dailyList = self.dailyList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
+            case 3:
+                self.allList = self.allList.sorted(by: {$0.name! < $1.name! })
+                self.myTableView.reloadData()
+            default:
+                break
+            }
+            
+        }))
+        
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Price",comment: ""), style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                switch (self.typeOfferte.selectedSegmentIndex){
+                case 0:
+                    self.myList = self.myList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
+                case 1:
+                    self.favouritesList = self.favouritesList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
+                case 2:
+                    self.dailyList = self.dailyList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
+                case 3:
+                    self.allList = self.allList.sorted(by: {$0.newPrice < $1.newPrice })
+                    self.myTableView.reloadData()
+                default:
+                    break
+                }
+                
+                
+        }))
+        
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Convenience",comment: ""),style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                switch (self.typeOfferte.selectedSegmentIndex){
+                case 0:
+                    self.myList = self.myList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice) })
+                    self.myTableView.reloadData()
+                case 1:
+                    self.favouritesList = self.favouritesList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice) })
+                    self.myTableView.reloadData()
+                case 2:
+                    self.dailyList = self.dailyList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice)})
+                    self.myTableView.reloadData()
+                case 3:
+                    self.allList = self.allList.sorted(by: {($0.price - $0.newPrice) > ($1.price - $1.newPrice)})
+                    self.myTableView.reloadData()
+                default:
+                    break
+                }
+                
+        }))
+        
+        
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.destructive, handler:
+            {(paramAction: UIAlertAction!) in
+                self.viewDidLoad()
+        }))
+    }
+
 }
 
