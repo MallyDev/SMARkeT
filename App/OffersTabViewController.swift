@@ -67,7 +67,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
  
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! OfferCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! OfferCellTableViewCell
         let item: Product
         
         switch(typeOfferte.selectedSegmentIndex) {
@@ -82,13 +82,25 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             default:
                 item = allList[indexPath.row]
         }
-        myCell.nameLabel.text = item.name!
-        myCell.priceLabel.text = "\(item.price) €"
-        myCell.departmentLabel.text = item.department
-        myCell.newPriceLabel.text = "\(item.newPrice) €"
+        cell.nameLabel.text = item.name!
+        cell.departmentLabel.text = item.department
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
+        }
+
         //AGGIUNGERE IMMAGINE A IMGVIEW
 
-        return myCell
+        return cell
     }
     
     @IBAction func refreshButtonTapped(sender: AnyObject) {

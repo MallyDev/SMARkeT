@@ -166,7 +166,19 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
             item = products[indexPath.row]
         }
         cell.nameLabel.text = item.name!
-        cell.priceLabel.text = "\(item.price)"
+        if item.newPrice <= 0{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.newPriceLabel.text = ""
+        }else{
+            cell.priceLabel.text = "\(item.price) €"
+            cell.priceLabel.textColor = UIColor.red
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  cell.priceLabel.text!)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
+            cell.priceLabel.attributedText = attributeString
+            
+            cell.newPriceLabel.text = "\(item.newPrice) €"
+        }
         cell.departmentLabel.text = item.department!
                 
         if item.inTheList {
