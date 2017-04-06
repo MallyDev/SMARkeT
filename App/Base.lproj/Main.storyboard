@@ -705,6 +705,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Offers" image="sales" id="uUH-Zu-Rh2"/>
                     <navigationItem key="navigationItem" title="Offers" id="e0R-Wp-SpN">
+                        <barButtonItem key="leftBarButtonItem" image="sort-by-attributes.png" id="I6m-56-Y1N">
+                            <connections>
+                                <action selector="orderBy:" destination="sFU-pc-a8M" id="b3E-uh-UiM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gd7-Oy-9Sd">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -777,12 +782,13 @@
         <image name="barcode" width="24" height="24"/>
         <image name="online-store" width="24" height="24"/>
         <image name="sales" width="24" height="24"/>
+        <image name="sort-by-attributes.png" width="32" height="32"/>
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kjt-ca-4SW"/>
+        <segue reference="JK4-F8-G8d"/>
         <segue reference="1pL-mL-hvB"/>
-        <segue reference="6Dk-r5-M42"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

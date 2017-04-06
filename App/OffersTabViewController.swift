@@ -13,6 +13,12 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var typeOfferte: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+   
+    @IBAction func orderBy(_ sender: UIBarButtonItem) {
+    
+        showPopup()
+    
+    }
     
     //Liste di appoggio
     var list: Array<Product> = []
@@ -140,5 +146,72 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
             dstView.item=item
         }
     }
+    
+    func showPopup(){
+        
+        let popUp = UIAlertController(title: "Order by", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        self.present(popUp, animated: true, completion: nil)
+        
+        popUp.addAction(UIAlertAction(title: "Name", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+            
+            switch (self.typeOfferte.selectedSegmentIndex){
+            case 0:
+                self.myList = self.myList.sorted(by: {$0.name! < $1.name! })
+            case 1:
+                self.favouritesList = self.favouritesList.sorted(by: {$0.name! < $1.name! })
+            case 2:
+                self.dailyList = self.dailyList.sorted(by: {$0.name! < $1.name! })
+            case 3:
+                self.allList = self.allList.sorted(by: {$0.name! < $1.name! })
+            default:
+                break
+            }
+            
+        }))
+        
+        popUp.addAction(UIAlertAction(title: "Price", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                switch (self.typeOfferte.selectedSegmentIndex){
+                case 0:
+                    self.myList = self.myList.sorted(by: {$0.newPrice < $1.newPrice })
+                case 1:
+                    self.favouritesList = self.favouritesList.sorted(by: {$0.newPrice < $1.newPrice })
+                case 2:
+                    self.dailyList = self.dailyList.sorted(by: {$0.newPrice < $1.newPrice })
+                case 3:
+                    self.allList = self.allList.sorted(by: {$0.newPrice < $1.newPrice })
+                default:
+                    break
+                }
+                
+                
+        }))
+        
+        popUp.addAction(UIAlertAction(title: "Convenience", style: UIAlertActionStyle.default, handler:
+            {(paramAction: UIAlertAction!) in
+                switch (self.typeOfferte.selectedSegmentIndex){
+                case 0:
+                    self.myList = self.myList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice) })
+                case 1:
+                    self.favouritesList = self.favouritesList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice) })
+                case 2:
+                    self.dailyList = self.dailyList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice)})
+                case 3:
+                    self.allList = self.allList.sorted(by: {($0.price - $0.newPrice) < ($1.price - $1.newPrice)})
+                default:
+                    break
+                }
+
+                
+        }))
+        
+        
+        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler:
+            {(paramAction: UIAlertAction!) in
+                self.viewDidLoad()
+        }))
+    }
+
 }
 
