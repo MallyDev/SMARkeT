@@ -16,16 +16,19 @@ extension Product {
         return NSFetchRequest<Product>(entityName: "Product");
     }
 
-    @NSManaged public var barCode: String?
+    //Proprietà del prodotto
+    @NSManaged public var barCode: String? //codice univoco per prodotto
+    @NSManaged public var name: String?
     @NSManaged public var department: String?
     @NSManaged public var descr: String?
-    @NSManaged public var favourite: Bool
-    @NSManaged public var inTheList: Bool
-    @NSManaged public var name: String?
-    @NSManaged public var newPrice: Float
-    @NSManaged public var price: Float
     @NSManaged public var quantity: Int32
+    @NSManaged public var price: Float
+    @NSManaged public var newPrice: Float
     @NSManaged public var weight: Float
     @NSManaged public var imageUrl: String?
+    
+    //Proprietà per la gestione
+    @NSManaged public var inTheList: Bool
     @NSManaged public var bought: Bool
+    @NSManaged public var favourite: Bool
 }
