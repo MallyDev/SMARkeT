@@ -46,7 +46,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         allList = PersistenceManager.fetchOffers()
         
         myList = matchList (list)
-        favouritesList = matchList (list)
+        favouritesList = matchList (favourites)
     }
     
     func matchList (_ source: Array<Product>) -> Array<Product> {
