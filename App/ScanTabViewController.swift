@@ -32,7 +32,7 @@ struct AppUtility {
     
 }
 
-class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
+class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {/*
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -202,5 +202,5 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
-    }
+    }*/
 }

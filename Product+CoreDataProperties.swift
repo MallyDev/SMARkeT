@@ -27,5 +27,5 @@ extension Product {
     @NSManaged public var quantity: Int32
     @NSManaged public var weight: Float
     @NSManaged public var imageUrl: String?
-
+    @NSManaged public var bought: Bool
 }
