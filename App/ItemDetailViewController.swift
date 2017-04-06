@@ -48,10 +48,9 @@ class ItemDetailViewController: UIViewController {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string:  self.priceLabel.text!)
             attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: NSMakeRange(0, attributeString.length))
             attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.red, range: NSMakeRange(0, attributeString.length))
-             self.priceLabel.attributedText = attributeString
+            self.priceLabel.attributedText = attributeString
             
             self.newPriceLabel.text = "\(item!.newPrice) €"
-            
         }
         
         if (item?.inTheList)! {
