@@ -102,7 +102,7 @@ class PersistenceManager{
     
     static func searchProduct (barcode: String) -> (Product,Bool) {
         let context = getContext()
-        var product : Product
+        var product : Array<Product>
         var result : Bool
         
         let fetchRequest = NSFetchRequest<Product>(entityName: name)
