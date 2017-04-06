@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 enum ImageResult {
     case success(UIImage)
@@ -59,7 +60,17 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                numberNot+=1
             }
         }
+        if numberNot != 0{
         tabItem.badgeValue = String(numberNot)
+            let application = UIApplication.shared
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            application.registerForRemoteNotifications()
+            application.applicationIconBadgeNumber = numberNot
+        }
+        
     }
     
     func inizializeData () {
