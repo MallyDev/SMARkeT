@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -113,7 +113,7 @@
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="md0-o0-pzI"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.71234533629441632" green="0.07482168294140186" blue="0.077947798190374243" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.26666666666666666" green="0.58431372549019611" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -250,7 +250,7 @@
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="oEm-5R-E6P"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.71234533629441632" green="0.066663578668613666" blue="0.078491388111882943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.26666666666666666" green="0.58431372549019611" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -348,9 +348,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 €" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-hV-DIU">
-                                            <rect key="frame" x="114" y="25" width="23" height="16"/>
+                                            <rect key="frame" x="114" y="25" width="20.333333333333343" height="16"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="23" id="O9u-5b-0tW"/>
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="QDA-ii-KD7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -363,7 +362,7 @@
                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="nvU-Fu-6zG"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.71234533629999996" green="0.066663578670000001" blue="0.078491388110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="0.26666666666666666" green="0.58431372549019611" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -385,6 +384,7 @@
                                     <outlet property="departmentLabel" destination="oPV-Hc-nDR" id="Rck-F7-H4H"/>
                                     <outlet property="imgView" destination="rAW-ZB-3Yc" id="bEs-U3-gtV"/>
                                     <outlet property="nameLabel" destination="ZVU-4K-5hh" id="w24-pj-v7C"/>
+                                    <outlet property="newPriceLabel" destination="45B-13-OzD" id="cH8-El-xqh"/>
                                     <outlet property="priceLabel" destination="Cj7-hV-DIU" id="Trv-EH-zxW"/>
                                     <segue destination="XqV-6f-Q2C" kind="show" identifier="showItem" id="8UM-Zf-0IR"/>
                                 </connections>
@@ -659,7 +659,7 @@
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="G1l-4U-CQt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.71234533629999996" green="0.066663578670000001" blue="0.078491388110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.26666666666666666" green="0.58431372549019611" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -782,7 +782,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="kjt-ca-4SW"/>
         <segue reference="1pL-mL-hvB"/>
-        <segue reference="6Dk-r5-M42"/>
+        <segue reference="QsS-v9-ZTo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
