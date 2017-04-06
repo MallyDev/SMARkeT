@@ -18,4 +18,12 @@
 "Add to List" = "Aggiungi alla lista";
 "Bought" = "Comprato";
 "Delete" = "Elimina";
-"Hope to see you soon." = "A presto." ; 
+"Hope to see you soon." = "A presto." ;
+"Order by" = "Ordina per";
+"Name" = "Nome";
+"Price" = "Prezzo";
+"Convenience" = "Convenienza";
+"Cancel" = "Annulla";
+"Scanning not supported" = "Scanner non supportato";
+"Your device does not support scanning a code from an item." = "Il dispositivo non supporta lo scanner di un codice."
+"ERROR" = "ERRORE";

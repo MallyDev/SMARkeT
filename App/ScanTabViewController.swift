@@ -78,7 +78,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+        let ac = UIAlertController(title: NSLocalizedString("Scanning not supported",comment: ""), message: NSLocalizedString("Your device does not support scanning a code from an item.",comment: ""), preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
         captureSession = nil
@@ -161,7 +161,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     func showPopup(product: Product){
         
-        let popUp = UIAlertController(title: "Add to:", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let popUp = UIAlertController(title: NSLocalizedString("Add to:",comment: ""), message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         self.present(popUp, animated: true, completion: nil)
         
@@ -177,7 +177,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             self.dismiss(animated: true, completion: nil)
         }))
         
-        popUp.addAction(UIAlertAction(title: "Favourite", style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Favourite",comment: ""), style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 product.favourite = true
                 PersistenceManager.saveContext()
@@ -188,16 +188,16 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 self.dismiss(animated: true, completion: nil)
         }))
         
-        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
     }
     
     func showAlert() {
-        let popUp = UIAlertController(title: "ERROR", message: "Product not found", preferredStyle: .alert)
+        let popUp = UIAlertController(title: NSLocalizedString("ERROR",comment: ""), message: "Product not found", preferredStyle: .alert)
         self.present(popUp,animated: true,completion: nil)
-        popUp.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:
+        popUp.addAction(UIAlertAction(title: NSLocalizedString("Cancel",comment: ""), style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
