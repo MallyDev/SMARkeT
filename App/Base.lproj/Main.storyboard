@@ -36,7 +36,7 @@
         <!--Scan-->
         <scene sceneID="odJ-Ew-ruH">
             <objects>
-                <viewController id="Tsi-Gx-qjN" customClass="ScanTabViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanTabViewController" id="Tsi-Gx-qjN" customClass="ScanTabViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UxH-r1-Jhf"/>
                         <viewControllerLayoutGuide type="bottom" id="uhm-td-DGx"/>
@@ -565,9 +565,9 @@
         <!--Offers-->
         <scene sceneID="KEd-nV-bHL">
             <objects>
-                <navigationController id="YEr-gL-jYv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="offersNav" id="YEr-gL-jYv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offers" image="sales" id="3sX-HH-TSz"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w9f-7i-YNK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="TabBar" id="w9f-7i-YNK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36078431370000003" green="0.63529411759999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -586,7 +586,7 @@
         <!--Offers-->
         <scene sceneID="GfM-Er-jjr">
             <objects>
-                <viewController id="sFU-pc-a8M" customClass="OffersTabViewController" customModule="App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="offersTabViewController" id="sFU-pc-a8M" customClass="OffersTabViewController" customModule="App" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FZU-NJ-EVq"/>
                         <viewControllerLayoutGuide type="bottom" id="kuu-mq-hVA"/>
@@ -729,7 +729,7 @@
         <!--Scan-->
         <scene sceneID="aiJ-k9-gdw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJV-Z2-qO0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="scanNav" automaticallyAdjustsScrollViewInsets="NO" id="CJV-Z2-qO0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scan" image="barcode" id="zk6-z2-igX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bEN-So-Ed9">
@@ -781,9 +781,9 @@
         <image name="star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kjt-ca-4SW"/>
         <segue reference="1pL-mL-hvB"/>
-        <segue reference="QsS-v9-ZTo"/>
+        <segue reference="kjt-ca-4SW"/>
+        <segue reference="3w3-zF-0wZ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

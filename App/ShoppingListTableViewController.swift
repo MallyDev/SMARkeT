@@ -169,7 +169,7 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
             }
         }
         //carico l'immagine
-        if iS.image(forKey: list[indexPath.row].barCode!) == nil {
+        if iS.image(forKey: list[indexPath.row].barCode!) == nil && item.imageUrl != nil {
             let url = URL.init(string: (item.imageUrl)!)
             let request = URLRequest(url: url! as URL)
             let task = session.dataTask(with: request, completionHandler: {

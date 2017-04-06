@@ -13,6 +13,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var typeOfferte: UISegmentedControl!
     @IBOutlet weak var myTableView: UITableView!
+    
     let iS = ImageStore()
     let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -41,6 +42,8 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         caricaListe()
         myTableView.reloadData()
+        let app =  UIApplication.shared.delegate as! AppDelegate
+        self.typeOfferte.selectedSegmentIndex = app.typeOffer
     }
 
     func caricaListe() {
