@@ -252,7 +252,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             
             for x in productsInList {
                 
-                if( x.department == search){
+                if( x.department == search && !x.bought){
                     filterList.append(x)
                     }
                 }
