@@ -705,7 +705,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Offers" image="sales" id="uUH-Zu-Rh2"/>
                     <navigationItem key="navigationItem" title="Offers" id="e0R-Wp-SpN">
-                        <barButtonItem key="leftBarButtonItem" image="sort.png" id="I6m-56-Y1N">
+                        <barButtonItem key="leftBarButtonItem" image="sort.png" style="plain" id="I6m-56-Y1N">
                             <connections>
                                 <action selector="orderBy:" destination="sFU-pc-a8M" id="b3E-uh-UiM"/>
                             </connections>

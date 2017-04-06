@@ -15,9 +15,7 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var myTableView: UITableView!
    
     @IBAction func orderBy(_ sender: UIBarButtonItem) {
-    
         showPopup()
-    
     }
     
     //Liste di appoggio
@@ -33,20 +31,23 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        caricaListe()
+        myTableView.reloadData()
+    }
+
+    func caricaListe() {
         list = PersistenceManager.fetchList()
         favourites = PersistenceManager.fetchFavourites()
         
-        //Effettuare caricamento delle offerte 
+        //Effettuare caricamento delle offerte
         allList = PersistenceManager.fetchOffers()
         
         myList = matchList (list)
         favouritesList = matchList (list)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        myTableView.reloadData()
-    }
-
     
     func matchList (_ source: Array<Product>) -> Array<Product> {
         var temp = Array<Product> ()
@@ -110,10 +111,12 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @IBAction func refreshButtonTapped(sender: AnyObject) {
+        caricaListe()
         myTableView.reloadData()
     }
     
     @IBAction func segmentedControlActionChanged(sender: AnyObject) {
+        caricaListe()
         myTableView.reloadData()
     }
     
