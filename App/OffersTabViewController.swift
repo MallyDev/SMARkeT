@@ -50,6 +50,8 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         //Effettuare caricamento delle offerte
         allList = PersistenceManager.fetchOffers()
         
+        dailyList = PersistenceManager.fetchDaily()
+        
         myList = matchList (list)
         favouritesList = matchList (favourites)
     }

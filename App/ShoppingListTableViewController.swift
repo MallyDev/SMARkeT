@@ -176,11 +176,15 @@ class ShoppingListTableViewController: UITableViewController, UIPickerViewDelega
                 (data, response, error) -> Void in
                 let result = self.processImageRequest(data: data, error: error as NSError?)
             
-                if case var .success(image) = result {
+                if case let .success(image) = result {
                     OperationQueue.main.addOperation {
                         cell.imgView.backgroundColor = UIColor.white
                         cell.imgView.image = image
                         cell.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+                    }
+                } else {
+                    OperationQueue.main.addOperation {
+                        cell.imgView.image = #imageLiteral(resourceName: "Race-Registration-Image-Not-Found")
                     }
                 }
             })

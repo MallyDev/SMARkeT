@@ -96,4 +96,44 @@ class DatabaseManager {
             }
         })
     }
+    
+    static func loadDaily(){
+        let ref = FIRDatabase.database().reference()
+        let item = ref.child("Offerte del Giorno")
+        
+        item.observeSingleEvent(of: .value, with: {(snap) in
+            let db = snap.value as! NSDictionary?
+            if (db != nil) {
+                let keys = db?.allKeys as! [String]
+                
+                for index in keys {
+                   
+                        item.child(index).observeSingleEvent(of: .value, with: {(snap) in
+                            let product_read = snap.value as! NSDictionary?
+                            
+                            //Inizializza prodotto
+                            let prod = PersistenceManager.newEmptyProd()
+                            prod.name = product_read!.value(forKey: "name") as! String?
+                            prod.department = product_read!.value(forKey: "department") as! String?
+                            prod.descr = product_read!.value(forKey: "descr") as! String?
+                            prod.price = product_read!.value(forKey: "price") as! Float
+                            prod.isDaily = true
+                            let temp2 = product_read!.value(forKey: "url")
+                            if temp2 != nil {
+                                prod.imageUrl = product_read!.value(forKey: "url") as! String?
+                            }
+                            let temp = product_read!.value(forKey: "newprice")
+                            if temp != nil {
+                                prod.newPrice = product_read!.value(forKey: "newprice") as! Float
+                            }
+                            let temp1 = product_read!.value(forKey: "weight")
+                            if temp1 != nil {
+                                prod.weight = product_read!.value(forKey: "weight") as! Float
+                            }
+                            PersistenceManager.saveContext()
+                        })
+                }
+            }
+        })
+    }
 }
