@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         FIRApp.configure()
         
         DatabaseManager.loadDatabase()
-        DatabaseManager.loadDaily()
+        
         //Creation of the lists
         productsInList = PersistenceManager.fetchList()
         
@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 banner.dismissesOnTap = true
                 banner.show(duration: 5.0)
         
-        
+        DatabaseManager.loadDaily()
        }
         
         
