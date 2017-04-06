@@ -14,8 +14,15 @@ class DatabaseManager {
     
     static func loadDatabase () {
         let ref = FIRDatabase.database().reference()
-        
         let item = ref.child("Prodotti")
+        
+        //svuota coreData
+        for product in PersistenceManager.fetchAll(){
+         PersistenceManager.deleteProduct(product: product)
+         }
+         PersistenceManager.saveContext()
+        
+        //Carica dati
         item.observeSingleEvent(of: .value, with: {(snap) in
             let db = snap.value as! NSDictionary?
             if (db != nil) {
