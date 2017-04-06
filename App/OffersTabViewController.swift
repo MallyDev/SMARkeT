@@ -42,8 +42,6 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         caricaListe()
         myTableView.reloadData()
-        let app =  UIApplication.shared.delegate as! AppDelegate
-        self.typeOfferte.selectedSegmentIndex = app.typeOffer
     }
 
     func caricaListe() {

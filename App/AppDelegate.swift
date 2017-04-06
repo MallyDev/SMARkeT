@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
     
     var favourites: [Product]!
     
-    var typeOffer = 0
-    
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -41,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
         FIRApp.configure()
         
         DatabaseManager.loadDatabase()
+        DatabaseManager.loadDaily()
         //Creation of the lists
         productsInList = PersistenceManager.fetchList()
         
@@ -112,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
                 banner.dismissesOnTap = true
                 banner.show(duration: 5.0)
         
-        DatabaseManager.loadDaily()
+        
        }
         
         
@@ -373,8 +372,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             
             //set variables in viewController
             
-            self.typeOffer = 2
-            
             firstNavigationController.pushViewController(viewController, animated: true)
             
             
@@ -392,9 +389,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate,
             //the viewController to present
             let viewController = storyboard.instantiateViewController(withIdentifier: "scanTabViewController") as! ScanTabViewController
             
-            //set variables in viewController
-            
-            self.typeOffer = 0
+            //set variables in viewControlle
             
             firstNavigationController.pushViewController(viewController, animated: true)
             

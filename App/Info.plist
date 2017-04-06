@@ -32,7 +32,7 @@
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeTime</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Daily Offers</string>
+			<string>Offers</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.smarket.discoverOffer</string>
 		</dict>
