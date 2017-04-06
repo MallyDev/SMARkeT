@@ -64,12 +64,12 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
     }
     
     func filtraContenuti(testoCercato: String, scope: String) {
-        if testoCercato == ""{
-        filtered.removeAll(keepingCapacity: true)
-        filtered.append(contentsOf: products)
-        }else{
-        filtered.removeAll(keepingCapacity: true)
-        for x in products {
+        if testoCercato == "" {
+            filtered.removeAll(keepingCapacity: true)
+            filtered.append(contentsOf: products)
+        } else {
+            filtered.removeAll(keepingCapacity: true)
+            for x in products {
             /*var justOne = false
             for (_, categoria) in x.department.enumerate() {
                 if (scope == "Tutti" || categoria == scope) {
@@ -80,15 +80,14 @@ class AddItemTableViewController: UITableViewController, UISearchResultsUpdating
                     }
                 }
             }*/
-            if (scope == "Tutti") {
-                if (x.name?.range(of: testoCercato) != nil) {
-                    filtered.append(x)
+                if (scope == "Tutti") {
+                    if (x.name?.localizedLowercase.range(of: testoCercato.localizedLowercase) != nil) {
+                        filtered.append(x)
+                    }
                 }
+                self.tableView.reloadData()
             }
-            
-            self.tableView.reloadData()
         }
-            }
     }
     
     @IBAction func addItem(_ sender: UIButton) {

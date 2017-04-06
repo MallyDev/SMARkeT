@@ -94,7 +94,7 @@ class FavouritesTabTableViewController: UITableViewController, UISearchResultsUp
                  }
                  }*/
                 if (scope == "Tutti") {
-                    if (x.name?.range(of: testoCercato) != nil) {
+                    if (x.name?.localizedLowercase.range(of: testoCercato.localizedLowercase) != nil) {
                         filtered.append(x)
                     }
                 }
