@@ -31,7 +31,7 @@ struct AppUtility {
     }
 }
 
-class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {/*
+class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
@@ -169,6 +169,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
             //aggiungere il prodotto nell'array di shopping list
             product.inTheList = true
+            product.quantity = 1
             PersistenceManager.saveContext()
             //far comparire la view di shopping list
             self.tabBarController?.selectedIndex = 0
@@ -201,5 +202,5 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             {(paramAction: UIAlertAction!) in
                 self.viewDidLoad()
         }))
-    }*/
+    }
 }
