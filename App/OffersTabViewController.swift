@@ -109,10 +109,6 @@ class OffersTabViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    @IBAction func refreshButtonTapped(sender: AnyObject) {
-        myTableView.reloadData()
-    }
-    
     @IBAction func segmentedControlActionChanged(sender: AnyObject) {
         myTableView.reloadData()
     }
