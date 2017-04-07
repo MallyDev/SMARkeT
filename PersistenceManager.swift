@@ -33,6 +33,7 @@ class PersistenceManager{
         product.newPrice = -1
         product.department = "Reparto"
         product.imageUrl = "https://cdn.pixabay.com/photo/2015/10/31/12/00/question-1015308_1280.jpg"
+        product.isDaily = false
         
         return product
     }
@@ -41,7 +42,7 @@ class PersistenceManager{
         let context = getContext()
         var products=[Product]()
         let fetchRequest = NSFetchRequest<Product>(entityName: name)
-        //fetchRequest.predicate = NSPredicate(format: "favourite==true")
+        fetchRequest.predicate = NSPredicate(format: "isDaily==false")
         
         do{
             try products=context.fetch(fetchRequest)

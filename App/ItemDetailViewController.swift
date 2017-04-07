@@ -147,7 +147,7 @@ class ItemDetailViewController: UIViewController {
         item?.inTheList = !(item?.inTheList)!
         if (item?.inTheList)! {
             sender.setTitle(NSLocalizedString("Remove from List",comment:""), for: .normal)
-            item?.quantity = 1
+            item?.quantity = Int32(quantityLabel.text!)!
             sender.backgroundColor = UIColor.init(red: 255/255, green: 192/255, blue: 19/255, alpha: 1.0)
         } else {
             sender.setTitle(NSLocalizedString("Add to List",comment:""), for: .normal)
