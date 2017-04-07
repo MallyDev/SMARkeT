@@ -167,28 +167,32 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         self.present(popUp, animated: true, completion: nil)
         
-        popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
-            //aggiungere il prodotto nell'array di shopping list
-            product.inTheList = true
-            product.quantity = 1
-            PersistenceManager.saveContext()
-            //far comparire la view di shopping list
-            self.tabBarController?.selectedIndex = 0
-            self.performSegue(withIdentifier: "ScanToShopp", sender: self)
-            //far scomparire la view di scanner
-            self.dismiss(animated: true, completion: nil)
-        }))
-        
-        popUp.addAction(UIAlertAction(title: NSLocalizedString("Favourite",comment: ""), style: UIAlertActionStyle.default, handler:
-            {(paramAction: UIAlertAction!) in
-                product.favourite = true
+        if !product.inTheList{
+            popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+                //aggiungere il prodotto nell'array di shopping list
+                product.inTheList = true
+                product.quantity = 1
                 PersistenceManager.saveContext()
-                //far comparire la view dei Favourites
-                self.tabBarController?.selectedIndex = 3
-                self.performSegue(withIdentifier: "ScanToFav", sender: self)
-                //far scomparire la ScannerView
+                //far comparire la view di shopping list
+                self.tabBarController?.selectedIndex = 0
+                self.performSegue(withIdentifier: "ScanToShopp", sender: self)
+                //far scomparire la view di scanner
                 self.dismiss(animated: true, completion: nil)
-        }))
+            }))
+        }
+        
+        if !product.favourite{
+            popUp.addAction(UIAlertAction(title: NSLocalizedString("Favourite",comment: ""), style: UIAlertActionStyle.default, handler:
+                {(paramAction: UIAlertAction!) in
+                    product.favourite = true
+                    PersistenceManager.saveContext()
+                    //far comparire la view dei Favourites
+                    self.tabBarController?.selectedIndex = 3
+                    self.performSegue(withIdentifier: "ScanToFav", sender: self)
+                    //far scomparire la ScannerView
+                    self.dismiss(animated: true, completion: nil)
+            }))
+        }
         
         popUp.addAction(UIAlertAction(title: "View Item", style: UIAlertActionStyle.default, handler:
             {(paramAction: UIAlertAction!) in
