@@ -168,7 +168,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.present(popUp, animated: true, completion: nil)
         
         if !product.inTheList{
-            popUp.addAction(UIAlertAction(title: "Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
+            popUp.addAction(UIAlertAction(title: "Add to Shopping List", style: UIAlertActionStyle.default, handler:{(paramAction: UIAlertAction!) in
                 //aggiungere il prodotto nell'array di shopping list
                 product.inTheList = true
                 product.quantity = 1
@@ -182,7 +182,7 @@ class ScanTabViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
         
         if !product.favourite{
-            popUp.addAction(UIAlertAction(title: NSLocalizedString("Favourite",comment: ""), style: UIAlertActionStyle.default, handler:
+            popUp.addAction(UIAlertAction(title: NSLocalizedString("Add to Favourite",comment: ""), style: UIAlertActionStyle.default, handler:
                 {(paramAction: UIAlertAction!) in
                     product.favourite = true
                     PersistenceManager.saveContext()
